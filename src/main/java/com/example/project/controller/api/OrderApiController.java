@@ -82,4 +82,10 @@ public class OrderApiController {
     public void updateorder(@RequestBody OrderDTO orderDTO) {
         orderService.update(orderDTO);
     }
+
+
+    @PostMapping("/cancel/{orderIdx}")
+    public void cancel(@PathVariable Long orderIdx) {
+        orderService.cancel(orderIdx);
+    }
 }
