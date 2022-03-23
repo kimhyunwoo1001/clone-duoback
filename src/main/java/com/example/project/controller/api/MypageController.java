@@ -47,6 +47,9 @@ public class MypageController {
     @Autowired
     private ZzimService zzimService;
 
+    @Autowired
+    private QnaService qnaService;
+
     @GetMapping("/mypage_qna_write")
     public String mypage_qna_write(Model model) {
 
@@ -164,11 +167,13 @@ public class MypageController {
         if(session.getAttribute("userid")==null){
             return "pages/www.duoback.co.kr/member/login";
         }
+
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
+        model.addAttribute("qnalist" , qnaService.getBoardList(user.getUserIdx()));
         return "pages/www.duoback.co.kr/mypage/mypage_qna";
     }
 

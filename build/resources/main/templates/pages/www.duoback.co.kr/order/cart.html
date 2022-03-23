@@ -1855,7 +1855,7 @@
                                                             <ul class="block block3">
                                                                 <li><button type="button" class="btn_option_modify btn_resp" id="72985">옵션/수량변경</button></li>
                                                                 <!--li><button type="button" class="btn_option_modify btn_resp" id="72985">옵션/수량변경</button></li-->
-                                                                <li><button type="button" class="btn_direct_buy btn_resp color2" value="72985">바로구매</button></li>
+                                                                <li><button type="button" class="btn_direct_buy btn_resp color2" value="72985"  th:onclick="|location.href='@{|/www.duoback.co.kr/orderdetail/${m.getGoods().gdIdx}|}'|">바로구매</button></li>
                                                             </ul>
 
                                                         </div>
@@ -1881,10 +1881,10 @@
 
                                     <!-- 버튼 그룹 -->
                                     <div class="selected_btn_groups">
-                                        <label class="checkbox_allselect"><input type="checkbox" class="btn_select_all" checked="checked"> <span class="txt" th:text="g">전체선택</span></label>
+                                        <label class="checkbox_allselect"><input type="checkbox" class="btn_select_all" checked="checked"> <span class="txt" >전체선택</span></label>
 
                                         <div class="btns">
-                                            <button type="button" class="btn_resp size_b color2 btn_selected_order" th:onclick="|location.href='@{|/www.duoback.co.kr/orderdetail/${m.getGdIdx()}|}'|">선택상품 주문하기</button>
+                                            <button type="button" class="btn_resp size_b color2 btn_selected_order">선택상품 주문하기</button>
                                             <button type="button" class="btn_resp size_b color4 btn_select_wishlist">선택상품 찜</button>
                                             <button type="button" class="btn_resp size_b gray_05 btn_select_del">선택상품 삭제</button>
                                         </div>

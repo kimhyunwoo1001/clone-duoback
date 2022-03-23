@@ -1757,26 +1757,25 @@ $(function(){
 			<li class="info">상세내역</li>
 			<li class="status">관리자 답변여부</li>
 		</ul>
-			<dl class="arc_body_wrap">
+			<dl class="arc_body_wrap" th:each="m : ${qnalist}">
 				<dt>
 					<ul class="arc_body">
-						<li class="num">1</li>
-						<li class="sort"> <span class="cat">반품문의</span></li>
-						<li class="date">2022-02-02</li>
-						<li class="info">1 </li>
-						<li class="status">
+						<li class="num" th:text="${mStat.count}"></li>
+						<li class="sort"> <span class="cat"  th:text="${m.QCategory}">반품문의</span></li>
+						<li class="date"th:text="${#temporals.format(m.QRegdate , 'yyyy-MM-dd')}">2022-02-02</li>
+						<li class="info" th:text="${m.QContent}" style="text-align: center"> </li>
+						<li class="status" th:text="${m.QStatus}">
 							<div class="comp">답변완료</div>
-							<div class="date">2022-02-02</div>
 						</li>
 					</ul>
 				</dt>
 				<dd>
 					<div class="arc_dd_cont">
 						<div class="ab_qna_q">
-							1<br /><br />
+							<br /><br />
 						</div>
 						<div class="ab_qna_a">
-							<p>안녕하세요 듀오백입니다</p><p><br></p><p>고객님의 주문건 및 문의내용이 확인되지않아</p><p>안내드리기 어렵습니다&nbsp;</p><p>문의하시고자하는 내용 및 주문번호 함께&nbsp;</p><p>남겨주시면 확인 후안내드리겠습니다</p><p><br></p><p>감사합니다&nbsp;</p>
+							<p th:text="${m.QAnswer}"></p>
 						</div>
 					</div>
 				</dd>
