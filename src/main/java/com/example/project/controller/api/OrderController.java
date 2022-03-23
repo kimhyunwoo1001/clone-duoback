@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,9 @@ public class OrderController {
 
     @Autowired
     private UserApiLogicService userApiLogicService;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private RegistAddressService registAddressService;
@@ -76,4 +81,7 @@ public class OrderController {
     public String index0fcd() {
         return "pages/www.duoback.co.kr/page/index0fcd";
     }
+
+
+
 }

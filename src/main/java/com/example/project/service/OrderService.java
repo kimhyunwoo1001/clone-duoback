@@ -134,6 +134,7 @@ public class OrderService {
                             .gdIdx(order.getGoods().getGdIdx())
                             .gdName(order.getGoods().getGdName())
                             .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
                             .build())
                     .build();
             orderDTOList.add(orderDTO);
@@ -374,8 +375,7 @@ public class OrderService {
         Optional<Order> order = orderRepository.findById(orderDTO.getOrderIdx());
 
         order.ifPresent(select -> {
-            select.setOrderStatus(orderDTO.getOrderStatus());
-            select.setOrderSeller(orderDTO.getOrderSeller());
+            select.setOrderStatus(OrderStatus.CANCELED);
         });
     }
 
@@ -404,5 +404,157 @@ public class OrderService {
                         .build())
                 .build();
         return orderDTO;
+    }
+
+
+    @Transactional
+    public List<OrderDTO> getExchangeReturnList(Long userIdx){
+
+        List<Order> orderList1 = orderRepository.findAllByUserIdxAndOrderStatus(userIdx, OrderStatus.EXCHANGING);
+        List<Order> orderList2 = orderRepository.findAllByUserIdxAndOrderStatus(userIdx, OrderStatus.EXCHANGED);
+        List<Order> orderList3 = orderRepository.findAllByUserIdxAndOrderStatus(userIdx, OrderStatus.RETURNING);
+        List<Order> orderList4 = orderRepository.findAllByUserIdxAndOrderStatus(userIdx, OrderStatus.RETURNED);
+        List<OrderDTO> orderDTOList = new ArrayList<>();
+
+        for(Order order : orderList1){
+            OrderDTO orderDTO = OrderDTO.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderSeller(order.getOrderSeller())
+                    .orderNum(order.getOrderNum())
+                    .orderStatus(order.getOrderStatus())
+                    .orderRegdate(order.getOrderRegdate())
+                    .orderZipcode(order.getOrderZipcode())
+                    .orderAddress1(order.getOrderAddress1())
+                    .orderAddress2(order.getOrderAddress2())
+                    .orderTel1(order.getOrderTel1())
+                    .orderTel2(order.getOrderTel2())
+                    .orderRequest(order.getOrderRequest())
+                    .orderRevname(order.getOrderRevname())
+                    .goods(Goods.builder()
+                            .gdIdx(order.getGoods().getGdIdx())
+                            .gdName(order.getGoods().getGdName())
+                            .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
+                            .build())
+                    .build();
+            orderDTOList.add(orderDTO);
+        }
+
+        for(Order order : orderList2){
+            OrderDTO orderDTO2 = OrderDTO.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderSeller(order.getOrderSeller())
+                    .orderNum(order.getOrderNum())
+                    .orderStatus(order.getOrderStatus())
+                    .orderRegdate(order.getOrderRegdate())
+                    .orderZipcode(order.getOrderZipcode())
+                    .orderAddress1(order.getOrderAddress1())
+                    .orderAddress2(order.getOrderAddress2())
+                    .orderTel1(order.getOrderTel1())
+                    .orderTel2(order.getOrderTel2())
+                    .orderRequest(order.getOrderRequest())
+                    .orderRevname(order.getOrderRevname())
+                    .goods(Goods.builder()
+                            .gdIdx(order.getGoods().getGdIdx())
+                            .gdName(order.getGoods().getGdName())
+                            .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
+                            .build())
+                    .build();
+            orderDTOList.add(orderDTO2);
+        }
+
+
+        for(Order order : orderList3){
+            OrderDTO orderDTO3 = OrderDTO.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderSeller(order.getOrderSeller())
+                    .orderNum(order.getOrderNum())
+                    .orderStatus(order.getOrderStatus())
+                    .orderRegdate(order.getOrderRegdate())
+                    .orderZipcode(order.getOrderZipcode())
+                    .orderAddress1(order.getOrderAddress1())
+                    .orderAddress2(order.getOrderAddress2())
+                    .orderTel1(order.getOrderTel1())
+                    .orderTel2(order.getOrderTel2())
+                    .orderRequest(order.getOrderRequest())
+                    .orderRevname(order.getOrderRevname())
+                    .goods(Goods.builder()
+                            .gdIdx(order.getGoods().getGdIdx())
+                            .gdName(order.getGoods().getGdName())
+                            .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
+                            .build())
+                    .build();
+            orderDTOList.add(orderDTO3);
+        }
+
+        for(Order order : orderList4){
+            OrderDTO orderDTO4 = OrderDTO.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderSeller(order.getOrderSeller())
+                    .orderNum(order.getOrderNum())
+                    .orderStatus(order.getOrderStatus())
+                    .orderRegdate(order.getOrderRegdate())
+                    .orderZipcode(order.getOrderZipcode())
+                    .orderAddress1(order.getOrderAddress1())
+                    .orderAddress2(order.getOrderAddress2())
+                    .orderTel1(order.getOrderTel1())
+                    .orderTel2(order.getOrderTel2())
+                    .orderRequest(order.getOrderRequest())
+                    .orderRevname(order.getOrderRevname())
+                    .goods(Goods.builder()
+                            .gdIdx(order.getGoods().getGdIdx())
+                            .gdName(order.getGoods().getGdName())
+                            .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
+                            .build())
+                    .build();
+            orderDTOList.add(orderDTO4);
+        }
+        return orderDTOList;
+    }
+
+    @Transactional
+    public List<OrderDTO> getCanceledList(Long userIdx){
+
+        List<Order> orderList1 = orderRepository.findAllByUserIdxAndOrderStatus(userIdx, OrderStatus.CANCELED);
+        List<OrderDTO> orderDTOList = new ArrayList<>();
+
+        for(Order order : orderList1){
+            OrderDTO orderDTO = OrderDTO.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderSeller(order.getOrderSeller())
+                    .orderNum(order.getOrderNum())
+                    .orderStatus(order.getOrderStatus())
+                    .orderRegdate(order.getOrderRegdate())
+                    .orderZipcode(order.getOrderZipcode())
+                    .orderAddress1(order.getOrderAddress1())
+                    .orderAddress2(order.getOrderAddress2())
+                    .orderTel1(order.getOrderTel1())
+                    .orderTel2(order.getOrderTel2())
+                    .orderRequest(order.getOrderRequest())
+                    .orderRevname(order.getOrderRevname())
+                    .goods(Goods.builder()
+                            .gdIdx(order.getGoods().getGdIdx())
+                            .gdName(order.getGoods().getGdName())
+                            .gdImg(order.getGoods().getGdImg())
+                            .gdBrand(order.getGoods().getGdBrand())
+                            .gdSaleprice(order.getGoods().getGdSaleprice())
+                            .build())
+                    .build();
+            orderDTOList.add(orderDTO);
+        }
+
+        return orderDTOList;
+    }
+
+    @Transactional
+    public void cancel(Long orderIdx){
+        Optional<Order> order = orderRepository.findById(orderIdx);
+
+        order.ifPresent(select -> {
+            select.setOrderStatus(OrderStatus.CANCELED);
+        });
     }
 }

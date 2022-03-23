@@ -99,7 +99,7 @@ public class MypageController {
     }
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
-        model.addAttribute("cancelList",orderService.getCancelList());
+        model.addAttribute("cancelList",orderService.getCanceledList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -112,7 +112,7 @@ public class MypageController {
     }
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
-        model.addAttribute("returnList" , orderService.getReturnList());
+        model.addAttribute("returnList" , orderService.getExchangeReturnList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));

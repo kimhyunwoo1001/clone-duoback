@@ -2103,11 +2103,11 @@
                             </a>
                             <ul class="tbody" th:each="m : ${orderList}">
                                 <li class="sjb_date" th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}">2022-02-21</li>
-                                <li class="order_seq" th:text="${m.getOrderIdx()}"><span></span><a
+                                <li class="order_seq" th:text="${m.getOrderNum()}"><span></span><a
                                         href="order_view?no=2022022115211717618">2022022115211717618</a></li>
                                 <li class="item_info">
                                     <div class="item_info_box">
-                                        <a th:href="@{/www.duoback.co.kr/goods/proinfo/{img111}(img111=${m.goods.getGdIdx()})}"><img th:src="${m.goods.gdImg}" style="height: 50px" width="50px"></a>
+                                        <a th:href="@{/www.duoback.co.kr/goods/proinfo/}+${m.goods.getGdIdx()}"><img th:src="${m.goods.gdImg}" style="height: 50px" width="50px"></a>
                                         <ul class="oc_item_info_detail">
                                             <li class="detail_tag">
                                                 <div class="brand"></div>
@@ -2115,7 +2115,7 @@
                                             <li class="detail_spec">
                                                 <div class="goods_name" >
                                                     <div class="brand"></div>
-                                                    <span th:text=" '[' + ${m.goods.gdCategory} + ']' + ${m.goods.gdName}"></span>
+                                                    <span th:text=" '[' + ${m.goods.gdBrand} + ']' + ${m.goods.gdName}"></span>
                                                 </div>
                                             </li>
                                         </ul>
@@ -2124,7 +2124,6 @@
                                 <li class="seller">
                                     <!-- <div>듀오백</div> -->
                                     <div th:text="${m.orderSeller}">본사</div>
-                                    <a href="#seller_01" class="btn_layer_pop" data-seller="1">판매자 정보</a>
                                 </li>
                                 <li class="order_status1">
                                     <p class="status pointcolor" th:text="${m.orderStatus}">
@@ -2134,14 +2133,14 @@
                                 </li>
                                 <li class="order_status2">
                                     <div class="buttons">
-                                        <button type="button" onclick="showAddressChangePopup('2022022115211717618', 'domestic', 'ㅇㅇㅇ',
-                                    '06221', 'street',
-                                    '서울특별시 강남구 언주로85길 32 (역삼역센트럴푸르지오)', '서울특별시 강남구 역삼동 719-24 역삼역센트럴푸르지오', '1호',
-                                    '010-1111-1111', 'dsaa@asdas.com', '')">
-                                            배송지 변경
-                                        </button>
+<!--                                        <button type="button" onclick="showAddressChangePopup('2022022115211717618', 'domestic', 'ㅇㅇㅇ',-->
+<!--                                    '06221', 'street',-->
+<!--                                    '서울특별시 강남구 언주로85길 32 (역삼역센트럴푸르지오)', '서울특별시 강남구 역삼동 719-24 역삼역센트럴푸르지오', '1호',-->
+<!--                                    '010-1111-1111', 'dsaa@asdas.com', '')">-->
+<!--                                            배송지 변경-->
+<!--                                        </button>-->
 
-                                        <button type="button" onclick="order_refund('2022022115211717618');">주문취소
+                                        <button type="button" th:onclick="cancel([[${m.orderIdx}]])">주문취소
                                         </button>
 
                                     </div>
@@ -2149,56 +2148,56 @@
                                 <li class="mo_btn_area">
 
 
-                                    <button type="button" onclick="showAddressChangePopup('2022022115211717618', 'domestic', 'ㅇㅇㅇ',
-                                    '06221', 'street',
-                                    '서울특별시 강남구 언주로85길 32 (역삼역센트럴푸르지오)', '서울특별시 강남구 역삼동 719-24 역삼역센트럴푸르지오', '1호',
-                                    '010-1111-1111', 'dsaa@asdas.com', '')">
-                                        배송지 변경
-                                    </button>
+<!--                                    <button type="button" onclick="showAddressChangePopup('2022022115211717618', 'domestic', 'ㅇㅇㅇ',-->
+<!--                                    '06221', 'street',-->
+<!--                                    '서울특별시 강남구 언주로85길 32 (역삼역센트럴푸르지오)', '서울특별시 강남구 역삼동 719-24 역삼역센트럴푸르지오', '1호',-->
+<!--                                    '010-1111-1111', 'dsaa@asdas.com', '')">-->
+<!--                                        배송지 변경-->
+<!--                                    </button>-->
 
-                                    <button type="button" onclick="order_refund('2022022115211717618');">주문취소</button>
+                                    <button type="button" th:onclick="cancel([[${m.orderIdx}]])">주문취소</button>
 
                                 </li>
 
-                                <div class="layerPopup layer_seller_info" id="seller_01" style="z-index: 9999;">
-                                    <div class="dim"></div>
-                                    <div class="layerInner">
-                                        <h3>판매자 정보</h3>
-                                        <div class="layerCont">
-                                            <div class="data_tb">
-                                                <table>
-                                                    <caption class="hidden">판매자 정보</caption>
-                                                    <colgroup>
-                                                        <col width="27%">
-                                                        <col width="*">
-                                                    </colgroup>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row">업체명</th>
-                                                        <td><span th:text="${m.orderSeller}"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">연락처</th>
-                                                        <td><span th:text="${m.orderTel1}"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">업체주소</th>
-                                                        <td><span th:text="${m.orderAddress1}"></span></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <ul class="noti">
-                                                <li>입점사제품은 교환/반품 정책이 다를 수 있습니다.</li>
-                                                <li>해당 상품 상세페이지에 표기된 배송/교환/반품 정책을 참조바라며, 교환/반품 신청 완료 후에 반드시 업체 정보에 표기된 연락처를 통해
-                                                    해당 입점업체와 통화 후 교환/반품을
-                                                    진행하시기 바랍니다.
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a href="javascript:;" class="abclose">닫기</a>
-                                    </div>
-                                </div>
+<!--                                <div class="layerPopup layer_seller_info" id="seller_01" style="z-index: 9999;">-->
+<!--                                    <div class="dim"></div>-->
+<!--                                    <div class="layerInner">-->
+<!--                                        <h3>판매자 정보</h3>-->
+<!--                                        <div class="layerCont">-->
+<!--                                            <div class="data_tb">-->
+<!--                                                <table>-->
+<!--                                                    <caption class="hidden">판매자 정보</caption>-->
+<!--                                                    <colgroup>-->
+<!--                                                        <col width="27%">-->
+<!--                                                        <col width="*">-->
+<!--                                                    </colgroup>-->
+<!--                                                    <tbody>-->
+<!--                                                    <tr>-->
+<!--                                                        <th scope="row">업체명</th>-->
+<!--                                                        <td><span th:text="${m.orderSeller}"></span></td>-->
+<!--                                                    </tr>-->
+<!--                                                    <tr>-->
+<!--                                                        <th scope="row">연락처</th>-->
+<!--                                                        <td><span th:text="${m.orderTel1}"></span></td>-->
+<!--                                                    </tr>-->
+<!--                                                    <tr>-->
+<!--                                                        <th scope="row">업체주소</th>-->
+<!--                                                        <td><span th:text="${m.orderAddress1}"></span></td>-->
+<!--                                                    </tr>-->
+<!--                                                    </tbody>-->
+<!--                                                </table>-->
+<!--                                            </div>-->
+<!--                                            <ul class="noti">-->
+<!--                                                <li>입점사제품은 교환/반품 정책이 다를 수 있습니다.</li>-->
+<!--                                                <li>해당 상품 상세페이지에 표기된 배송/교환/반품 정책을 참조바라며, 교환/반품 신청 완료 후에 반드시 업체 정보에 표기된 연락처를 통해-->
+<!--                                                    해당 입점업체와 통화 후 교환/반품을-->
+<!--                                                    진행하시기 바랍니다.-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <a href="javascript:;" class="abclose">닫기</a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
                             </ul>
                         </div>
@@ -2225,271 +2224,268 @@
                             </div>
                         </div>
 
-                        <div id="layer_return"> <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
-    @@ 취소 신청 @@
-    - 파일위치 : [스킨폴더]/mypage/order_cancel_pop.html
-    ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--                        <div id="layer_return"> &lt;!&ndash; ++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 
                             <!-- 취소 팝업 -->
-                            <div class="layerPopup layer_return" style="display: none;">
-                                <div class="dim"></div>
-                                <div class="layerInner">
-                                    <h3>주문취소</h3>
-                                    <div class="return_wrap" id="order_refund_container">
-                                        <form name="refundForm" method="post" action="../mypage_process/order_refund"
-                                              target="actionFrame" onsubmit="return refundSubmit()">
-                                            <input type="hidden" name="order_seq" value="2022022115211717618">
-                                            <input type="hidden" name="cancel_type" value="">
-                                            <input type="hidden" name="use_layout" value="0">
+<!--                            <div class="layerPopup layer_return" style="display: none;">-->
+<!--                                <div class="dim"></div>-->
+<!--                                <div class="layerInner">-->
+<!--                                    <h3>주문취소</h3>-->
+<!--                                    <div class="return_wrap" id="order_refund_container">-->
+<!--                                        <form name="refundForm" method="post" action="../mypage_process/order_refund"-->
+<!--                                              target="actionFrame" onsubmit="return refundSubmit()">-->
+<!--                                            <input type="hidden" name="order_seq" value="2022022115211717618">-->
+<!--                                            <input type="hidden" name="cancel_type" value="">-->
+<!--                                            <input type="hidden" name="use_layout" value="0">-->
 
-                                            <div class="mtitle">1. 주문정보</div>
-                                            <div class="tnum_area">
-                                                <dl class="t_date">
-                                                    <dt>주문일</dt>
-                                                    <dd>2022-02-21 15:02</dd>
-                                                </dl>
-                                                <dl class="t_order">
-                                                    <dt>주문번호</dt>
-                                                    <dd>2022022115211717618</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="mtitle">2. 주문상품정보</div>
-                                            <div class="shipping_group">
-                                                <div class="res_table rt_table">
-                                                    <ul class="thead">
-                                                        <li class="re_chk">선택</li>
-                                                        <li class="re_info">주문상품정보</li>
-                                                        <li class="re_prc">주문금액</li>
-                                                        <li class="re_amount1">취소가능수량</li>
-                                                        <li class="re_amount2">결제취소수량</li>
-                                                        <li class="re_seller">판매자</li>
-                                                        <li class="re_status">주문상태</li>
-                                                    </ul>
-                                                    <ul class="tbody">
-                                                        <li class="re_chk">
-                                                            <label><input type="checkbox" name="chk_seq[]" value="1"
-                                                                          cancel_type="0"></label>
-                                                            <input type="hidden" name="chk_item_seq[]" value="28063">
-                                                            <input type="hidden" name="chk_option_seq[]" value="28999">
-                                                            <input type="hidden" name="chk_suboption_seq[]" value="">
-                                                            <input type="hidden" name="chk_individual_refund[]"
-                                                                   value="0">
-                                                            <input type="hidden" name="chk_individual_refund_inherit[]"
-                                                                   value="0">
-                                                            <input type="hidden" name="chk_individual_export[]"
-                                                                   value="1">
-                                                            <input type="hidden" name="chk_individual_return[]"
-                                                                   value="0">
-                                                        </li>
-                                                        <li class="re_info">
-                                                            <ul class="board_goods_list">
-                                                                <li class="pic">
-                                                                    <img src="../data/goods/1/2021/06/449_tmp_3e969ceeff825c43e6141462703d17f47610thumbCart.jpg"
-                                                                         onerror="this.src='../data/skin/responsive_ver1_default_gl_1/images/common/noimage_list.gif'"
-                                                                         alt="[셀프A/S] 알파 등좌판 연결 핸들나사(+테파핀) 10X60">
-                                                                </li>
-                                                                <li class="info">
-                                                                    <div class="brand">[]</div>
-                                                                    <div class="title">[셀프A/S] 알파 등좌판 연결 핸들나사(+테파핀)
-                                                                        10X60
-                                                                    </div>
-                                                                    <div class="cont3">
-                                                                        <span class="res_option_inline"><span
-                                                                                class="xtle">색상</span>블랙</span></div>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="re_prc"><span class="mtitle">주문금액</span>
-                                                            <input type="hidden" data="sale_price" value="0"
-                                                                   disabled="">
-                                                            <input type="hidden" data="option_price" value="4400"
-                                                                   disabled="">
-                                                            <input type="hidden" data="emoney_sale_unit" value="0.00"
-                                                                   disabled="">
-                                                            <input type="hidden" data="emoney_sale_rest" value="0.00"
-                                                                   disabled="">
-                                                            <div class="mvt">4,400원</div>
-                                                        </li>
-                                                        <li class="re_amount1"><span class="mtitle">취소 가능 수량 </span>
-                                                            <div class="mvt">1</div>
-                                                        </li>
-                                                        <li class="re_amount2">
-                                                            <span class="mtitle qtitle">결제 취소 수량</span>
-                                                            <div class="mvt">
-                                                                <div class="ab_quantity">
-                                                                    <input type="number" name="input_chk_ea[]"
-                                                                           class="res_board_boxad able" value="1"
-                                                                           min="1" max="1" disabled=""
-                                                                           onchange="$(this).parent().find('select[name=\'chk_ea[]\']').val($(this).val()).change();"
-                                                                           readonly="">
-                                                                    <div class="quantity-nav">
-                                                                        <div class="quantity-button quantity-up">^</div>
-                                                                        <div class="quantity-button quantity-down">^
-                                                                        </div>
-                                                                    </div>
-                                                                    <select name="chk_ea[]" style="display:none;">
-                                                                        <option value="1" selected="">1</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="re_seller">
-                                                            <span class="mtitle">판매자</span>
-                                                            <div class="mvt">
-                                                                <div>본사</div>
-                                                                <a href="#seller_01" class="btn_layer_pop"
-                                                                   data-seller="1">판매자 정보</a>
-                                                            </div>
-                                                        </li>
-                                                        <li class="re_status">
-                                                            <span class="mtitle">주문상태</span>
-                                                            <div class="mvt">
-                                                                <span class="reply_title gray_01">결제확인</span>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+<!--                                            <div class="mtitle">1. 주문정보</div>-->
+<!--                                            <div class="tnum_area">-->
+<!--                                                <dl class="t_date">-->
+<!--                                                    <dt>주문일</dt>-->
+<!--                                                    <dd>2022-02-21 15:02</dd>-->
+<!--                                                </dl>-->
+<!--                                                <dl class="t_order">-->
+<!--                                                    <dt>주문번호</dt>-->
+<!--                                                    <dd>2022022115211717618</dd>-->
+<!--                                                </dl>-->
+<!--                                            </div>-->
+<!--                                            <div class="mtitle">2. 주문상품정보</div>-->
+<!--                                            <div class="shipping_group">-->
+<!--                                                <div class="res_table rt_table">-->
+<!--                                                    <ul class="thead">-->
+<!--                                                        <li class="re_chk">선택</li>-->
+<!--                                                        <li class="re_info">주문상품정보</li>-->
+<!--                                                        <li class="re_prc">주문금액</li>-->
+<!--                                                        <li class="re_amount1">취소가능수량</li>-->
+<!--                                                        <li class="re_amount2">결제취소수량</li>-->
+<!--                                                        <li class="re_seller">판매자</li>-->
+<!--                                                        <li class="re_status">주문상태</li>-->
+<!--                                                    </ul>-->
+<!--                                                    <ul class="tbody">-->
+<!--                                                        <li class="re_chk">-->
+<!--                                                            <label><input type="checkbox" name="chk_seq[]" value="1"-->
+<!--                                                                          cancel_type="0"></label>-->
+<!--                                                            <input type="hidden" name="chk_item_seq[]" value="28063">-->
+<!--                                                            <input type="hidden" name="chk_option_seq[]" value="28999">-->
+<!--                                                            <input type="hidden" name="chk_suboption_seq[]" value="">-->
+<!--                                                            <input type="hidden" name="chk_individual_refund[]"-->
+<!--                                                                   value="0">-->
+<!--                                                            <input type="hidden" name="chk_individual_refund_inherit[]"-->
+<!--                                                                   value="0">-->
+<!--                                                            <input type="hidden" name="chk_individual_export[]"-->
+<!--                                                                   value="1">-->
+<!--                                                            <input type="hidden" name="chk_individual_return[]"-->
+<!--                                                                   value="0">-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_info">-->
+<!--                                                            <ul class="board_goods_list">-->
+<!--                                                                <li class="pic">-->
+<!--                                                                    <img src="../data/goods/1/2021/06/449_tmp_3e969ceeff825c43e6141462703d17f47610thumbCart.jpg"-->
+<!--                                                                         onerror="this.src='../data/skin/responsive_ver1_default_gl_1/images/common/noimage_list.gif'"-->
+<!--                                                                         alt="[셀프A/S] 알파 등좌판 연결 핸들나사(+테파핀) 10X60">-->
+<!--                                                                </li>-->
+<!--                                                                <li class="info">-->
+<!--                                                                    <div class="brand">[]</div>-->
+<!--                                                                    <div class="title">[셀프A/S] 알파 등좌판 연결 핸들나사(+테파핀)-->
+<!--                                                                        10X60-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="cont3">-->
+<!--                                                                        <span class="res_option_inline"><span-->
+<!--                                                                                class="xtle">색상</span>블랙</span></div>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_prc"><span class="mtitle">주문금액</span>-->
+<!--                                                            <input type="hidden" data="sale_price" value="0"-->
+<!--                                                                   disabled="">-->
+<!--                                                            <input type="hidden" data="option_price" value="4400"-->
+<!--                                                                   disabled="">-->
+<!--                                                            <input type="hidden" data="emoney_sale_unit" value="0.00"-->
+<!--                                                                   disabled="">-->
+<!--                                                            <input type="hidden" data="emoney_sale_rest" value="0.00"-->
+<!--                                                                   disabled="">-->
+<!--                                                            <div class="mvt">4,400원</div>-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_amount1"><span class="mtitle">취소 가능 수량 </span>-->
+<!--                                                            <div class="mvt">1</div>-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_amount2">-->
+<!--                                                            <span class="mtitle qtitle">결제 취소 수량</span>-->
+<!--                                                            <div class="mvt">-->
+<!--                                                                <div class="ab_quantity">-->
+<!--                                                                    <input type="number" name="input_chk_ea[]"-->
+<!--                                                                           class="res_board_boxad able" value="1"-->
+<!--                                                                           min="1" max="1" disabled=""-->
+<!--                                                                           onchange="$(this).parent().find('select[name=\'chk_ea[]\']').val($(this).val()).change();"-->
+<!--                                                                           readonly="">-->
+<!--                                                                    <div class="quantity-nav">-->
+<!--                                                                        <div class="quantity-button quantity-up">^</div>-->
+<!--                                                                        <div class="quantity-button quantity-down">^-->
+<!--                                                                        </div>-->
+<!--                                                                    </div>-->
+<!--                                                                    <select name="chk_ea[]" style="display:none;">-->
+<!--                                                                        <option value="1" selected="">1</option>-->
+<!--                                                                    </select>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_seller">-->
+<!--                                                            <span class="mtitle">판매자</span>-->
+<!--                                                            <div class="mvt">-->
+<!--                                                                <div>본사</div>-->
+<!--                                                                <a href="#seller_01" class="btn_layer_pop"-->
+<!--                                                                   data-seller="1">판매자 정보</a>-->
+<!--                                                            </div>-->
+<!--                                                        </li>-->
+<!--                                                        <li class="re_status">-->
+<!--                                                            <span class="mtitle">주문상태</span>-->
+<!--                                                            <div class="mvt">-->
+<!--                                                                <span class="reply_title gray_01">결제확인</span>-->
+<!--                                                            </div>-->
+<!--                                                        </li>-->
+<!--                                                    </ul>-->
 
-                                                </div>
-                                            </div>
-
-
-                                            <h4><span class="mtitle">3.</span>취소사유</h4>
-                                            <div class="ab_reason type3">
-                                                <input type="text" placeholder="취소사유를 입력해주세요." class="w100"
-                                                       name="refund_reason">
-                                            </div>
-
-                                            <h4><span class="mtitle">4.</span>환불정보</h4>
-                                            <div class="ab_reason type2">
-                                                <dl class="tb1">
-                                                    <dt>상품취소금액</dt>
-                                                    <dd><span data="refund_cash">0</span>원</dd>
-                                                </dl>
-                                                <dl class="tb1 type2">
-                                                    <dt>환불수단</dt>
-                                                    <dd>
-                                                        <div>
-                                                            환불계좌 <span data="refund_cash">0</span>원
-                                                        </div>
-                                                        <div>D포인트 <span data="refund_emoney">0</span>원</div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="tb1">
-                                                    <dt>배송비</dt>
-                                                    <dd><span data="delivery_price">3,600</span>원</dd>
-                                                </dl>
-                                                <div class="tb1_wrap">
-                                                    <div>
-                                                        <dl class="tb1">
-                                                            <dt>할인 및 차감금액</dt>
-                                                            <dd><span data="total_sale_price">0</span>원</dd>
-                                                        </dl>
-                                                    </div>
-                                                    <div>
-                                                        <dl class="tb1 type3">
-                                                            <dt>환불금액</dt>
-                                                            <dd><strong class="rt_prc"><span
-                                                                    data="total_refund_price">0</span>원</strong></dd>
-                                                        </dl>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="refund_method_layer" class="return_account" style="display: none">
-                                                <label class="reason_agree"><input type="checkbox" name=""
-                                                                                   id="saveAgree"> 환불계좌 수집이용에 동의하고, 환불
-                                                    계좌 정보를 저장합니다.</label>
-                                                <ul class="reason_noti">
-                                                    <li>수집목적 : 취소/반품 시 환불처리</li>
-                                                    <li>수집항목 : 은행, 계좌번호, 명의자 이름</li>
-                                                    <li>보유 및 이용기간
-                                                        <ul>
-                                                            <li>환불완료 후 5년, 단 환불계좌관리에 등록할 경우 회원탈퇴 혹은 삭제 시 까지</li>
-                                                            <li>등록 후 환불 기록이 없을 경우 등록 1년 후 삭제</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <dl class="tb1">
-                                                    <dt>환불계좌</dt>
-                                                    <dd>
-                                                        <span class="ptitle">은행명</span>
-                                                        <select class="account_bank" name="bank_name">
-                                                            <option value="">은행 선택</option>
-                                                            <option value="산림조합">산림조합</option>
-                                                            <option value="국민은행">국민은행</option>
-                                                            <option value="SC제일은행">SC제일은행</option>
-                                                            <option value="KEB하나은행">KEB하나은행</option>
-                                                            <option value="경남은행">경남은행</option>
-                                                            <option value="광주은행">광주은행</option>
-                                                            <option value="대구은행">대구은행</option>
-                                                            <option value="부산은행">부산은행</option>
-                                                            <option value="전북은행">전북은행</option>
-                                                            <option value="제주은행">제주은행</option>
-                                                            <option value="수협">수협</option>
-                                                            <option value="신협">신협</option>
-                                                            <option value="기업은행">기업은행</option>
-                                                            <option value="케이뱅크">케이뱅크</option>
-                                                            <option value="카카오뱅크">카카오뱅크</option>
-                                                            <option value="산업은행">산업은행</option>
-                                                            <option value="농협">농협</option>
-                                                            <option value="새마을금고">새마을금고</option>
-                                                            <option value="신한은행">신한은행</option>
-                                                            <option value="씨티은행">씨티은행</option>
-                                                            <option value="우리은행">우리은행</option>
-                                                            <option value="우체국">우체국</option>
-                                                            <option value="우리은행">우리은행</option>
-                                                        </select>
-                                                        <span class="ptitle">예금주</span>
-                                                        <input type="text" class="account_name" placeholder="예금주"
-                                                               name="bank_depositor">
-                                                        <span class="ptitle">게좌번호</span>
-                                                        <input type="text" class="account_num" placeholder="계좌번호"
-                                                               name="bank_account">
-                                                        <div class="noti">가상계좌(무통장입금), 계좌이체를 통해 주문하신 경우, 입력하신 환불계좌로
-                                                            환불처리가 되오니 올바른 기입부탁드립니다.
-                                                        </div>
-                                                        <div class="noti">본인명의 계좌만 등록/변경 가능합니다.</div>
-                                                        <div class="noti">D포인트로 결제하신 경우 D포인트로 환원됩니다. 환불계좌는 취소를 위한 필수조건으로
-                                                            기입 부탁드립니다. (D포인트는 현금화 할 수 없습니다.).
-                                                        </div>
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                            <h4>주문 취소 동의</h4>
-                                            <div class="return_account">
-                                                <label class="reason_agree"><input type="checkbox" name=""
-                                                                                   id="cancelAgree">
-                                                    <strong>(필수)</strong> 주문취소 상품의 상품명, 상품가격, 배송정보를 확인하였으며 주문취소에 동의합니다.
-                                                    <span>(전자상거래법 제8조 제2항)</span></label>
-                                            </div>
-                                            <div class="btn_area">
-                                                <input type="button" class="btn_cancel" value="취소">
-                                                <input type="submit" class="btn_apply" value="주문취소">
-                                            </div>
-
-                                            <ul class="reason_noti type2">
-                                                <li>주문취소는 입금전, 입금확인, 결제완료 상태에서만 주문취소가 가능합니다.</li>
-                                                <li>상품준비중/배송중 상태에서는 주문취소가 불가능합니다.(고객센터를 통해 문의하여 주십시오)</li>
-                                                <li>배송완료 상태부터는 교환/반품 신청이 가능합니다.</li>
-                                                <li>신용카드 결제 취소시 카드 승인 후 당일 취소는 당일 승인 취소 처리되며, 당일 이후 취소시 카드사 영업일 기준 약2~3일
-                                                    소요됩니다.
-                                                </li>
-                                                <li>계좌이체, 무통장입금일 경우 취소 신청 후 3-7일 이내 결제금액 환불처리가 됩니다.</li>
-                                                <li>주문 부분 취소시 결제수단 상관없이 취소신청 후 3-7일 이내에 결제금액 환불처리가 됩니다.</li>
-                                                <li>할인쿠폰을 이용한 주문을 취소하실 때 일부 쿠폰의 경우 재발급되지 않습니다.</li>
-                                                <li>일부 신용카드의 경우 금액 부분취소가 불가할 수 있습니다. 이 경우 주문 전체취소 후 재구매 또는
-                                                    고객센터(1588-2501)로 문의하여 주시기 바랍니다.
-                                                </li>
-                                            </ul>
-                                        </form>
-                                    </div>
-                                    <a href="javascript:;" class="abclose">닫기</a>
-                                </div>
+<!--                                                </div>-->
+<!--                                            </div>-->
 
 
-                            </div>
-                            <!-- // 취소 팝업 --></div>
+<!--                                            <h4><span class="mtitle">3.</span>취소사유</h4>-->
+<!--                                            <div class="ab_reason type3">-->
+<!--                                                <input type="text" placeholder="취소사유를 입력해주세요." class="w100"-->
+<!--                                                       name="refund_reason">-->
+<!--                                            </div>-->
+
+<!--                                            <h4><span class="mtitle">4.</span>환불정보</h4>-->
+<!--                                            <div class="ab_reason type2">-->
+<!--                                                <dl class="tb1">-->
+<!--                                                    <dt>상품취소금액</dt>-->
+<!--                                                    <dd><span data="refund_cash">0</span>원</dd>-->
+<!--                                                </dl>-->
+<!--                                                <dl class="tb1 type2">-->
+<!--                                                    <dt>환불수단</dt>-->
+<!--                                                    <dd>-->
+<!--                                                        <div>-->
+<!--                                                            환불계좌 <span data="refund_cash">0</span>원-->
+<!--                                                        </div>-->
+<!--                                                        <div>D포인트 <span data="refund_emoney">0</span>원</div>-->
+<!--                                                    </dd>-->
+<!--                                                </dl>-->
+<!--                                                <dl class="tb1">-->
+<!--                                                    <dt>배송비</dt>-->
+<!--                                                    <dd><span data="delivery_price">3,600</span>원</dd>-->
+<!--                                                </dl>-->
+<!--                                                <div class="tb1_wrap">-->
+<!--                                                    <div>-->
+<!--                                                        <dl class="tb1">-->
+<!--                                                            <dt>할인 및 차감금액</dt>-->
+<!--                                                            <dd><span data="total_sale_price">0</span>원</dd>-->
+<!--                                                        </dl>-->
+<!--                                                    </div>-->
+<!--                                                    <div>-->
+<!--                                                        <dl class="tb1 type3">-->
+<!--                                                            <dt>환불금액</dt>-->
+<!--                                                            <dd><strong class="rt_prc"><span-->
+<!--                                                                    data="total_refund_price">0</span>원</strong></dd>-->
+<!--                                                        </dl>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+<!--                                            <div id="refund_method_layer" class="return_account" style="display: none">-->
+<!--                                                <label class="reason_agree"><input type="checkbox" name=""-->
+<!--                                                                                   id="saveAgree"> 환불계좌 수집이용에 동의하고, 환불-->
+<!--                                                    계좌 정보를 저장합니다.</label>-->
+<!--                                                <ul class="reason_noti">-->
+<!--                                                    <li>수집목적 : 취소/반품 시 환불처리</li>-->
+<!--                                                    <li>수집항목 : 은행, 계좌번호, 명의자 이름</li>-->
+<!--                                                    <li>보유 및 이용기간-->
+<!--                                                        <ul>-->
+<!--                                                            <li>환불완료 후 5년, 단 환불계좌관리에 등록할 경우 회원탈퇴 혹은 삭제 시 까지</li>-->
+<!--                                                            <li>등록 후 환불 기록이 없을 경우 등록 1년 후 삭제</li>-->
+<!--                                                        </ul>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                                <dl class="tb1">-->
+<!--                                                    <dt>환불계좌</dt>-->
+<!--                                                    <dd>-->
+<!--                                                        <span class="ptitle">은행명</span>-->
+<!--                                                        <select class="account_bank" name="bank_name">-->
+<!--                                                            <option value="">은행 선택</option>-->
+<!--                                                            <option value="산림조합">산림조합</option>-->
+<!--                                                            <option value="국민은행">국민은행</option>-->
+<!--                                                            <option value="SC제일은행">SC제일은행</option>-->
+<!--                                                            <option value="KEB하나은행">KEB하나은행</option>-->
+<!--                                                            <option value="경남은행">경남은행</option>-->
+<!--                                                            <option value="광주은행">광주은행</option>-->
+<!--                                                            <option value="대구은행">대구은행</option>-->
+<!--                                                            <option value="부산은행">부산은행</option>-->
+<!--                                                            <option value="전북은행">전북은행</option>-->
+<!--                                                            <option value="제주은행">제주은행</option>-->
+<!--                                                            <option value="수협">수협</option>-->
+<!--                                                            <option value="신협">신협</option>-->
+<!--                                                            <option value="기업은행">기업은행</option>-->
+<!--                                                            <option value="케이뱅크">케이뱅크</option>-->
+<!--                                                            <option value="카카오뱅크">카카오뱅크</option>-->
+<!--                                                            <option value="산업은행">산업은행</option>-->
+<!--                                                            <option value="농협">농협</option>-->
+<!--                                                            <option value="새마을금고">새마을금고</option>-->
+<!--                                                            <option value="신한은행">신한은행</option>-->
+<!--                                                            <option value="씨티은행">씨티은행</option>-->
+<!--                                                            <option value="우리은행">우리은행</option>-->
+<!--                                                            <option value="우체국">우체국</option>-->
+<!--                                                            <option value="우리은행">우리은행</option>-->
+<!--                                                        </select>-->
+<!--                                                        <span class="ptitle">예금주</span>-->
+<!--                                                        <input type="text" class="account_name" placeholder="예금주"-->
+<!--                                                               name="bank_depositor">-->
+<!--                                                        <span class="ptitle">게좌번호</span>-->
+<!--                                                        <input type="text" class="account_num" placeholder="계좌번호"-->
+<!--                                                               name="bank_account">-->
+<!--                                                        <div class="noti">가상계좌(무통장입금), 계좌이체를 통해 주문하신 경우, 입력하신 환불계좌로-->
+<!--                                                            환불처리가 되오니 올바른 기입부탁드립니다.-->
+<!--                                                        </div>-->
+<!--                                                        <div class="noti">본인명의 계좌만 등록/변경 가능합니다.</div>-->
+<!--                                                        <div class="noti">D포인트로 결제하신 경우 D포인트로 환원됩니다. 환불계좌는 취소를 위한 필수조건으로-->
+<!--                                                            기입 부탁드립니다. (D포인트는 현금화 할 수 없습니다.).-->
+<!--                                                        </div>-->
+<!--                                                    </dd>-->
+<!--                                                </dl>-->
+<!--                                            </div>-->
+<!--                                            <h4>주문 취소 동의</h4>-->
+<!--                                            <div class="return_account">-->
+<!--                                                <label class="reason_agree"><input type="checkbox" name=""-->
+<!--                                                                                   id="cancelAgree">-->
+<!--                                                    <strong>(필수)</strong> 주문취소 상품의 상품명, 상품가격, 배송정보를 확인하였으며 주문취소에 동의합니다.-->
+<!--                                                    <span>(전자상거래법 제8조 제2항)</span></label>-->
+<!--                                            </div>-->
+<!--                                            <div class="btn_area">-->
+<!--                                                <input type="button" class="btn_cancel" value="취소">-->
+<!--                                                <input type="submit" class="btn_apply" value="주문취소">-->
+<!--                                            </div>-->
+
+<!--                                            <ul class="reason_noti type2">-->
+<!--                                                <li>주문취소는 입금전, 입금확인, 결제완료 상태에서만 주문취소가 가능합니다.</li>-->
+<!--                                                <li>상품준비중/배송중 상태에서는 주문취소가 불가능합니다.(고객센터를 통해 문의하여 주십시오)</li>-->
+<!--                                                <li>배송완료 상태부터는 교환/반품 신청이 가능합니다.</li>-->
+<!--                                                <li>신용카드 결제 취소시 카드 승인 후 당일 취소는 당일 승인 취소 처리되며, 당일 이후 취소시 카드사 영업일 기준 약2~3일-->
+<!--                                                    소요됩니다.-->
+<!--                                                </li>-->
+<!--                                                <li>계좌이체, 무통장입금일 경우 취소 신청 후 3-7일 이내 결제금액 환불처리가 됩니다.</li>-->
+<!--                                                <li>주문 부분 취소시 결제수단 상관없이 취소신청 후 3-7일 이내에 결제금액 환불처리가 됩니다.</li>-->
+<!--                                                <li>할인쿠폰을 이용한 주문을 취소하실 때 일부 쿠폰의 경우 재발급되지 않습니다.</li>-->
+<!--                                                <li>일부 신용카드의 경우 금액 부분취소가 불가할 수 있습니다. 이 경우 주문 전체취소 후 재구매 또는-->
+<!--                                                    고객센터(1588-2501)로 문의하여 주시기 바랍니다.-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+<!--                                    <a href="javascript:;" class="abclose">닫기</a>-->
+<!--                                </div>-->
+
+
+<!--                            </div>-->
+<!--                            &lt;!&ndash; // 취소 팝업 &ndash;&gt;</div>-->
 
                         <!-- layerpop 판매자정보 -->
 
@@ -2651,21 +2647,21 @@
                             }
 
                             // 210628. ry4nkim. 반품/교환 취소
-                            function reverseReturn(return_code, status, return_type) {
-                                var mstatus = status == 'request' ? '신청' : '승인';
-                                var return_type = return_type == "exchange" ? "교환" : "반품";
-                                openDialogConfirm('해당 ' + return_type + ' ' + mstatus + ' 건을 취소하겠습니까?', 400, 160, function () {
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "/mypage_process/reverse_return",
-                                        data: {return_code: return_code},
-                                        success: function (result) {
-                                            openDialogAlert(result, 400, 150, function () {
-                                                document.location.href = '/mypage/return_catalog';
-                                            });
-                                        }
-                                    });
-                                });
+                            // function reverseReturn(return_code, status, return_type) {
+                            //     var mstatus = status == 'request' ? '신청' : '승인';
+                            //     var return_type = return_type == "exchange" ? "교환" : "반품";
+                            //     openDialogConfirm('해당 ' + return_type + ' ' + mstatus + ' 건을 취소하겠습니까?', 400, 160, function () {
+                            //         $.ajax({
+                            //             type: "POST",
+                            //             url: "/mypage_process/reverse_return",
+                            //             data: {return_code: return_code},
+                            //             success: function (result) {
+                            //                 openDialogAlert(result, 400, 150, function () {
+                            //                     document.location.href = '/mypage/return_catalog';
+                            //                 });
+                            //             }
+                            //         });
+                            //     });
                             }
                         </script>
 
@@ -3391,31 +3387,31 @@
             <a href="javascript:void(0)" class="btn_pop_close" onclick="hideCenterLayer()"></a>
         </form>
     </div>
-    <script>
-        $("a.btn_layer_pop").on("click", function () {
-            $("#seller_01").css("display", "block");
-        })
-        $(".abclose").on("click", function () {
-            $("#seller_01").css("display", "none");
-            $("#inAddress").css("display", "none");
-            $(".layerPopup.layer_return").css("display", "none");
-        })
-        $(".buttons :first-child").on("click", function () {
-            $("#inAddress").css("display", "block");
-        })
-        $(".btn_pop_close").on("click", function () {
-            $("#inAddress").css("display", "none");
-        })
-        $(".btn_resp.size_c").on("click", function () {
-            $("#inAddress").css("display", "none");
-        })
-        $(".buttons :last-child").on("click", function () {
-            $(".layerPopup.layer_return").css("display", "block");
-        })
-        $(".btn_cancel").on("click", function () {
-            $(".layerPopup.layer_return").css("display", "none");
-        })
-    </script>
+<!--    <script>-->
+<!--        $("a.btn_layer_pop").on("click", function () {-->
+<!--            $("#seller_01").css("display", "block");-->
+<!--        })-->
+<!--        $(".abclose").on("click", function () {-->
+<!--            $("#seller_01").css("display", "none");-->
+<!--            $("#inAddress").css("display", "none");-->
+<!--            $(".layerPopup.layer_return").css("display", "none");-->
+<!--        })-->
+<!--        $(".buttons :first-child").on("click", function () {-->
+<!--            $("#inAddress").css("display", "block");-->
+<!--        })-->
+<!--        $(".btn_pop_close").on("click", function () {-->
+<!--            $("#inAddress").css("display", "none");-->
+<!--        })-->
+<!--        $(".btn_resp.size_c").on("click", function () {-->
+<!--            $("#inAddress").css("display", "none");-->
+<!--        })-->
+<!--        $(".buttons :last-child").on("click", function () {-->
+<!--            $(".layerPopup.layer_return").css("display", "block");-->
+<!--        })-->
+<!--        $(".btn_cancel").on("click", function () {-->
+<!--            $(".layerPopup.layer_return").css("display", "none");-->
+<!--        })-->
+<!--    </script>-->
     <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript">
         // STEP 2. na_account_id(네이버공통키) 세팅
@@ -3442,7 +3438,40 @@
         wcs_do(_nasa);
     </script>
 
+    <script th:inline="javascript">
 
+        //주문 등록
+        function cancel(m){
+
+            //step2. 게시판 등록
+            let orderidx = m
+
+            console.log(orderidx);
+
+            let data2 = { //JavaScript Object
+                orderIdx : orderidx,
+            }
+
+
+            $.ajax({
+                type : 'POST'
+                ,url : "/order2/updateorder"
+                ,dataType : 'json'
+                ,data : JSON.stringify(data2)
+                ,contentType: 'application/json'
+                ,success : function(result) {
+                    alert("주문 취소 완료.");
+                    location.href="/www.duoback.co.kr/mypage_order";
+                },
+                error: function(request, status, error) {
+                    alert("주문 취소 성공.");
+                    location.href="/www.duoback.co.kr/mypage_order";
+                }
+            })
+        }
+
+
+    </script>
 </body>
 
 <!-- Google Tag Manager (noscript) -->
