@@ -14,7 +14,7 @@ ul.bbslist_ul_style li .bus_comment {
 	font-size:12px;
 	color:#cc0000;
 	text-align:center;	
-	background:url('///images/design/comment_box.gif') no-repeat;
+	background:url('../../../images/design/comment_box.gif') no-repeat;
 }
 
 ul.bbslist_ul_style li.board_contents {padding:0px;}
@@ -51,7 +51,7 @@ div.bbsview_division {padding:10px 10px; border-bottom:1px solid #ddd;}
 	font-size:12px;
 	color:#cc0000;
 	text-align:center;	
-	background:url('///images/design/comment_box.gif') no-repeat;
+	background:url('../../../images/design/comment_box.gif') no-repeat;
 }
 
 
@@ -70,7 +70,7 @@ div.bbsview_division {padding:10px 10px; border-bottom:1px solid #ddd;}
 #prenextlist span.pnl_name	{}
 
 table.bbslist_table_style {border-top:2px solid #545454; border-bottom:1px solid #000; font-size:11px; color:#444;}
-table.bbslist_table_style thead th {height:26px; background:#fafafa; background:url('///images/design/tbl_th_bg.gif') repeat-x; border-left:1px solid #e0e0e0; border-bottom:1px solid #bbbbbb; font-weight:normal;}
+table.bbslist_table_style thead th {height:26px; background:#fafafa; background:url('../../../images/design/tbl_th_bg.gif') repeat-x; border-left:1px solid #e0e0e0; border-bottom:1px solid #bbbbbb; font-weight:normal;}
 table.bbslist_table_style thead th:first-child {border-left:0px;border-top:1px solid #e0e0e0;} 
 table.bbslist_table_style tbody td.cell {height:24px; padding-top:4px; padding-bottom:4px; border-top:1px solid #e0e0e0;}
 table.bbslist_table_style tbody td.cell:first-child {border-left:0px;} 
@@ -78,7 +78,7 @@ table.bbslist_table_style tbody tr td.cell:first-child {border-left:0px;}
 table.bbslist_table_style tbody tr:first-child td.cell {border-top:0px;}
 
 table.bbsview_table_style {border-top:2px solid #545454;font-size:11px; color:#444;}
-table.bbsview_table_style thead th {height:17px; background:#fafafa; background:url('///images/design/tbl_th_bg.gif') repeat-x; border-left:0px solid #e0e0e0; border-bottom:1px solid #bbbbbb; font-weight:normal;}
+table.bbsview_table_style thead th {height:17px; background:#fafafa; background:url('../../../images/design/tbl_th_bg.gif') repeat-x; border-left:0px solid #e0e0e0; border-bottom:1px solid #bbbbbb; font-weight:normal;}
 table.bbsview_table_style thead th:first-child {border-left:0px;} 
 table.bbsview_table_style tbody td.cell {height:24px; padding-top:4px; padding-bottom:4px; border-bottom:1px solid #e0e0e0; border-left:1px solid #e0e0e0;}
 table.bbsview_table_style tbody td.cell_bar {width:30px; text-align:center; color:#ccc;}
@@ -145,8 +145,8 @@ table.comment_box_table {}
 /* view */
 #bbsview {margin:auto;padding:0 0 30px 0;}
 #bbsview .viewbox {}
-#bbsview .viewbox .icon {position:absolute;width:50px;height:50px;margin:10px 0 0 0;background:url('/////_var/simbol/0.html') center center no-repeat;}
-#bbsview .viewbox .subject {height:26px; line-height:26px; padding-left:10px; background:#fafafa; background:url('///images/design/tbl_th_bg.gif') repeat-x; border-top:2px solid #545454; border-bottom:1px solid #000; font-weight:normal;}
+#bbsview .viewbox .icon {position:absolute;width:50px;height:50px;margin:10px 0 0 0;background:url('../../../../../_var/simbol/0.html') center center no-repeat;}
+#bbsview .viewbox .subject {height:26px; line-height:26px; padding-left:10px; background:#fafafa; background:url('../../../images/design/tbl_th_bg.gif') repeat-x; border-top:2px solid #545454; border-bottom:1px solid #000; font-weight:normal;}
 #bbsview .viewbox .subject h1 {margin:0px; padding:0px; font-size:12px;font-weight:bold;font-family:dotum;}
 #bbsview .viewbox .info {padding:10px 0 10px 3px;font-size:10px;font-family:'돋움',Dotum,AppleGothic,sans-serif;color:#c0c0c0;}
 #bbsview .viewbox .info .xleft {float:left;}
@@ -193,7 +193,7 @@ table.info-table-style textarea.input-box-default-text {color:#a5a5a5 !important
 
 /* 간단 리스트 테이블 스타일 */
 #bbswrite table.simplelist-table-style {border-collapse:collapse;}
-#bbswrite table.simplelist-table-style th {background:url('/images/common/th_bg_popup.html') repeat-x; height:24px; line-height:24px; border:1px solid #c8c8c8; color:#666; font-weight:normal;}
+#bbswrite table.simplelist-table-style th {background:url('../images/common/th_bg_popup.html') repeat-x; height:24px; line-height:24px; border:1px solid #c8c8c8; color:#666; font-weight:normal;}
 #bbswrite table.simplelist-table-style td {padding:5px 0; border-bottom:1px solid #d7d7d7; color:#666}
 
 /* @write */

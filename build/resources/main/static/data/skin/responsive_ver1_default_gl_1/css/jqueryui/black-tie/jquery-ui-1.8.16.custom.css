@@ -461,7 +461,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-dialog.ui-corner-all, .ui-dialog.ui-corner-bottom, .ui-dialog.ui-corner-right, .ui-dialog.ui-corner-br { -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; -khtml-border-bottom-right-radius: 0px; border-bottom-right-radius: 0px; }
 .ui-dialog-titlebar {height:39px; overflow:hidden;}
 .ui-dialog-titlebar.ui-widget-header {background-image: none; background-color:#616775 !important; color:#fff; padding-left:10px;}
-.ui-dialog a.ui-dialog-titlebar-close {position:absolute; right:0px; top:0px; padding:0px; width:39px; height:39px; background:url('///images/design/btn_close.png') no-repeat center center; background-size:39px 39px;}
+.ui-dialog a.ui-dialog-titlebar-close {position:absolute; right:0px; top:0px; padding:0px; width:39px; height:39px; background:url('../../../images/design/btn_close.png') no-repeat center center; background-size:39px 39px;}
 .ui-dialog a.ui-dialog-titlebar-close.ui-state-hover {border:0px;}
 .ui-dialog a.ui-dialog-titlebar-close span {display:none}
 .ui-dialog .ui-dialog-content {padding:0px; background-image: none; background-color:#fff;}

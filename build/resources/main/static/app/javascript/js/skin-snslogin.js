@@ -77,7 +77,7 @@ function joinloginajax(jtype, sns ) {
 	else					loginck_data = {'mform':'join'};
 
 	$.ajax({
-		'url' : '/sns_process/'+sns+'loginck',
+		'url' : '../sns_process/'+sns+'loginck',
 		'data' : loginck_data,
 		'type' : 'post',
 		'dataType': 'json',
@@ -148,7 +148,7 @@ function handelStatusChangeLogin(response) {
 		 fbName = response.name;
 		 if (fbName != "") {
 				$.ajax({
-				'url' : '/sns_process/facebookloginck',
+				'url' : '../sns_process/facebookloginck',
 				'data' : data,
 				'type' : 'post',
 				'dataType': 'json',
@@ -193,7 +193,7 @@ function handelStatusChangeLogin(response) {
 //feed 권한추가 -> 로그인시키지
 function handelStatusChangepublish_stream(response) {
 	if (response && response.status == 'connected') {
-		document.location.href='/mypage/myinfo';
+		document.location.href='../mypage/myinfo';
    }else{
 		loadingStop("body",true);
 		openDialogAlert(getAlert('mb003'),'400','160',function(){});
@@ -223,7 +223,7 @@ function snsloginck(sns) {
 
 	left_		= left_/2 - (width_/2);
 	top_		= top_/2 - (height_/2);
-	var newWin  = window.open("/sns_process/snsredirecturl?snsloginstart=1","_blank","height="+height_+",width="+width_+",status=yes,scrollbars=no,statusbar=no,resizable=no,left="+left_+",top="+top_+"");
+	var newWin  = window.open("../sns_process/snsredirecturl?snsloginstart=1","_blank","height="+height_+",width="+width_+",status=yes,scrollbars=no,statusbar=no,resizable=no,left="+left_+",top="+top_+"");
 
 	if (newWin == null || typeof(newWin)=='undefined'){
 		//팝업이 차단되었습니다.<br/>차단된 팝업을 허용해 주세요.
@@ -240,7 +240,7 @@ function snsloginck(sns) {
 	}
 
 	$.ajax({
-		'url' : '/sns_process/' + sns + 'loginck',
+		'url' : '../sns_process/' + sns + 'loginck',
 		'data' : data,
 		'type' : 'post',
 		'dataType': 'json',
@@ -263,7 +263,7 @@ function joinloginsuccess() {
 		return_url = '/member/adult_auth'
 	}
 	if(jointype == 'myinfo') {
-		return_url = '/mypage/myinfo';
+		return_url = '../mypage/myinfo';
 	}
 	document.location.href=return_url;
 }
@@ -290,9 +290,9 @@ function joinloginfail(res) {
 //naver 쇼핑몰로그인
 function naverjoinlogin() {
 	var data = '';
-	var url = '/sns_process/naverlogin';
+	var url = '../sns_process/naverlogin';
 	if(jointype) {
-		url = '/sns_process/naverjoin';
+		url = '../sns_process/naverjoin';
 		if(jointype == 'myinfo') {
 			data = {'facebooktype':'mbconnect_direct'};
 		}
@@ -321,7 +321,7 @@ function twitterjoinlogin(json_params) {
 	var send_params = JSON.stringify(json_params);
 
 	$.ajax({
-		'url' : '/sns_process/twitterlogincomplete',
+		'url' : '../sns_process/twitterlogincomplete',
 		'type' : 'post',
 		'data' : {'send_params':send_params},
 		'dataType': 'json',
@@ -391,9 +391,9 @@ function loginWithKakao() {
 function kakaoAPI(kakaoKey){ Kakao.init(kakaoKey); }
 
 function kakaojoinlogin(kakaoObj) {
-	var url = '/sns_process/kakaologin';
+	var url = '../sns_process/kakaologin';
 	if(jointype) {
-		url = '/sns_process/kakaojoin';
+		url = '../sns_process/kakaojoin';
 		if(jointype == 'myinfo') {
 			kakaoObj['facebooktype'] = 'mbconnect_direct';
 		}
@@ -424,7 +424,7 @@ function kakaojoinlogin(kakaoObj) {
 //회원정보 초기화 시키기..
 function logoutajax(sns){
 	$.ajax({
-		'url' : '/sns_process/'+sns+'logout',
+		'url' : '../sns_process/'+sns+'logout',
 		'dataType': 'json',
 		'success': function(res) {
 			if(res.result == true){
@@ -502,7 +502,7 @@ function handelStatusChange(response) {
 			 if (fbName != "") {
 					loadingStart("body",{segments: 12, width: 15.5, space: 6, length: 13, color: '#000000', speed: 1.5});
 					$.ajax({
-						'url' : '/sns_process/facebookloginck',
+						'url' : '../sns_process/facebookloginck',
 						'type' : 'post',
 						'dataType': 'json',
 						'success': function(res) {
@@ -552,7 +552,7 @@ function handelStatusChangebiz(response) {
 			 fbName = response.name;
 			 if (fbName != "") {
 					$.ajax({
-						'url' : '/sns_process/facebookloginck',
+						'url' : '../sns_process/facebookloginck',
 						'data' : {'mtype':'biz'},
 						'type' : 'post',
 						'dataType': 'json',
@@ -592,7 +592,7 @@ function handelStatusChangebiz(response) {
 function snsdisconnect(snstype,snsrute){
 	if( is_user == true) {
 		$.ajax({
-		'url' : '/sns_process/snsdisconnect',
+		'url' : '../sns_process/snsdisconnect',
 		'data' : {'snstype':snstype,'snsrute':snsrute},
 		'type' : 'post',
 		'dataType': 'json',
@@ -627,7 +627,7 @@ function loginAppleCallback(){
 	var process_url = jointype != '' ? 'applejoin' : 'applelogin';
 
 	$.ajax({
-	'url' : '/sns_process/' + process_url,
+	'url' : '../sns_process/' + process_url,
 	'type' : 'post',
 	'dataType': 'json',
 	'data': 'join_type='+jointype,
@@ -637,7 +637,7 @@ function loginAppleCallback(){
 			if	(res.msg)
 				openDialogAlert(res.msg,'400','180',function(){document.location.href=res.retururl});
 			else
-				document.location.href='../duoback.html';
+				document.location.href='..../duoback.html';
 		}else{
 			loadingStop("body",true);
 			openDialogAlert(res.msg,'400','140',function(){if(res.retururl){document.location.href=res.retururl}});
@@ -677,7 +677,7 @@ $(document).ready(function() {
 	});
 
 	$.ajax({
-		'url' : '/sns_process/kakaokeys',
+		'url' : '../sns_process/kakaokeys',
 		'dataType': 'json',
 		'success': function(res) {
 			if(res.result == true){

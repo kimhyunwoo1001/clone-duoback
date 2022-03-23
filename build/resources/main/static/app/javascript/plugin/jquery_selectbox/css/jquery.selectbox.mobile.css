@@ -36,7 +36,7 @@
 	text-decoration: none;
 }
 .sbToggle{
-	/*background: url(/img/ico_arw_select_off.png) center 14px no-repeat;*/
+	/*background: url(../img/ico_arw_select_off.png) center 14px no-repeat;*/
 	background-size:9px 6px;
 	display: block;
 	height: 40px;
@@ -48,17 +48,17 @@
 }
 .sbToggle:before {content:"+";display:inline-block;}
 .sbHolder:hover .sbToggle{
-	/*background: url(/img/ico_arw_select_on.png) center 14px no-repeat;*/
+	/*background: url(../img/ico_arw_select_on.png) center 14px no-repeat;*/
 	background-size:9px 6px;
 }
 .sbHolder:hover .sbToggle:before {color:#222;}
 /*
 .sbToggleOpen{
-	background: url(/img/ico_arw_select_on.png) center 14px no-repeat;
+	background: url(../img/ico_arw_select_on.png) center 14px no-repeat;
 	background-size:9px 6px;
 }
 .sbToggleOpen:hover{
-	background: url(/img/ico_arw_select_on.png) center 14px no-repeat;
+	background: url(../img/ico_arw_select_on.png) center 14px no-repeat;
 	background-size:9px 6px;
 }*/
 .sbToggleOpen:before {color:#222;}

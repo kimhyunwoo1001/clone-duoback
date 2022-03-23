@@ -257,31 +257,31 @@ function resetParams()
 	var uObj	= searchObject();
 	var sUrl	= '';
 	if(uObj.searchMode == 'catalog'){
-		sUrl	= '/goods/catalog?category='+uObj.category;
+		sUrl	= '../goods/catalog?category='+uObj.category;
 	}
 	if(uObj.searchMode == 'brand'){
-		sUrl	= '/goods/brand?brand[0]='+uObj.brand[0];
+		sUrl	= '../goods/brand?brand[0]='+uObj.brand[0];
 	}
 	if(uObj.searchMode == 'location'){
-		sUrl	= '/goods/location?location='+uObj.location;
+		sUrl	= '../goods/location?location='+uObj.location;
 	}
 	if(uObj.searchMode == 'search'){
-		sUrl	= '/goods/search?osearchtext='+uObj.osearchtext;
+		sUrl	= '../goods/search?osearchtext='+uObj.osearchtext;
 	}
 	if(uObj.searchMode == 'best'){
-		sUrl	= '/goods/best';
+		sUrl	= '../goods/best';
 	}
 	if(uObj.searchMode == 'new_arrivals'){
-		sUrl	= '/goods/new_arrivals';
+		sUrl	= '../goods/new_arrivals';
 	}
 	if(uObj.searchMode == 'event_view'){
-		sUrl	= './promotion/event.html_view?event='+uObj.event;
+		sUrl	= '.../promotion/event.html_view?event='+uObj.event;
 	}
 	if(uObj.searchMode == 'gift_view'){
-		sUrl	= '/promotion/gift_view?gfit='+uObj.gfit;
+		sUrl	= '../promotion/gift_view?gfit='+uObj.gfit;
 	}
 	if(uObj.searchMode == 'mshop'){
-		sUrl	= '/mshop?provider='+uObj.provider;
+		sUrl	= '../mshop?provider='+uObj.provider;
 	}
 	location.href = sUrl;
 }

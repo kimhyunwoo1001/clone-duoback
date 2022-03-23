@@ -510,7 +510,7 @@ if(!Array.indexOf){
 				   }
 				   var idCheckFormUrl = registFrmHost+arrCheckActions[sslSubUrlIndex];
 
-				   var idCheckCallbackUrl = domain+"/member/"+"/member_process/id_chk";
+				   var idCheckCallbackUrl = domain+"/member/"+"../member_process/id_chk";
 				   var encodeIdCheckCallbackUrl = Base64.encode(idCheckCallbackUrl);
 				   encodeIdCheckCallbackUrl = encodeIdCheckCallbackUrl.replace(/[\+]/g,"-");
 				   encodeIdCheckCallbackUrl = encodeIdCheckCallbackUrl.replace(/[\/]/g,"_");

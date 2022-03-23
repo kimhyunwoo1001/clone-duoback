@@ -114,7 +114,7 @@ $(document).ready(function() {
 				return false;
 			}else{
 				$.ajax({
-					'url' : '/board_process',
+					'url' : '../board_process',
 					'data' : {'mode':'board_modifydelete_pwckeck','modetype':modetype, 'seq':seq, 'pw':pw, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -246,7 +246,7 @@ $(document).ready(function() {
 
 		if( $("#mod_contents_"+cmtseq).css('display') == 'none' ){
 			$.ajax({
-				'url' : '/board_comment_process',
+				'url' : '../board_comment_process',
 				'data' : {'mode':'board_comment_item', 'cmtseq':cmtseq, 'seq':seq, 'board_id':board_id},
 				'type' : 'post',
 				'dataType': 'json',
@@ -275,7 +275,7 @@ $(document).ready(function() {
 		if(confirm(getAlert('et244'))) {
 			if(gl_isuser) {
 				$.ajax({
-					'url' : '/board_comment_process',
+					'url' : '../board_comment_process',
 					'data' : {'mode':'board_comment_delete', 'delcmtseq':cmtseq, 'seq':seq, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -298,7 +298,7 @@ $(document).ready(function() {
 				});
 			}else{
 				$.ajax({
-					'url' : '/board_comment_process',
+					'url' : '../board_comment_process',
 					'data' : {'mode':'board_comment_delete_pwcheck', 'delcmtseq':cmtseq, 'seq':seq,  'board_id':board_id, 'returnurl':returnurl, 'view':'comment_delete'},
 					'type' : 'post',
 					'dataType': 'json',
@@ -437,7 +437,7 @@ $(document).ready(function() {
 
 		if(cmtreplyseq) {//답글수정시
 			$.ajax({
-				'url' : '/board_comment_process',
+				'url' : '../board_comment_process',
 				'data' : {'mode':'board_comment_reply_modify_pwcheck','viewtype':pagemode, 'cmtseq':cmtreplyseq, 'seq':seq, 'board_id':board_id, 'name':user_name, 'pw':password, 'content':cmtcontent, 'captcha_code':captcha_code, 'returnurl':returnurl, 'hidden':cmthidden},
 				'type' : 'post',
 				'dataType': 'json',
@@ -467,7 +467,7 @@ $(document).ready(function() {
 			});
 		}else{//답글등록시
 			$.ajax({
-				'url' : '/board_comment_process',
+				'url' : '../board_comment_process',
 				'data' : {'mode':'board_comment_reply','viewtype':pagemode, 'cmtseq':cmtseq, 'seq':seq, 'board_id':board_id, 'name':user_name, 'pw':password, 'content':cmtcontent, 'captcha_code':captcha_code, 'returnurl':returnurl, 'hidden':cmthidden},
 				'type' : 'post',
 				'dataType': 'json',
@@ -579,7 +579,7 @@ $(document).ready(function() {
 		if(confirm(getAlert('et244'))) {
 			if(gl_isuser) {
 				$.ajax({
-					'url' : '/board_comment_process',
+					'url' : '../board_comment_process',
 					'data' : {'mode':'board_comment_delete', 'delcmtseq':cmtseq, 'seq':seq, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -602,7 +602,7 @@ $(document).ready(function() {
 				});
 			}else{
 				$.ajax({
-					'url' : '/board_comment_process',
+					'url' : '../board_comment_process',
 					'data' : {'mode':'board_comment_delete_pwcheck', 'delcmtseq':cmtseq, 'seq':seq,  'board_id':board_id, 'returnurl':returnurl, 'view':'comment_delete'},
 					'type' : 'post',
 					'dataType': 'json',
@@ -731,7 +731,7 @@ $(document).ready(function() {
 			}else{
 				var returnurl = $('#cmtreturnurl').val();
 				$.ajax({
-					'url' : '/board_comment_process',
+					'url' : '../board_comment_process',
 					'data' : {'mode':'board_comment_delete_pwcheck','viewtype':pagemode, 'delcmtseq':cmtseq, 'seq':seq,  'pw':pw, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -802,7 +802,7 @@ function getcmtMbLogin(){
 function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmtreplyidx, returnurl) {
 	if( modetype == 'reply_modify' ) {//답글수정
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_hidden_reply_cmt_pwcheck', 'seq':seq, 'cmtseq':cmtseq, 'cmtreplyseq':cmtreplyseq, 'pw':pw, 'board_id':board_id,  'view':'comment_modify'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -822,7 +822,7 @@ function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmt
 		});
 	}else if( modetype == 'reply_view' ) {//보기
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_hidden_reply_cmt_pwcheck', 'seq':seq, 'cmtseq':cmtseq, 'cmtreplyseq':cmtreplyseq,  'pw':pw, 'board_id':board_id,  'view':'comment_view'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -843,7 +843,7 @@ function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmt
 		});
 	}else if( modetype == 'reply_delete' ){//답글삭제시
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_comment_reply_delete_pwcheck', 'delcmtseq':cmtseq, 'cmtreplyseq':cmtreplyseq, 'seq':seq,  'pw':pw, 'board_id':board_id, 'returnurl':returnurl, 'view':'comment_delete'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -867,7 +867,7 @@ function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmt
 		});
 	}else if( modetype == 'delete' ){//댓글삭제시
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_comment_delete_pwcheck', 'delcmtseq':cmtseq, 'seq':seq,  'pw':pw, 'board_id':board_id, 'returnurl':returnurl, 'view':'comment_delete'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -891,7 +891,7 @@ function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmt
 		});
 	}else if( modetype == 'modify' ){//댓글수정시
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_hidden_cmt_pwcheck', 'seq':seq,  'cmtseq':cmtseq, 'pw':pw, 'board_id':board_id, 'view':'comment_modify'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -912,7 +912,7 @@ function cmtboardcheckform(modetype, seq, cmtseq, cmtreplyseq, pw, board_id, cmt
 
 	}else if( modetype == 'view' ){//보기
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_hidden_cmt_pwcheck', 'seq':seq,  'cmtseq':cmtseq, 'pw':pw, 'board_id':board_id, 'view':'comment_view'},
 			'type' : 'post',
 			'dataType': 'json',
@@ -943,7 +943,7 @@ function getModifyCmt(cmtseq ){
 	var returnurl = $('#cmtreturnurl').val();
 	if( $("#mod_contents_"+cmtseq).css('display') == 'none' ){
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_comment_item', 'cmtseq':cmtseq, 'seq':seq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',
@@ -1010,7 +1010,7 @@ function getModifyReplyCmt(cmtseq, cmtreplyseq, idx ){
 	$('#CmtBoardPwCkNew').dialog('close');
 	if( $(".cmtreplyform"+cmtreplyseq).css('display') == 'none' ){
 		$.ajax({
-			'url' : '/board_comment_process',
+			'url' : '../board_comment_process',
 			'data' : {'mode':'board_comment_reply_item', 'cmtseq':cmtseq, 'cmtreplyseq':cmtreplyseq, 'seq':seq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',

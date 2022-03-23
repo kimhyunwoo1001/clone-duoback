@@ -89,7 +89,7 @@ min-height:100px;}
     height:16px;
     display:block;
     position:absolute;
-    background: url(/images/icon/ico_sortype.png) 0 0 no-repeat;
+    background: url(../images/icon/ico_sortype.png) 0 0 no-repeat;
     background-size: 32px 16px;
     top:8px;left:8px;
     opacity:0.5;
@@ -150,7 +150,7 @@ min-height:100px;}
 	display: inline-block;
     padding: 0 15px;
     border: 1px solid #ddd;
-    background: url(/images/icon/sel_icon_01.png) 90% center no-repeat;
+    background: url(../images/icon/sel_icon_01.png) 90% center no-repeat;
     margin-right: 4px;
 }
 .filtered_item_sorting .item_viewnum select{

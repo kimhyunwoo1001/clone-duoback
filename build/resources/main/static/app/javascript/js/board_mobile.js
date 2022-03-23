@@ -95,7 +95,7 @@ function more_comment(id, seq){
 function boarddeletelessmobile(board_id, delseq ){
 	if( board_id == 'goods_review' ) {
 		$.ajax({
-			'url' : '/board_goods_process',
+			'url' : '../board_goods_process',
 			'data' : {'mode':'goods_review_less_view', 'delseq':delseq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',
@@ -104,7 +104,7 @@ function boarddeletelessmobile(board_id, delseq ){
 					var msg = getAlert("et117");// "삭제된 게시글은 복구할 수 없습니다.\n정말로 삭제하시겠습니까?  ";//res.name+' 삭제',
 					openDialogConfirm(msg,'450','140',function(){
 						$.ajax({
-						'url' : '/board_process',
+						'url' : '../board_process',
 						'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 						'type' : 'post',
 						'success' : function(res){
@@ -115,7 +115,7 @@ function boarddeletelessmobile(board_id, delseq ){
 				}else if(res.result == "lees") {
 					openDialogConfirm(res.msg,'480','320',function() {
 						$.ajax({
-							'url' : '/board_process',
+							'url' : '../board_process',
 							'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 							'type' : 'post',
 							'success' : function(res){
@@ -133,7 +133,7 @@ function boarddeletelessmobile(board_id, delseq ){
 		});
 	}else{
 		$.ajax({
-			'url' : '/board_goods_process',
+			'url' : '../board_goods_process',
 			'data' : {'mode':'board_less_view', 'delseq':delseq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',
@@ -142,7 +142,7 @@ function boarddeletelessmobile(board_id, delseq ){
 					var msg = getAlert("et117");// "삭제된 게시글은 복구할 수 없습니다.\n정말로 삭제하시겠습니까?  "
 					openDialogConfirm(msg,'450','140',function(){
 						$.ajax({
-						'url' : '/board_process',
+						'url' : '../board_process',
 						'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 						'type' : 'post',
 						'success' : function(res){
@@ -153,7 +153,7 @@ function boarddeletelessmobile(board_id, delseq ){
 				}else if(res.result == "lees") {
 					openDialogConfirm(res.msg,'480','250',function() {
 						$.ajax({
-							'url' : '/board_process',
+							'url' : '../board_process',
 							'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 							'type' : 'post',
 							'success' : function(res){
