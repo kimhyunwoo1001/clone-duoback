@@ -2101,6 +2101,7 @@
                                 <span><span class="mo_title">주문일</span>2022-02-21</span>
                                 <span><span class="mo_title">주문번호</span>2022022115211717618</span>
                             </a>
+                            <form method="post">
                             <ul class="tbody" th:each="m : ${orderList}">
                                 <li class="sjb_date" th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}">2022-02-21</li>
                                 <li class="order_seq" th:text="${m.getOrderNum()}"><span></span><a
@@ -2126,8 +2127,16 @@
                                     <div th:text="${m.orderSeller}">본사</div>
                                 </li>
                                 <li class="order_status1">
-                                    <p class="status pointcolor" th:text="${m.orderStatus}">
-                                        결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('PAY')}" th:text="결제완료" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('READY')}" th:text="배송준비중" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('SEND')}" th:text="배송중" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('FINISH')}" th:text="배송완료" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('CANCELED')}" th:text="취소완료" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('RETURNING')}" th:text="환불중" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('RETURNED')}" th:text="환불완료" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('EXCHANGING')}" th:text="교환중" >결제확인 </p>
+                                    <p class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('EXCHANGED')}" th:text="교환완료" >결제확인 </p>
+
 
 
                                 </li>
@@ -2201,7 +2210,7 @@
 
                             </ul>
                         </div>
-
+                        </form>
                         <!-- pc버전 -->
                         <div class="paging_navigation">
                             <a href="?page=1&amp;popup=&amp;iframe=&amp;sc_date=4&amp;sc_sdate=2022-01-23&amp;sc_edate=2022-02-21"
@@ -3441,13 +3450,13 @@
     <script th:inline="javascript">
 
         //주문 등록
-        function cancel(orderIdx){
+        function cancel(m){
+
             //step2. 게시판 등록
-            let orderidx = orderIdx
+            let orderidx = m
 
             console.log(orderidx);
-            // alert("주문 취소 완료.");
-            // location.href="/www.duoback.co.kr/mypage_order";
+
             let data2 = { //JavaScript Object
                 orderIdx : orderidx,
             }

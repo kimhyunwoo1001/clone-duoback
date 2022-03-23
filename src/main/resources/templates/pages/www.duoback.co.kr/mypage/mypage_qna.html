@@ -1764,8 +1764,14 @@ $(function(){
 						<li class="sort"> <span class="cat"  th:text="${m.QCategory}">반품문의</span></li>
 						<li class="date"th:text="${#temporals.format(m.QRegdate , 'yyyy-MM-dd')}">2022-02-02</li>
 						<li class="info" th:text="${m.QContent}" style="text-align: center"> </li>
-						<li class="status" th:text="${m.QStatus}">
+
+							<li class="status" th:if="${m.getQStatus.toString().equals('FIN')}" th:text="답변완료" >
+
 							<div class="comp">답변완료</div>
+					</li>
+						<li class="status" th:if="${m.getQStatus.toString().equals('ING')}" th:text="답변대기중" >
+
+							<div class="comp">답변대기중</div>
 						</li>
 					</ul>
 				</dt>

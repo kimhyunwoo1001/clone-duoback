@@ -117,7 +117,7 @@
 
 
 
-                    <a class="js-new-review-write-button widget_header_basic__link" onclick="rvModalBtn();" data-url="/duoback.co.kr/reviews/new?product_id=1942&amp;review_source=24&amp;widget_env=100&amp;widget_id=2" data-login-required="true">
+                    <a class="js-new-review-write-button widget_header_basic__link"  th:href="@{/www.duoback.co.kr/mypage_review_write/}+${goods.getData().getGdIdx}">
                         상품 리뷰 작성하기
                     </a>
 

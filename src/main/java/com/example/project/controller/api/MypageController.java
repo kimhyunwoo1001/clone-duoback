@@ -64,6 +64,21 @@ public class MypageController {
         return "pages/www.duoback.co.kr/mypage/mypage_qna_write";
     }
 
+    @GetMapping("/mypage_review_write/{gdIdx}")
+    public String mypage_review_write(Model model , @PathVariable Long gdIdx) {
+
+        if(session.getAttribute("userid")==null){
+            return "pages/www.duoback.co.kr/member/login";
+        }
+        User user = (User)session.getAttribute("user");
+        model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
+        model.addAttribute("goods", goodsApiLogicService.read(gdIdx));
+        model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
+        model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
+        model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
+        return "pages/www.duoback.co.kr/mypage/mypage_review_write";
+    }
+
     @GetMapping("/mypage_zzim")
     public String mypage_zzim(Model model) {
         if(session.getAttribute("userid")==null){

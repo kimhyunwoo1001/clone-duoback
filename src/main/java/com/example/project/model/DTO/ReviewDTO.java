@@ -1,5 +1,7 @@
 package com.example.project.model.DTO;
 
+import com.example.project.model.entity.Goods;
+import com.example.project.model.entity.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +22,5 @@ public class ReviewDTO {
     private String rvContent;
     private Integer rvStar;
     private String rvImg;
+    private Goods goods;
 }

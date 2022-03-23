@@ -164,8 +164,11 @@ create table tb_review (
     rv_content varchar2(1000),
     rv_star number(5) ,
     rv_img varchar2(1000) ,
+    gd_idx number(7),
     --�ܷ�Ű
-     constraint fk_review foreign key(user_idx) references tb_user(user_idx)
+     constraint fk_review1 foreign key(user_idx) references tb_user(user_idx),
+      constraint fk_review2 foreign key(gd_idx) references tb_goods(gd_idx)
+      
 );
 
 create sequence seq_review

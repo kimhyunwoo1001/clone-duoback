@@ -59,4 +59,7 @@ public class Goods {
 
     @OneToMany(mappedBy = "goods", fetch = FetchType.LAZY)
     private List<Zzim> zzimList;
+
+    @OneToMany(mappedBy = "goods", fetch = FetchType.LAZY)
+    private List<Review> reviewList;
 }
