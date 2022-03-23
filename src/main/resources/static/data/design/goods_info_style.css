@@ -45,7 +45,7 @@
 .displaY_goods_short_desc { color:#999; }
 .displaY_review_score_a { font-size:14px; color:#f7c000; text-shadow:0 0 1px #ff0000; }
 .displaY_review_score_a .ev_active2 { display:inline-block; position:relative; vertical-align:top; width:80px; height:16px; font-size:0; background-color:#eee; }
-.displaY_review_score_a .ev_active2:after { display:block; content:''; position:absolute; left:0; top:0; width:100%; height:100%; background:url('/icon/goodsdisplay/img_ev_star.png') no-repeat; background-size:cover; }
+.displaY_review_score_a .ev_active2:after { display:block; content:''; position:absolute; left:0; top:0; width:100%; height:100%; background:url('../icon/goodsdisplay/img_ev_star.png') no-repeat; background-size:cover; }
 .displaY_review_score_a .ev_active2>b { display:block; height:100%; background:#999; }
 .displaY_review_score_b .nuM { font-size:17px; line-height:1.2; color:#333; }
 .displaY_review2_score_a { font-size:14px; color:#f7c000; text-shadow:0 0 1px #ff0000; }
@@ -61,14 +61,14 @@
 .displaY_best_review .titlE + .desC { padding-top:2px; }
 .displaY_color_option .areA { font-size:0; line-height:0; display:inline-block; box-sizing:border-box; width:16px; height:8px; border-radius:4px; }
 .displaY_color_option .areA.border { border:1px #ddd solid; }
-.displaY_page_view .areA { display:inline-block; height:16px; padding:0 0 0 24px; line-height:16px; background:url('/icon/goodsdisplay/preview/icon_pageview.png') 0 50% no-repeat; }
-.displaY_zzim .areA { display:inline-block; height:16px; padding:0 0 0 18px; line-height:16px; cursor:pointer; background:url('/icon/goodsdisplay/preview/icon_zzim_off.png') 1px 50% no-repeat; }
-.displaY_zzim.on .areA { background-image:url('/icon/goodsdisplay/preview/icon_zzim_on.png'); color:#ef5061; }
+.displaY_page_view .areA { display:inline-block; height:16px; padding:0 0 0 24px; line-height:16px; background:url('../icon/goodsdisplay/preview/icon_pageview.png') 0 50% no-repeat; }
+.displaY_zzim .areA { display:inline-block; height:16px; padding:0 0 0 18px; line-height:16px; cursor:pointer; background:url('../icon/goodsdisplay/preview/icon_zzim_off.png') 1px 50% no-repeat; }
+.displaY_zzim.on .areA { background-image:url('../icon/goodsdisplay/preview/icon_zzim_on.png'); color:#ef5061; }
 .displaY_page_view + .displaY_zzim,
 .displaY_zzim + .displaY_page_view { margin-left:4px; }
 .displaY_event_time { font-size:13px; color:#697ba4; }
 .displaY_event_time .title { display:inline-block; width:18px; height:18px; vertical-align:middle; background:#333
-url('/icon/goodsdisplay/preview/icon_clock.png') 50% 50% no-repeat; background-size:cover; background-position:50% 50%; background-repeat:no-repeat; }
+url('../icon/goodsdisplay/preview/icon_clock.png') 50% 50% no-repeat; background-size:cover; background-position:50% 50%; background-repeat:no-repeat; }
 .displaY_event_time .time_container { display:inline-block; vertical-align:middle; height:22px; padding:0 7px; line-height:22px; font-weight:300; background:#333; color:#fff; border-radius:2px; }
 .displaY_event_time .time_container .num2 { font-size:14px; font-weight:400; }
 

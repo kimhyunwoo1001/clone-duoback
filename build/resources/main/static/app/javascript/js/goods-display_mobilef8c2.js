@@ -190,7 +190,7 @@ $(function(){
 
 /* 어드민 - 이미지꾸미기 - 아이콘 선택후 콜백 */
 function set_display_image_icon(){	
-	$.getJSON('/design/display_image_icon', function(data) {
+	$.getJSON('../design/display_image_icon', function(data) {
 		var tag = '';
 		$("div#displayImageIconPopup ul li").remove();	
 
@@ -214,7 +214,7 @@ function set_display_quick_icon(quick_shopping_value){
 
 /* 어드민 - 이미지꾸미기 - 아이콘 선택후 콜백 */
 function set_display_image_send(){	
-	$.getJSON('/design/display_image_send', function(data) {
+	$.getJSON('../design/display_image_send', function(data) {
 		var tag = '';
 		$("div#displayImageIconPopup ul li").remove();	
 
@@ -229,7 +229,7 @@ function set_display_image_send(){
 
 /* 어드민 - 이미지꾸미기 - 아이콘 선택후 콜백 */
 function set_display_image_zzim(){	
-	$.getJSON('/design/display_image_zzim', function(data) {
+	$.getJSON('../design/display_image_zzim', function(data) {
 		var tag = '';
 		$("div#displayImageIconPopup ul li").remove();	
 
@@ -244,7 +244,7 @@ function set_display_image_zzim(){
 
 /* 어드민 - 이미지꾸미기 - 아이콘 선택후 콜백 */
 function set_display_image_zzim_on(){	
-	$.getJSON('/design/display_image_zzim_on', function(data) {
+	$.getJSON('../design/display_image_zzim_on', function(data) {
 		var tag = '';
 		$("div#displayImageIconPopup ul li").remove();	
 
@@ -259,7 +259,7 @@ function set_display_image_zzim_on(){
 
 /* 어드민 - 이미지더보기 - 아이콘 선택후 콜백 */
 function set_display_image_slide(){	
-	$.getJSON('/design/display_image_slide', function(data) {
+	$.getJSON('../design/display_image_slide', function(data) {
 		var tag = '';
 		$("div#displayImageIconPopup ul li").remove();	
 

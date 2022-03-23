@@ -784,7 +784,7 @@ function openDialogZipcode(zipcodeFlag,idx,ziptype,page){
 	if(idx) idxtag = "&multiIdx"+idx;
 	var iframe = '<div class="sub_division_title">주소찾기<div class="sub_division_arw sub_division_arw_x" onclick="javascript:closeDialogZipcode(\''+zipcodeFlag+'\')"></div></div>';
 	iframe += '<div style="height:100%;">';
-	iframe += '<iframe id="'+zipcodeFlag+'contents_frame" name="'+zipcodeFlag+'contents_frame" src="/popup/zipcode?zipcodeFlag='+zipcodeFlag+'&zipcode_type='+ziptype+'&page='+page+'&popup=1'+idxtag+'" width="100%" height="93%" frameborder="0" allowTransparency="true"></iframe>';
+	iframe += '<iframe id="'+zipcodeFlag+'contents_frame" name="'+zipcodeFlag+'contents_frame" src="../popup/zipcode?zipcodeFlag='+zipcodeFlag+'&zipcode_type='+ziptype+'&page='+page+'&popup=1'+idxtag+'" width="100%" height="93%" frameborder="0" allowTransparency="true"></iframe>';
 	iframe += '</div>';
 	$("#"+zipcodeFlag+"Id").html(iframe);
 	$(window).scrollTop(0);
@@ -809,7 +809,7 @@ function openDialogZipcode_resp( zipcodeFlag, idx, ziptype, page ){
 
 	var iframe = '<h4 class="title">주소찾기</h4>';
 	iframe += '<div class="y_scroll_auto">';
-	iframe += '<iframe id="'+zipcodeFlag+'contents_frame" name="'+zipcodeFlag+'contents_frame" class="zipcode_iframe" src="/popup/zipcode?zipcodeFlag='+zipcodeFlag+'&zipcode_type='+ziptype+'&page='+page+'&popup=1'+idxtag+'"  frameborder="0" allowTransparency="true"></iframe>';
+	iframe += '<iframe id="'+zipcodeFlag+'contents_frame" name="'+zipcodeFlag+'contents_frame" class="zipcode_iframe" src="../popup/zipcode?zipcodeFlag='+zipcodeFlag+'&zipcode_type='+ziptype+'&page='+page+'&popup=1'+idxtag+'"  frameborder="0" allowTransparency="true"></iframe>';
 	iframe += '</div>';
 	iframe += '<a href="javascript:void(0)" class="btn_pop_close" onclick="removeCenterLayer(\'#'+ zipcodeFlag +'zipId\')"></a>';
 
@@ -865,12 +865,12 @@ function setRightMenu() {
 	});
 
 	$("#right_cart_total").on("click", function(){
-		location.href="/order/cart";
+		location.href="../order/cart";
 		return false;
 	});
 
 	$("#right_wish_total").on("click", function(){
-		location.href="/mypage/wish";
+		location.href="../mypage/wish";
 		return false;
 	});
 

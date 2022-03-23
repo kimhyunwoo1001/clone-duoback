@@ -50,13 +50,13 @@ $(document).ready(function(){
 
 
 	$("button[name='couponDownloadButton']").die().live("click",function(){
-		var url = '/coupon/download?goods='+$(this).attr('goods')+'&coupon='+$(this).attr('coupon');
+		var url = '../coupon/download?goods='+$(this).attr('goods')+'&coupon='+$(this).attr('coupon');
 		actionFrame.location.href = url;
 	});
 
 	if( $(".couponDownloadlay").html() ){
 
-		$.getJSON('/coupon/goods_coupon_max?no='+gl_goods_seq, function(data) {
+		$.getJSON('../coupon/goods_coupon_max?no='+gl_goods_seq, function(data) {
 			if(data){
 				$(".couponDownloadlay").show();
 
@@ -161,9 +161,9 @@ $(document).ready(function(){
 		
 		if( check_option() ){
 			var f = $("form[name='goodsForm']");
-			f.attr("action","/order/add?mode=direct");
+			f.attr("action","../order/add?mode=direct");
 			f.submit();
-			f.attr("action","/order/add");
+			f.attr("action","../order/add");
 		}
 	});
 
@@ -179,9 +179,9 @@ $(document).ready(function(){
 
 		if( check_option_without_msg() ){
 			var f = $("form[name='goodsForm']");
-			f.attr("action","/order/add?mode=direct");
+			f.attr("action","../order/add?mode=direct");
 			f.submit();
-			f.attr("action","/order/add");
+			f.attr("action","../order/add");
 		} else {
 			$('#buy_btn').click();
 		}

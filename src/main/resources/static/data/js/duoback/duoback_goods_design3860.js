@@ -286,13 +286,13 @@ function addCarts() {
                 alert("알 수 없는 오류가 발생하였습니다.");
             } else if (cnt > $('[name=ritem_r]:checked').length) {
                 openDialogConfirm('일부 상품이 장바구니에 담겼습니다.지금 확인하시겠습니까?', '400', '160', function () {
-                    location.href = '/order/cart';
+                    location.href = '../order/cart';
                 }, function () {
                     hideCenterLayer('#layer_re_item');
                 });
             } else if (cnt == $('[name=ritem_r]:checked').length) {
                 openDialogConfirm('상품이 장바구니에 담겼습니다.지금 확인하시겠습니까?', '400', '160', function () {
-                    location.href = '/order/cart';
+                    location.href = '../order/cart';
                 }, function () {
                     hideCenterLayer('#layer_re_item');
                 });

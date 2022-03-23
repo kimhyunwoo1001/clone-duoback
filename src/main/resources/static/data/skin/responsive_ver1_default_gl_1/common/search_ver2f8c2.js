@@ -417,7 +417,7 @@ function load_color_filter(idx, sColor){
 function display_navi(oNavi, sNaviLink)
 {
 	var idx = 0;
-	var sNavi = "<a class=\"home\" href=\"/duoback.html\">홈</a>";
+	var sNavi = "<a class=\"home\" href=\"../duoback.html\">홈</a>";
 	for(var i in oNavi){
 		sNavi	+= "<span class=\"navi_linemap\">";
 		sNavi	+= "<select name=\"navi_"+idx+"\" class=\"navi-select\" onchange=\"link_navi(this, '"+sNaviLink+"');\">";
@@ -461,7 +461,7 @@ function displayShowAutoComplete(result){
 	for(var i in result.recomms){
 		if( result.recomms[i].goods_seq ){
 			sTag += '<li>';
-			sTag += '<a class="item_link" href="/goods/view?no='+result.recomms[i].goods_seq+'"><img class="item_img" src="'+result.recomms[i].goods_img+'" onerror="this.src=\'/data/icon/goods/error/noimage_list.gif\';" alt="list2 썸네일" /></a>';
+			sTag += '<a class="item_link" href="../goods/view?no='+result.recomms[i].goods_seq+'"><img class="item_img" src="'+result.recomms[i].goods_img+'" onerror="this.src=\'/data/icon/goods/error/noimage_list.gif\';" alt="list2 썸네일" /></a>';
 			sTag += '<ul class="goods_info">';
 			sTag += '<li class="goods_name">'+result.recomms[i].goods_name+'</li>';
 			sTag += '<li class="goods_price">'+result.recomms[i].replace_price+'</li>';

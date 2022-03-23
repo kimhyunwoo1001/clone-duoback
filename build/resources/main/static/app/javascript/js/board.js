@@ -81,7 +81,7 @@ $(document).ready(function() {
 				var realfilename = deletefile.find("span.realfilelist").attr("realfilename");
 				//var board_id =deletefile.find("span.realfilelist").attr("board_id");
 				$.ajax({
-					'url' : '/board_process',
+					'url' : '../board_process',
 					'data' : {'mode':'board_file_delete', 'realfiledir':realfiledir,  'realfilename':realfilename, 'board_id':board_id},
 					'type' : 'post',
 					'target' : 'actionFrame'
@@ -183,7 +183,7 @@ $(document).ready(function() {
 				return false;
 			}else{
 				$.ajax({
-					'url' : '/board_process',
+					'url' : '../board_process',
 					'data' : {'mode':'board_modifydelete_pwckeck','modetype':modetype, 'seq':seq, 'pw':pw, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -283,7 +283,7 @@ $(document).ready(function() {
 				return false;
 			}else{
 				$.ajax({
-					'url' : '/board_process',
+					'url' : '../board_process',
 					'data' : {'mode':'board_hidden_pwcheck', 'seq':seq, 'pw':pw, 'board_id':board_id},
 					'type' : 'post',
 					'dataType': 'json',
@@ -557,7 +557,7 @@ function boardscoresave(scoreid, boardseq, board_id) {
 
 		//openDialogConfirmtitle('게시글 평가하기','정말로 평가하시겠습니까?','240','150',function() {
 			$.ajax({
-				'url' : '/board_process/board_score_save',
+				'url' : '../board_process/board_score_save',
 				'data' : {'parent':boardseq, 'board_id':board_id, 'scoreid':scoreid},
 				'type' : 'post',
 				'dataType': 'json',
@@ -594,7 +594,7 @@ function boardcmtscoresave( scoreid, boardseq, cseq, board_id) {
 	if( eval('gl_isuser') ) {//회원전용
 		//openDialogConfirmtitle('댓글 평가하기','정말로 평가하시겠습니까?','240','150',function() {
 				$.ajax({
-					'url' : '/board_comment_process/board_score_save',
+					'url' : '../board_comment_process/board_score_save',
 					'data' : {'parent':boardseq,  'cparent':cseq, 'board_id':board_id, 'scoreid':scoreid},
 					'type' : 'post',
 					'dataType': 'json',
@@ -619,7 +619,7 @@ function boardcmtscoresave( scoreid, boardseq, cseq, board_id) {
 function boarddeleteless(board_id, delseq ){
 	if( board_id == 'goods_review' ) {
 		$.ajax({
-			'url' : '/board_goods_process',
+			'url' : '../board_goods_process',
 			'data' : {'mode':'goods_review_less_view', 'delseq':delseq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',
@@ -631,7 +631,7 @@ function boarddeleteless(board_id, delseq ){
 					openDialogConfirmtitle(res.name+' '+getAlert('et230'),msg,'450','140',function(){
 					loadingStart("body",{segments: 12, width: 15.5, space: 6, length: 13, color: '#000000', speed: 1.5});
 						$.ajax({
-						'url' : '/board_process',
+						'url' : '../board_process',
 						'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 						'type' : 'post',
 						'success' : function(res){
@@ -643,7 +643,7 @@ function boarddeleteless(board_id, delseq ){
 					openDialogConfirmtitle(res.name+' '+getAlert('et230'),res.msg,'480','320',function() {
 					loadingStart("body",{segments: 12, width: 15.5, space: 6, length: 13, color: '#000000', speed: 1.5});
 						$.ajax({
-							'url' : '/board_process',
+							'url' : '../board_process',
 							'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 							'type' : 'post',
 							'success' : function(res){
@@ -661,7 +661,7 @@ function boarddeleteless(board_id, delseq ){
 		});
 	}else{
 		$.ajax({
-			'url' : '/board_goods_process',
+			'url' : '../board_goods_process',
 			'data' : {'mode':'board_less_view', 'delseq':delseq, 'board_id':board_id},
 			'type' : 'post',
 			'dataType': 'json',
@@ -672,7 +672,7 @@ function boarddeleteless(board_id, delseq ){
 					openDialogConfirmtitle(res.name+' '+getAlert('et230'),msg,'450','140',function(){
 					loadingStart("body",{segments: 12, width: 15.5, space: 6, length: 13, color: '#000000', speed: 1.5});
 						$.ajax({
-						'url' : '/board_process',
+						'url' : '../board_process',
 						'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 						'type' : 'post',
 						'success' : function(res){
@@ -683,7 +683,7 @@ function boarddeleteless(board_id, delseq ){
 					openDialogConfirmtitle(res.name+' '+getAlert('et230'),res.msg,'480','250',function() {
 					loadingStart("body",{segments: 12, width: 15.5, space: 6, length: 13, color: '#000000', speed: 1.5});
 						$.ajax({
-							'url' : '/board_process',
+							'url' : '../board_process',
 							'data' : {'mode':'board_delete', 'delseq':delseq, 'board_id':board_id},
 							'type' : 'post',
 							'success' : function(res){

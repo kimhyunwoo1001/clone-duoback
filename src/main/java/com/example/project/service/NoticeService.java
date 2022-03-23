@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Enumerated;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class NoticeService {
         Notice newNotice = noticeRepository.save(notice);
         return newNotice;
     }
+
+    public Page<Notice> boardlist_page(Pageable pageable){
+        return noticeRepository.findAll(pageable);
+    }
+
     // 리스트
     @Transactional
     public List<NoticeDTO> getBoardList(){
@@ -56,10 +62,6 @@ public class NoticeService {
         return noticeDTOList;
     }
 
-
-    public Page<Notice> getboard(Pageable pageable){
-        return noticeRepository.findAll(pageable);
-    }
 
     // 글 보기
     @Transactional
@@ -95,6 +97,31 @@ public class NoticeService {
     public void delete(Long id){
         noticeRepository.deleteById(id);
     }
+
+    @Transactional
+    public List<NoticeDTO> search_notice(String keyword){
+    List<Notice> notices = noticeRepository.findByNtTitleContaining(keyword);
+    List<NoticeDTO> noticeDTOList = new ArrayList<>();
+
+    if(notices.isEmpty()) return noticeDTOList;
+
+    for(Notice notice : notices){
+        noticeDTOList.add(this.convertEntityToDTO(notice));
+    }
+    return noticeDTOList;
+    }
+
+    private NoticeDTO convertEntityToDTO(Notice notice){
+        return NoticeDTO.builder()
+                .ntIdx(notice.getNtIdx())
+                .ntContent(notice.getNtContent())
+                .ntCategory(notice.getNtCategory())
+                .ntHit(notice.getNtHit())
+                .ntRegdate(notice.getNtRegdate())
+                .ntTitle(notice.getNtTitle())
+                .build();
+    }
+
 
 
 }

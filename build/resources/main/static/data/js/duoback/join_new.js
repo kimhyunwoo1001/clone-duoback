@@ -6,7 +6,7 @@ $(function(){
             //     $("#id_info").html(text);
             //     return;
             // }
-            $.post("/member_process/id_chk", { userid : $(this).val() }, function(response){
+            $.post("../member_process/id_chk", { userid : $(this).val() }, function(response){
                 //debug(response);
                 var text = response.return_result;
                 var userid = response.userid;
@@ -19,7 +19,7 @@ $(function(){
     if(mtype=='business' && bno_use=='Y'){
         $("input[name='bno']").blur(function() {
             if($(this).val()){
-                $.post("/member_process/bno_chk", { bno : $(this).val() }, function(response){
+                $.post("../member_process/bno_chk", { bno : $(this).val() }, function(response){
                     //debug(response);
                     var text = response.return_result;
                     var bno = response.bno;

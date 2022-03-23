@@ -1,16 +1,26 @@
 package com.example.project.controller.api;
 
 import com.example.project.model.DTO.NoticeDTO;
+import com.example.project.model.entity.Notice;
+import com.example.project.repository.NoticeRepository;
 import com.example.project.service.GoodsApiLogicService;
 import com.example.project.service.NoticeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.Enumerated;
 import java.util.List;
 
 
@@ -22,9 +32,30 @@ public class BoardController {
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private NoticeRepository noticeRepository;
+
+
     @GetMapping("/indexffe2")
-    public String indexffe2(Model model) {
-        model.addAttribute("noticeList" , noticeService.getBoardList() );
+    public String indexffe21(Model model ,@PageableDefault(page = 0 , size = 7 , sort = "ntIdx") Pageable pageable) {
+        Page<Notice> list = noticeService.boardlist_page(pageable);
+
+        int nowPage = list.getPageable().getPageNumber() + 1;
+        int startPage = Math.max(nowPage - 4 ,1);
+        int endPage = Math.min(nowPage + 5 , list.getTotalPages());
+
+        model.addAttribute("nowPage" , nowPage);
+        model.addAttribute("startPage" , startPage);
+        model.addAttribute("endPage" , endPage);
+        model.addAttribute("list" , list);
+        return "pages/www.duoback.co.kr/board/indexffe2";
+    }
+
+    @GetMapping("/find_notice")
+    public String search (@RequestParam(value = "keyword") String keyword , Model model){
+        List<NoticeDTO> noticeList = noticeService.search_notice(keyword);
+        model.addAttribute("list" , noticeList);
+
         return "pages/www.duoback.co.kr/board/indexffe2";
     }
 

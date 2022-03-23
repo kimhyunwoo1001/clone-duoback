@@ -24482,7 +24482,7 @@ define("tinymce/util/URI", [
 			}
 
 			for (i = 0, l = base.length - (breakPoint - 1); i < l; i++) {
-				out += "/";
+				out += "../";
 			}
 
 			for (i = breakPoint - 1, l = items.length; i < l; i++) {
@@ -36818,7 +36818,7 @@ define("tinymce/util/Uuid", [
 /**
  * Include the base event class documentation.
  *
- * @include ///tools/docs/tinymce.Event.js
+ * @include ../../../tools/docs/tinymce.Event.js
  */
 
 /**
@@ -36893,7 +36893,7 @@ define("tinymce/Editor", [
 	/**
 	 * Include documentation for all the events.
 	 *
-	 * @include ///tools/docs/tinymce.Editor.js
+	 * @include ../../../tools/docs/tinymce.Editor.js
 	 */
 
 	/**
@@ -38090,7 +38090,7 @@ define("tinymce/Editor", [
 		 *    setup: function(ed) {
 		 *       ed.addButton('example', {
 		 *          title: 'My title',
-		 *          image: '/js/tinymce/plugins/example/img/example.gif',
+		 *          image: '../js/tinymce/plugins/example/img/example.gif',
 		 *          onclick: function() {
 		 *             ed.insertContent('Hello world!!');
 		 *          }

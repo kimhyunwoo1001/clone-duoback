@@ -3970,7 +3970,7 @@ major-latin; mso-fareast-theme-font:major-latin;
                                         href="indexf993.html?id=notice&amp;page=10" data-ci-pagination-page="2"
                                         rel="next" class="next"><span class="next">다음 ▶</span></a></div>
                             </div>
-                            <form name="boardsearch" id="boardsearch">
+                            <form name="boardsearch" id="boardsearch" action="/www.duoback.co.kr/find_notice" method="GET">
                                 <input type="hidden" name="id" value="notice">
                                 <input type="hidden" name="popup" value="">
                                 <input type="hidden" name="iframe" value="">
@@ -3990,11 +3990,14 @@ major-latin; mso-fareast-theme-font:major-latin;
                                     </li>
                                     <li>
 			<span class="searchform">
-				<input type="text" name="search_text" id="search_text" class="res_bbs_search_input" value=""
-                       title="공지사항 내 검색"/>
-				<button type="submit" class="btn_resp size_b">검색</button>
+                <script>
+
+                </script>
+				<input type="text" name="keyword" id="search_text" class="res_bbs_search_input" value=""
+                       title="공지사항 내 검색" />
+				<button type="submit" class="btn_resp size_b" onclick="onsubmit12()">검색</button>
 				<button type="button" class="btn_resp size_b hide"
-                        onclick="document.location.href='indexffe2.html?id=notice'">초기화</button>
+                        th:href="@{/www.duoback.co.kr/indexffe2}">초기화</button>
 			</span>
                                     </li>
                                 </ul>
@@ -4024,7 +4027,7 @@ major-latin; mso-fareast-theme-font:major-latin;
                                                                   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9ib2FyZC9ub3RpY2UvZGVmYXVsdDAxL2luZGV4Lmh0bWw=">조회</span>
                                     </li>
                                 </ul>
-                                <ul class="tbody" th:each="m : ${noticeList}">
+                                <ul class="tbody" th:each="m : ${list}">
                                     <li class="mo_hide font_mon" th:text="${m.ntIdx}"><span class="mtitle"
                                                                                             designElement="text"
                                                                                             textIndex="9"
@@ -4054,7 +4057,24 @@ major-latin; mso-fareast-theme-font:major-latin;
                                 </ul>
 
                             </div>
+
                             <!--나중에 살릴거-->
+<!--                            <div id="pagingDisplay" class="paging_navigation"><a class="on red">1</a></div>-->
+                            <style>
+
+                                .paging{
+                                    padding-top: 30px;
+                                    padding-right: 30PX;
+                                    font-weight: bold;
+                                }
+
+                            </style>
+                            <div style="text-align: center" class="paging">
+                            <th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+                                <a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/indexffe2(page = ${page - 1})}" th:text="${page}"></a>
+                                <strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+                            </th:block>
+                            </div>
                             <ul class="bbs_bottom_wrap hide">
                                 <li class="right">
                                     <button type="button" name="boad_write_btn_no" id="goods_boad_write_btn_no"

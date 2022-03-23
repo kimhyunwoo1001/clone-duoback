@@ -2177,7 +2177,7 @@ if	(typeof set_option_ReStock == 'undefined' ){
 
 		$.ajax({
 			type: "get",
-			url: "/goods/option",
+			url: "../goods/option",
 			data: gdata,
 			success: function(result){
 				var data = eval(result);

@@ -7,7 +7,7 @@ function pageRefresh() {
 
 $(document).ready(function() {
 	// 마이페이지 LNB 로드, 활성화
-	$('#subpageLNB').load('/mypage/mypage_lnb #mypageLnbBasic', function() {
+	$('#subpageLNB').load('../mypage/mypage_lnb #mypageLnbBasic', function() {
 		var mypageLnbLink, mypageCateIndex;
 		$('#mypageLnbBasic li').each(function(e) {
 			mypageLnbLink = $(this).find('a').attr('href').split('?')[0];
