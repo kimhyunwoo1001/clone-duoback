@@ -1428,6 +1428,7 @@ $(function(){
         <div class="rankPro">
             <div class="rank"><div>BEST<div th:text="${mStat.count}"></div></div></div>
                             <a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/proinfo/${m.getGdIdx()}|}'|" class="goods_session">
+
                     <img th:src="${m.gdImg}">
                     <span class="detail_icons">
 					<span class="d_icon d_reco">추천</span><span class="d_icon d_best">BEST</span>

@@ -78,7 +78,7 @@ public class OrderApiController {
         return orderDTOList;
     }
 
-    @PutMapping("/updateorder")
+    @PostMapping("/updateorder")
     public void updateorder(@RequestBody OrderDTO orderDTO) {
         orderService.update(orderDTO);
     }

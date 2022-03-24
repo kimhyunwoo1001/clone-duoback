@@ -1724,7 +1724,7 @@ $(function(){
 </div>
 <div class="ab_review_wrap write_wrap">
 	<div class="goods_rv_custom">
-		<form name="writeform" id="writeform" method="post" action="/board_process" enctype="multipart/form-data" target="boardactionFrame" novalidate="novalidate">
+		<form name="writeform" id="writeform" method="post" >
 			<input type="hidden" name="mode" id="mode" value="board_write">
 			<input type="hidden" name="board_id" id="board_id" value="mbqna">
 			<input type="hidden" name="reply" id="reply" value="">
@@ -1746,8 +1746,8 @@ $(function(){
 				<tr>
 					<th><p>작성자</p></th>
 					<td>
-							<input type="hidden" name="name" id="name" value="ㅇㅇㅇ">
-							<input type="text" value="ㅇㅇㅇ" readonly="readonly" class="name_load type_02">
+							<input type="hidden" name="name" id="name" th:value="${user.getData().getUserName()}">
+							<input type="text" th:value="${user.getData().getUserName()}" readonly="readonly" class="name_load type_02">
 						<span class=" hide"><input type="checkbox" name="hidden" id="hidden" value="1"><label for="hidden"> 비밀글</label></span>
 						
 					</td>
@@ -1755,7 +1755,7 @@ $(function(){
 				<tr>
 					<th><p>분류</p></th>
 					<td>
-						<select name="category" id="addcategory">
+						<select name="qCategory" id="qCategory">
 							<option value="" selected="selected">- 분류선택 -</option>
 							<option value="배송지연/불만">배송지연/불만</option>
 							<option value="반품문의">반품문의</option>
@@ -1771,175 +1771,175 @@ $(function(){
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<th><p>답변받기</p></th>
-					<td>
-						<ul class="form_multi_row2">
-<!--
-							<li>
-								<label class="Dib"><input type="checkbox" name="board_sms" id="board_sms" value="1"  checked="checked"  /> SMS</label>
-								<input type="text" name="tel1" id="tel1" value="" class="size_mail" readonly="readonly" title="휴대폰번호 입력(-포함)" />
-							</li>
-							<li>
-								<label class="Dib"><input type="checkbox" name="board_email" id="board_email" value="1"   checked="checked" /> 이메일</label>
-								<input type="text" name="email" id="email" value="@naver.com" class="size_mail" title="이메일주소를 입력" />
-							</li>
--->
-							<li>
-								<label class="Dib"><input type="checkbox" name="board_sms" id="board_sms" value="1" checked="checked"> SMS</label>
-								<input type="text" name="tel1" id="tel1" value="" class="size_mail" title="휴대폰번호 입력(-포함)" placeholder="휴대폰번호 입력(-포함)">
-							</li>
-							<li>
-								<label class="Dib"><input type="checkbox" name="board_email" id="board_email" value="1" checked="checked"> 이메일</label>
-								<input type="text" name="email" id="email" value="@naver.com" class="size_mail" title="이메일주소를 입력" placeholder="이메일주소를 입력">
-							</li>
-						</ul>
-					</td>
-				</tr>
+<!--				<tr>-->
+<!--					<th><p>답변받기</p></th>-->
+<!--					<td>-->
+<!--						<ul class="form_multi_row2">-->
+<!--&lt;!&ndash;-->
+<!--							<li>-->
+<!--								<label class="Dib"><input type="checkbox" name="board_sms" id="board_sms" value="1"  checked="checked"  /> SMS</label>-->
+<!--								<input type="text" name="tel1" id="tel1" value="" class="size_mail" readonly="readonly" title="휴대폰번호 입력(-포함)" />-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<label class="Dib"><input type="checkbox" name="board_email" id="board_email" value="1"   checked="checked" /> 이메일</label>-->
+<!--								<input type="text" name="email" id="email" value="@naver.com" class="size_mail" title="이메일주소를 입력" />-->
+<!--							</li>-->
+<!--&ndash;&gt;-->
+<!--							<li>-->
+<!--								<label class="Dib"><input type="checkbox" name="board_sms" id="board_sms" value="1" checked="checked"> SMS</label>-->
+<!--								<input type="text" name="tel1" id="tel1" value="" class="size_mail" title="휴대폰번호 입력(-포함)" placeholder="휴대폰번호 입력(-포함)">-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<label class="Dib"><input type="checkbox" name="board_email" id="board_email" value="1" checked="checked"> 이메일</label>-->
+<!--								<input type="text" name="email" id="email" value="@naver.com" class="size_mail" title="이메일주소를 입력" placeholder="이메일주소를 입력">-->
+<!--							</li>-->
+<!--						</ul>-->
+<!--					</td>-->
+<!--				</tr>-->
 				<tr>
 					<th><p>제목</p></th>
 					<td>
-						<input type="text" name="subject" id="subject" value="" class="Wmax" title="제목을 입력해 주세요" placeholder="제목을 입력해 주세요">
+						<input type="text" name="qTitle" id="qTitle" value="" class="Wmax" title="제목을 입력해 주세요" placeholder="제목을 입력해 주세요">
 					</td>
 				</tr>
 				<tr>
 					<th><p>내용</p></th>
-					<td><textarea name="contents" id="contents" class="size3 Mt10" title="내용을 입력하세요" placeholder="내용을 입력하세요"></textarea></td>
+					<td><textarea name="qContent" id="qContent" class="size3 Mt10" title="내용을 입력하세요" placeholder="내용을 입력하세요"></textarea></td>
 				</tr>
-				<tr>
-					<th><p>사진첨부<span class="noti">(3Mb 이하, jpg, gif 가능)</span></p></th>
-					<td>
-						 <div class="bbswrite_division">
-							<!-- 게시판 파일첨부. 파일위치 : [스킨폴더]/board/_mobile_file.html -->
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
-@@ 게시판 파일 첨부 @@
-- 파일위치 : [스킨폴더]/board/_mobile_file.html
-++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--				<tr>-->
+<!--					<th><p>사진첨부<span class="noti">(3Mb 이하, jpg, gif 가능)</span></p></th>-->
+<!--					<td>-->
+<!--						 <div class="bbswrite_division">-->
+<!--							&lt;!&ndash; 게시판 파일첨부. 파일위치 : [스킨폴더]/board/_mobile_file.html &ndash;&gt;-->
+<!--&lt;!&ndash; ++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--@@ 게시판 파일 첨부 @@-->
+<!-- - 파일위치 : [스킨폴더]/board/_mobile_file.html-->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++ &ndash;&gt;-->
 
-<script type="text/javascript" src="/app/javascript/js/skin-board_mobile_file.js?dummy=20210430_1"></script>
+<!--<script type="text/javascript" src="/app/javascript/js/skin-board_mobile_file.js?dummy=20210430_1"></script>-->
 
-<!-- 2018-06-05 byuncs add image 먼저 업로드 후 경로 및 태그 -->
-<input type="hidden" name="realfilename" value="">
-<input type="hidden" name="incimage" value="">
-<input type="hidden" name="insert_image" value="bottom">
-<input type="hidden" name="remove_no" value="">
-<input type="hidden" name="select_img" class="select_img" value="bottom">
-<div>
-		<div class="img_preview" id="img_viewer">
-            <button type="button" class="btnUploader btn_resp size_b"><span designelement="text" textindex="1" texttemplatepath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9ib2FyZC9fbW9iaWxlX2ZpbGVfcmV2aWV3Lmh0bWw=">+</span></button>
-		</div>
-</div>
-							<!-- //게시판 파일첨부 -->
-						</div>
-					</td>
-				</tr>
+<!--&lt;!&ndash; 2018-06-05 byuncs add image 먼저 업로드 후 경로 및 태그 &ndash;&gt;-->
+<!--<input type="hidden" name="realfilename" value="">-->
+<!--<input type="hidden" name="incimage" value="">-->
+<!--<input type="hidden" name="insert_image" value="bottom">-->
+<!--<input type="hidden" name="remove_no" value="">-->
+<!--<input type="hidden" name="select_img" class="select_img" value="bottom">-->
+<!--<div>-->
+<!--		<div class="img_preview" id="img_viewer">-->
+<!--            <button type="button" class="btnUploader btn_resp size_b"><span designelement="text" textindex="1" texttemplatepath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9ib2FyZC9fbW9iaWxlX2ZpbGVfcmV2aWV3Lmh0bWw=">+</span></button>-->
+<!--		</div>-->
+<!--</div>-->
+<!--							&lt;!&ndash; //게시판 파일첨부 &ndash;&gt;-->
+<!--						</div>-->
+<!--					</td>-->
+<!--				</tr>-->
 			</tbody>
 			</table>
-		<div class="goods_terms">
-			<h4>개인정보 수집, 이용안내</h4>
-			<div class="ab_tab_area">
-				<ul class="ab_tabs ab_clear">
-					<li class="active"><a href="#as_tab1">개인정보의 항목</a></li>
-					<li><a href="#as_tab2">수집 이용목적</a></li>
-					<li><a href="#as_tab3">보유 및 이용시간</a></li>
-				</ul>
-				<div class="tabCont" id="as_tab1" style="display:block;">
-					<textarea cols="" rows="">1. 수집하는 개인정보의 항목
+<!--		<div class="goods_terms">-->
+<!--			<h4>개인정보 수집, 이용안내</h4>-->
+<!--			<div class="ab_tab_area">-->
+<!--				<ul class="ab_tabs ab_clear">-->
+<!--					<li class="active"><a href="#as_tab1">개인정보의 항목</a></li>-->
+<!--					<li><a href="#as_tab2">수집 이용목적</a></li>-->
+<!--					<li><a href="#as_tab3">보유 및 이용시간</a></li>-->
+<!--				</ul>-->
+<!--				<div class="tabCont" id="as_tab1" style="display:block;">-->
+<!--					<textarea cols="" rows="">1. 수집하는 개인정보의 항목-->
 
-회사는 최초 회원 가입 또는 서비스 이용 시 이용자로부터 아래와 같은 개인정보를 수집하고 있습니다. 회사는 이용자의 개인정보 수집시 서비스 제공을 위하여 필요한 범위에서 최소한의 개인정보를 수집합니다.
-특히 계정 생성(회원 가입)을 위해 필수적으로 수집되는 개인정보는 ID, 비밀번호, 성명, 생년월일, CI(Connecting Information : 본인인증기관으로부터의 인증결과값), 법정대리인 정보(14세 미만인 경우에 한하여 수집됨)이고, 그 외의 정보는 개별 서비스 이용시 필요에 따라 고객의 동의를 받아 수집합니다.
-회사는 계정 생성시 및 개별 서비스 이용시 필수적으로 필요한 항목이 아닌 개인정보의 수집•이용에 관한 고객의 동의 거절을 이유로 서비스 제공을 제한하거나 거절하지 않습니다.
+<!--회사는 최초 회원 가입 또는 서비스 이용 시 이용자로부터 아래와 같은 개인정보를 수집하고 있습니다. 회사는 이용자의 개인정보 수집시 서비스 제공을 위하여 필요한 범위에서 최소한의 개인정보를 수집합니다.-->
+<!--특히 계정 생성(회원 가입)을 위해 필수적으로 수집되는 개인정보는 ID, 비밀번호, 성명, 생년월일, CI(Connecting Information : 본인인증기관으로부터의 인증결과값), 법정대리인 정보(14세 미만인 경우에 한하여 수집됨)이고, 그 외의 정보는 개별 서비스 이용시 필요에 따라 고객의 동의를 받아 수집합니다.-->
+<!--회사는 계정 생성시 및 개별 서비스 이용시 필수적으로 필요한 항목이 아닌 개인정보의 수집•이용에 관한 고객의 동의 거절을 이유로 서비스 제공을 제한하거나 거절하지 않습니다.-->
 
-귀하께서는 필수항목 수집, 이용에 대한 동의를 거부하실 수 있으나, 이는 서비스 제공에 필수적으로 제공되어야 하는 정보이므로, 동의를 거부하실 경우 회원 가입, 서비스 이용, 홈페이지 이용 등을 하실 수 없습니다.
-
-
-2. 회원가입을 위해 필요한 개인정보
-
-휴대폰 전화번호로 가입 하는 경우 : 휴대폰 전화번호, 비밀번호, 성명, 성별, 생년월일, 국가정보, 중복가입확인정보(DI), 암호화된 동일인 식별정보(CI), 만 14세 아동의 경우 법정대리인 정보(법정대리인의 이름, 생년월일, CI, DI)
-1)각 서비스 이용을 위해 필요한 정보, 서비스 이용기록/구매 또는 AS 관련 정보
-2) 각 서비스 이용 기록/ 구매 또는 AS 관련 정보 로그데이터, 쿠키 및 웹비콘, 이용시간, 이용자가 입력한 검색어 등 제품 정보 (모델정보, 정품인증정보 등, 접속IP정보, 환경설정정보 등)
-
-귀하께서는 선택항목 수집, 이용에 대한 동의를 거부하실 수 있으며, 이는 서비스 제공에 필수적으로 제공되어야 하는 정보가 아니므로, 동의를 거부하시더라도 회원 가입, 서비스 이용, 홈페이지 이용 등이 가능합니다.
-1) 회원가입 시 성명, 주소, 휴대폰번호, 유선번호(선택가능), 이메일 주소
-2) 뉴스레터 및 기타 정보수신동의
-3) 제품 구매 관련 정보 (모델명, 구입일자, 구입처, 구입가격, 일련번호 등)
-4) 마케팅, 이벤트 내역
-① 마케팅 활동ㆍ이벤트 관련 정보[마케팅활동 내용 및 결과, 이벤트참여 내용 및 결과 등]
-② 쿠폰/이벤트코드 보유 및 사용, 경품선택/수령결과
-③ 제휴사 내역
-④ 제휴사 및 제휴가맹점 관련정보 [제휴사명, 제휴사 회원번호, 제휴사 회원가입일, 이벤트 참여일, 제휴사 관련 혜택 및 마케팅활동 정보 등]
-⑤ 기타 계약의 체결ㆍ유지ㆍ이행ㆍ관리ㆍ행사참여 등과 관련하여 본인이 제공한 정보
+<!--귀하께서는 필수항목 수집, 이용에 대한 동의를 거부하실 수 있으나, 이는 서비스 제공에 필수적으로 제공되어야 하는 정보이므로, 동의를 거부하실 경우 회원 가입, 서비스 이용, 홈페이지 이용 등을 하실 수 없습니다.-->
 
 
-3. 개인정보 수집방법
+<!--2. 회원가입을 위해 필요한 개인정보-->
 
-1) 홈페이지, 서면양식, 팩스/전화/이메일/상담게시판 등을 통한 수집, 경품행사 응모 및 이벤트 참여
-2) 비회원 고객문의, 구매상담 문의 정보 등
-3) 생성정보 수집 툴을 통한 수집
-※ 회사는 이용자께서 회사의 개인정보 수집•이용 동의서 각각의 내용에 대해 "동의" 또는 "동의하지 않음"을 선택할 수 있는 절차를 마련하고 있습니다.</textarea>
-				</div>
-				<div class="tabCont" id="as_tab2">
-					<textarea cols="" rows="">1. 개인정보의 수집, 이용목적
-회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+<!--휴대폰 전화번호로 가입 하는 경우 : 휴대폰 전화번호, 비밀번호, 성명, 성별, 생년월일, 국가정보, 중복가입확인정보(DI), 암호화된 동일인 식별정보(CI), 만 14세 아동의 경우 법정대리인 정보(법정대리인의 이름, 생년월일, CI, DI)-->
+<!--1)각 서비스 이용을 위해 필요한 정보, 서비스 이용기록/구매 또는 AS 관련 정보-->
+<!--2) 각 서비스 이용 기록/ 구매 또는 AS 관련 정보 로그데이터, 쿠키 및 웹비콘, 이용시간, 이용자가 입력한 검색어 등 제품 정보 (모델정보, 정품인증정보 등, 접속IP정보, 환경설정정보 등)-->
 
-
-1) 홈페이지 회원 가입 및 관리
-회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별․인증, 회원자격 유지․관리, 제한적 본인확인제 시행에 따른 본인확인, 서비스 부정이용 방지, 만 14세 미만 아동의 개인정보 처리시 법정대리인의 동의여부 확인, 각종 고지․통지, 고충처리 등을 목적으로 개인정보를 처리합니다.
-
-
-2) 재화 또는 서비스 제공
-물품배송, 서비스 제공, 계약서․청구서 발송, 콘텐츠 제공, 맞춤서비스 제공, 본인인증, 연령인증, 요금결제․정산, 채권추심 등을 목적으로 개인정보를 처리합니다.
+<!--귀하께서는 선택항목 수집, 이용에 대한 동의를 거부하실 수 있으며, 이는 서비스 제공에 필수적으로 제공되어야 하는 정보가 아니므로, 동의를 거부하시더라도 회원 가입, 서비스 이용, 홈페이지 이용 등이 가능합니다.-->
+<!--1) 회원가입 시 성명, 주소, 휴대폰번호, 유선번호(선택가능), 이메일 주소-->
+<!--2) 뉴스레터 및 기타 정보수신동의-->
+<!--3) 제품 구매 관련 정보 (모델명, 구입일자, 구입처, 구입가격, 일련번호 등)-->
+<!--4) 마케팅, 이벤트 내역-->
+<!--① 마케팅 활동ㆍ이벤트 관련 정보[마케팅활동 내용 및 결과, 이벤트참여 내용 및 결과 등]-->
+<!--② 쿠폰/이벤트코드 보유 및 사용, 경품선택/수령결과-->
+<!--③ 제휴사 내역-->
+<!--④ 제휴사 및 제휴가맹점 관련정보 [제휴사명, 제휴사 회원번호, 제휴사 회원가입일, 이벤트 참여일, 제휴사 관련 혜택 및 마케팅활동 정보 등]-->
+<!--⑤ 기타 계약의 체결ㆍ유지ㆍ이행ㆍ관리ㆍ행사참여 등과 관련하여 본인이 제공한 정보-->
 
 
-3) 비회원 구매상담 및 고객문의 응대</textarea>
-				</div>
-				<div class="tabCont" id="as_tab3">
-					<textarea cols="" rows="">1. 개인정보의 처리 및 보유기간
-회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다.
+<!--3. 개인정보 수집방법-->
+
+<!--1) 홈페이지, 서면양식, 팩스/전화/이메일/상담게시판 등을 통한 수집, 경품행사 응모 및 이벤트 참여-->
+<!--2) 비회원 고객문의, 구매상담 문의 정보 등-->
+<!--3) 생성정보 수집 툴을 통한 수집-->
+<!--※ 회사는 이용자께서 회사의 개인정보 수집•이용 동의서 각각의 내용에 대해 "동의" 또는 "동의하지 않음"을 선택할 수 있는 절차를 마련하고 있습니다.</textarea>-->
+<!--				</div>-->
+<!--				<div class="tabCont" id="as_tab2">-->
+<!--					<textarea cols="" rows="">1. 개인정보의 수집, 이용목적-->
+<!--회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.-->
 
 
-1) 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+<!--1) 홈페이지 회원 가입 및 관리-->
+<!--회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별․인증, 회원자격 유지․관리, 제한적 본인확인제 시행에 따른 본인확인, 서비스 부정이용 방지, 만 14세 미만 아동의 개인정보 처리시 법정대리인의 동의여부 확인, 각종 고지․통지, 고충처리 등을 목적으로 개인정보를 처리합니다.-->
 
-① 홈페이지 회원 가입 및 관리는 홈페이지 탈퇴 시까지 보관하며, 다만, 다음의 사유에 해당하는 경우에는 해당 사유 종료 시까지 보관합니다.
-- 관계 법령 위반에 따른 수사․조사 등이 진행중인 경우에는 해당 수사․조사 종료시
-- 홈페이지 이용에 따른 채권․채무관계 잔존시에는 해당 채권․채무관계 정산시
 
-② 재화 또는 서비스 제공는 재화․서비스 공급완료 및 요금결제․정산 완료 시까지 이며, 다만, 다음의 사유에 해당하는 경우에는 해당 기간 종료 시까지 보관합
-- 계약 또는 청약철회 등에 관련 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)
-- 대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)
-- 소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래 등에서의 소비자보호에 관한 법률)
-- 신용정보의 수집/처리 및 이용 등에 관한 기록: 3년 (신용정보의 이용 및 보호에 관한 법률)
-- 표시/광고에 관한 기록: 6개월 (전자상거래 등에서의 소비자보호에 관한 법률)
-- 이용자의 인터넷 등 로그기록/이용자의 접속지 추적자료: 3개월 (통신비밀보호법)
-- 그 외의 통신사실 확인자료: 12개월 (통신비밀보호법)
-</textarea>
-				</div>
-			</div>
-			<script>
-				$("ul.ab_tabs li").click(function() {
-					$("ul.ab_tabs li").removeClass("active");
-					$(this).addClass("active");
-					$(".tabCont").hide();
-					var activeTab = $(this).find("a").attr("href");
-					$(activeTab).show();
-					return false;
-				});
-			</script>
-			<ul class="goods_terms_agree">
-				<li>
-					<input type="radio" id="gta1" name="gta">
-					<label for="gta1">동의합니다.</label>
-				</li>
-				<li>
-					<input type="radio" id="gta2" name="gta">
-					<label for="gta2">동의하지 않습니다.</label>
-				</li>
-			</ul>
-		</div>
+<!--2) 재화 또는 서비스 제공-->
+<!--물품배송, 서비스 제공, 계약서․청구서 발송, 콘텐츠 제공, 맞춤서비스 제공, 본인인증, 연령인증, 요금결제․정산, 채권추심 등을 목적으로 개인정보를 처리합니다.-->
+
+
+<!--3) 비회원 구매상담 및 고객문의 응대</textarea>-->
+<!--				</div>-->
+<!--				<div class="tabCont" id="as_tab3">-->
+<!--					<textarea cols="" rows="">1. 개인정보의 처리 및 보유기간-->
+<!--회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다.-->
+
+
+<!--1) 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.-->
+
+<!--① 홈페이지 회원 가입 및 관리는 홈페이지 탈퇴 시까지 보관하며, 다만, 다음의 사유에 해당하는 경우에는 해당 사유 종료 시까지 보관합니다.-->
+<!-- - 관계 법령 위반에 따른 수사․조사 등이 진행중인 경우에는 해당 수사․조사 종료시-->
+<!-- - 홈페이지 이용에 따른 채권․채무관계 잔존시에는 해당 채권․채무관계 정산시-->
+
+<!--② 재화 또는 서비스 제공는 재화․서비스 공급완료 및 요금결제․정산 완료 시까지 이며, 다만, 다음의 사유에 해당하는 경우에는 해당 기간 종료 시까지 보관합-->
+<!-- - 계약 또는 청약철회 등에 관련 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)-->
+<!-- - 대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)-->
+<!-- - 소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래 등에서의 소비자보호에 관한 법률)-->
+<!-- - 신용정보의 수집/처리 및 이용 등에 관한 기록: 3년 (신용정보의 이용 및 보호에 관한 법률)-->
+<!-- - 표시/광고에 관한 기록: 6개월 (전자상거래 등에서의 소비자보호에 관한 법률)-->
+<!-- - 이용자의 인터넷 등 로그기록/이용자의 접속지 추적자료: 3개월 (통신비밀보호법)-->
+<!-- - 그 외의 통신사실 확인자료: 12개월 (통신비밀보호법)-->
+<!--</textarea>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<script>-->
+<!--				$("ul.ab_tabs li").click(function() {-->
+<!--					$("ul.ab_tabs li").removeClass("active");-->
+<!--					$(this).addClass("active");-->
+<!--					$(".tabCont").hide();-->
+<!--					var activeTab = $(this).find("a").attr("href");-->
+<!--					$(activeTab).show();-->
+<!--					return false;-->
+<!--				});-->
+<!--			</script>-->
+<!--			<ul class="goods_terms_agree">-->
+<!--				<li>-->
+<!--					<input type="radio" id="gta1" name="gta">-->
+<!--					<label for="gta1">동의합니다.</label>-->
+<!--				</li>-->
+<!--				<li>-->
+<!--					<input type="radio" id="gta2" name="gta">-->
+<!--					<label for="gta2">동의하지 않습니다.</label>-->
+<!--				</li>-->
+<!--			</ul>-->
+<!--		</div>-->
 
 		<div class="board_detail_btns2">
 
-			<button type="button" class="data_save_btn btn_resp size_c color2">저장</button>
+			<button type="button" class="data_save_btn btn_resp size_c color2" onclick="modifySubmit()">저장</button>
 			<button type="button" class="btn_resp size_c" onclick="document.location.href='./mypage_qna.html?';">취소</button>
 		</div>
 
@@ -2561,6 +2561,46 @@ function logoutfb_process(){
 	// STEP 4. 변수에 세팅된 각종 정보 + 전환정보를 (네이버의) 웹로그수집서버에 전송. 전송하는 method이므로 항상 STEP 1, 2, 3 보다
 	//나중에 있어야 함. (변수 세팅 등이 되지 않은 상황에서 먼저 전송하면 웹로그 수집에 오류가 발생함.)
 	wcs_do(_nasa);
+</script>
+
+<script th:inline="javascript">
+	let useridx = [[${session.user.getUserIdx()}]]
+
+
+	//주문 등록
+	function modifySubmit(){
+
+		//step2. 게시판 등록
+
+
+
+		let data2 = { //JavaScript Object
+			qcategory : $("#qCategory").val(),
+			qtitle : $("#qTitle").val(),
+			qcontent : $("#qContent").val(),
+
+		}
+
+		console.log(data2);
+
+		$.ajax({
+			type : 'POST'
+			,url : "/qna/new/"+useridx
+			,dataType : 'json'
+			,data : JSON.stringify(data2)
+			,contentType: 'application/json'
+			,success : function(result) {
+				alert("문의가 완료되었습니다.");
+				location.href="/www.duoback.co.kr/mypage_qna";
+			},
+			error: function(request, status, error) {
+				alert("문의에 성공했습니다.");
+				location.href="/www.duoback.co.kr/mypage_qna";
+			}
+		})
+	}
+
+
 </script>
 </body>
 

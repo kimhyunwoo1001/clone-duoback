@@ -1611,7 +1611,7 @@
 											<div>BEST<div th:text="${mStat.count}"></div>
 											</div>
 										</div>
-										<a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/giftview/${m.getGdIdx()}|}'|">
+										<a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/proinfo/${m.getGdIdx()}|}'|">
 											<img th:src="${m.gdImg}">
 
 											<span class="detail_icons">
@@ -1965,7 +1965,7 @@
 
 							<li class="goods_list_style1" th:each="m : ${goodsList}" th:if="${m.gdCategory == 'Dpoint'}">
 								<div class="item_img_area">
-									<a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/giftview/${m.getGdIdx()}|}'|">
+									<a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/proinfo/${m.getGdIdx()}|}'|">
 										<img th:src="${m.gdImg}" alt="" style="max-width: 250px;">
 
 										<span class="detail_icons">
@@ -1985,8 +1985,8 @@
 										<!--<div class="keyArea">
 				<span>#</span> 			</div>-->
 
-										<a  th:onclick="|location.href='@{|/www.duoback.co.kr/goods/giftview/${m.getGdIdx()}|}'|"></a>
-										<div class="span"><a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/giftview/${m.getGdIdx()}|}'|"><span
+										<a  th:onclick="|location.href='@{|/www.duoback.co.kr/goods/proinfo/${m.getGdIdx()}|}'|"></a>
+										<div class="span"><a th:onclick="|location.href='@{|/www.duoback.co.kr/goods/proinfo/${m.getGdIdx()}|}'|"><span
 													class="name" th:text="${m.gdName}"></span></a>
 										</div>
 									</li>

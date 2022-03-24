@@ -1768,8 +1768,8 @@ $(function(){
 
 					</li>
 					<li class="coup_status">
-						<div th:text="${m.cpStatus}">미사용</div>
-					
+						<div class="status pointcolor" th:if="${m.getCpStatus.toString().equals('REGISTERED')}" th:text="사용가능" >결제확인 </div>
+						<div class="status pointcolor" th:if="${m.getCpStatus.toString().equals('UNREGISTERED')}" th:text="소멸함" >결제확인 </div>
 					</li>
 				</ul>
 

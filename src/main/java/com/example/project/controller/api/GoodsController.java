@@ -46,7 +46,7 @@ public class GoodsController {
     private HttpSession session;
 
     @Autowired
-    private RecentService recentService;
+    private ReviewService reviewService;
 
     @GetMapping("/catalog5366")
     public String catalog5366() {
@@ -126,17 +126,17 @@ public class GoodsController {
 
     @GetMapping("/goods/proinfo/{gdIdx}")
     public String proinfo(Model model ,@PathVariable(name="gdIdx") Long gdIdx) {
-        Header<GoodsApiResponse> goodsApiResponseHeader = goodsApiLogicService.read(gdIdx);
-        model.addAttribute("goodsList" , goodsApiResponseHeader);
         User user = (User)session.getAttribute("user");
-        System.out.println(gdIdx);
+        model.addAttribute("goodsList" , goodsApiLogicService.read(gdIdx));
+        model.addAttribute("user" , userApiLogicService.read(user.getUserIdx()));
+        model.addAttribute("review",reviewService.getReviewListGoods(gdIdx));
+
         return "pages/www.duoback.co.kr/goods/proinfo";
     }
 
     @GetMapping("/orderdetail/{gdIdx}")
     public String orderdetail(Model model ,@PathVariable(name="gdIdx") Long gdIdx){
         User user = (User)session.getAttribute("user");
-
         model.addAttribute("goods" , goodsApiLogicService.read(gdIdx));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
 //        model.addAttribute("addressList", registAddressService.getAddressList(user.getUserIdx()));

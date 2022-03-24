@@ -25,15 +25,14 @@ public class ReviewController {
       reviewService.create(userIdx, reviewDTO);
 
     }*/
-    @PostMapping("/review_create")
+    @PostMapping("/new")
 
-    public String reviewCreate(@ModelAttribute ReviewDTO reviewDTO){
+    public void reviewCreate(@RequestBody ReviewDTO reviewDTO){
         reviewService.create(reviewDTO);
        // HttpServletRequest request;
         //String referer = request.getHeader("Referer");
-        return "";
-       // reviewService.create(get);
 
+       // reviewService.create(get);
     }
 
     @GetMapping("/reviewlist/{userIdx}")
@@ -42,5 +41,9 @@ public class ReviewController {
         return reviewDTOList;
     }
 
+    @PostMapping("/delete/{rvIdx}")
+    public void delete(@PathVariable Long rvIdx){
+        reviewService.delete(rvIdx);
+    }
 
 }

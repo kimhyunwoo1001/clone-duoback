@@ -33,7 +33,7 @@ public class QnaController {
         return "faq/list";
     }
 
-    @PutMapping("/update/{qIdx}")
+    @PostMapping("/update/{qIdx}")
     public void update(@PathVariable Long qIdx, @RequestBody QnaDTO qnaDTO){
         qnaService.update(qIdx, qnaDTO);
     }

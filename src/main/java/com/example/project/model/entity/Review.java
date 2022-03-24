@@ -33,4 +33,7 @@ public class Review {
     private String rvContent;
     private Integer rvStar;
     private String rvImg;
+    @ManyToOne
+    @JoinColumn(name="gd_idx")
+    private Goods goods;
 }

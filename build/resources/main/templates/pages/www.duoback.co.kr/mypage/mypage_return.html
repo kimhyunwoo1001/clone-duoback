@@ -1792,8 +1792,7 @@ $(function(){
             <li class="buy_date">주문일자</li>
             <li class="order_seq">주문번호</li>
             <li class="item_info">주문상품정보</li>
-            <li class="refund_count">수량</li>
-            <li class="refund_prc">환불금액</li>
+
             <li class="seller">판매자</li>
             <!-- <li class="seller"><span designElement="text">판매자</span></li> -->
             <li class="order_status3"><span designelement="text" textindex="2" texttemplatepath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9teXBhZ2UvcmVmdW5kX2NhdGFsb2cuaHRtbA==">주문상태</span></li>
@@ -1802,7 +1801,7 @@ $(function(){
             <span><span class="mo_title">주문일</span>2022-02-21</span>
             <span><span class="mo_title">주문번호</span>2022022115211717618</span>
         </a>
-	<ul class="tbody" th:each="m : ${cancelList}">
+	<ul class="tbody" th:each="m : ${returnList}">
 		<li class="sjb_date" th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}" style="order:-9;">2022-02-21</li>
 		<li class="order_seq" th:text="${m.getOrderNum()}" style="order:-8">
 			<a class="link1" href="refund_view?refund_code=C220221151999" title="상세">2022022115211717618</a>
@@ -1823,9 +1822,9 @@ $(function(){
 				</ul>
 			</div>
 		</li>
-		<li class="refund_prc"><span class="mo_title">환불금액</span>
-			<span th:text="${#numbers.formatInteger(m.goods.gdSaleprice, 1, 'COMMA')}"></span>
-		</li>
+<!--		<li class="refund_prc"><span class="mo_title">환불금액</span>-->
+<!--			<span th:text="${#numbers.formatInteger(m.goods.gdSaleprice, 1, 'COMMA')}"></span>-->
+<!--		</li>-->
 		<!--
         <li class="refund_prc">
             <div class="">결제취소 환불</div>
@@ -1835,7 +1834,11 @@ $(function(){
 
 		</li>
 		<li class="order_status1" style="order:1;">
-			<span class="status pointcolor" th:text="${m.orderStatus}"></span>
+			<span class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('RETURNING')}" th:text="환불중" >결제확인 </span>
+			<span class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('RETURNED')}" th:text="환불완료" >결제확인 </span>
+			<span class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('EXCHANGING')}" th:text="교환중" >결제확인 </span>
+			<span class="status pointcolor" th:if="${m.getOrderStatus.toString().equals('EXCHANGED')}" th:text="교환완료" >결제확인 </span>
+
 			<div th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}"></div>			<a th:href="@{/www.duoback.co.kr/mypage_qna_write}" class="btn_resp mo_adj">문의</a>
 		</li>
 	</ul>

@@ -1,19 +1,21 @@
 package com.example.project.controller.api;
 
 import com.example.project.controller.CrudController;
-import com.example.project.model.entity.User;
+import com.example.project.model.entity.*;
 import com.example.project.model.network.Header;
 import com.example.project.model.network.request.UserApiRequest;
 import com.example.project.model.network.response.UserApiResponse;
-import com.example.project.repository.UserRepository;
+import com.example.project.repository.*;
 import com.example.project.service.UserApiLogicService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+@Slf4j
 @RestController //json으로 주고 받는 컨트롤러
 @RequestMapping("/duoback")
 @RequiredArgsConstructor
@@ -23,6 +25,27 @@ public class UserController extends CrudController<UserApiRequest, UserApiRespon
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private GoodsRepository goodsRepository;
+    @Autowired
+    private CartRepository cartRepository;
+    @Autowired
+    private RegistAddressRepository registAddressRepository;
+    @Autowired
+    private DpointRepository dpointRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
+    @Autowired
+    private CouponRepository couponRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private ZzimRepository zzimRepository;
+    @Autowired
+    private RecentRepository recentRepository;
+    @Autowired
+    private QnaRepository qnaRepository;
+
 
     /*
     {
@@ -64,7 +87,18 @@ public class UserController extends CrudController<UserApiRequest, UserApiRespon
     @Override
     @DeleteMapping("/delete/{id}")
     public Header<UserApiResponse> delete(@PathVariable(name="id") Long id) {
+        zzimRepository.delete(Zzim.builder().userIdx(id).build());
+        qnaRepository.delete(Qna.builder().userIdx(id).build());
+        recentRepository.delete(Recent.builder().userIdx(id).build());
+        orderRepository.delete(Order.builder().userIdx(id).build());
+        couponRepository.delete(Coupon.builder().userIdx(id).build());
+        reviewRepository.delete(Review.builder().userIdx(id).build());
+        dpointRepository.delete(Dpoint.builder().userIdx(id).build());
+        registAddressRepository.delete(RegistAddress.builder().userIdx(id).build());
+        cartRepository.delete(Cart.builder().userIdx(id).build());
+        log.info(id+"");
         return userApiLogicService.delete(id);
+
     }
 
 //    @GetMapping("") // http://localhost:8080/
