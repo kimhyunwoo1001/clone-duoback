@@ -3441,13 +3441,13 @@
     <script th:inline="javascript">
 
         //주문 등록
-        function cancel(orderIdx){
+        function cancel(m){
+
             //step2. 게시판 등록
-            let orderidx = orderIdx
+            let orderidx = m
 
             console.log(orderidx);
-            // alert("주문 취소 완료.");
-            // location.href="/www.duoback.co.kr/mypage_order";
+
             let data2 = { //JavaScript Object
                 orderIdx : orderidx,
             }

@@ -66,7 +66,9 @@ public class GoodsController {
     }
 
     @GetMapping("/catalog117e")
-    public String catalog117e() {
+    public String catalog117e(Model model) {
+        User user = (User)session.getAttribute("user");
+        model.addAttribute("goodsList" , goodsApiLogicService.getGoodsList());
         return "pages/www.duoback.co.kr/goods/catalog117e";
     }
 
