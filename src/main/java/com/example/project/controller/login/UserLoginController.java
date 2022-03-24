@@ -116,8 +116,8 @@ public class UserLoginController  {
     //휴대폰 인증 서비스 메소드
     public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
 
-        String api_key = "NCSDXON3TR7UDJCX"; //인증키
-        String api_secret = "PYYST67CIRSSJN009HTWNDQ0HCW83QGL"; //인증 PW
+        String api_key = "AHQMIJPIVENTHAEKSX4QUWOCQLARCTHA"; //인증키
+        String api_secret = "NCS4OMC4FO9KSOGP"; //인증 PW
         Message coolsms = new Message(api_key, api_secret);
 
         // 4 params(to, from, type, text) are mandatory. must be filled
