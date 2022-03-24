@@ -77,12 +77,15 @@ public class UserLoginController  {
 
             return "redirect:/www.duoback.co.kr"; //메인
         } else {
-            return "pages/www.duoback.co.kr/member/login"; //다시 로그인
+            return "pages/www.duoback.co.kr/member/loginfail"; //다시 로그인
 
         }
     }
-
-
+    //로그인 실패 페이지
+    @GetMapping("/loginfail")
+    public String duoback_loginfail() {
+        return "pages/www.duoback.co.kr/member/login";
+    }
 
 
 
