@@ -1808,7 +1808,7 @@ $(function(){
 		</li>
 		<li class="item_info">
 			<div class="item_info_box">
-				<a th:href="@{/www.duoback.co.kr/goods/proinfo/}+${m.goods.getGdIdx()}"><img th:src="${m.goods.gdImg}" style="height: 50px" width="50px"></a>
+				<a th:href="@{/www.duoback.co.kr/goods/proinfo/{goodsN}(goodsN = ${m.getGoods().gdIdx})}"><img th:src="${m.goods.gdImg}" style="height: 50px" width="50px"></a>
 				<ul class="oc_item_info_detail">
 					<li class="detail_tag">
 						<div class="brand"></div>
@@ -1842,10 +1842,23 @@ $(function(){
 			<div th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}"></div>			<a th:href="@{/www.duoback.co.kr/mypage_qna_write}" class="btn_resp mo_adj">문의</a>
 		</li>
 	</ul>
+
 </div>
-    <div class="paging_navigation">
-        <a href="?page=1&amp;popup=&amp;iframe=&amp;sc_date=4&amp;sc_sdate=2022-01-23&amp;sc_edate=2022-02-21" class="on">1</a>
-    </div>
+			<style>
+
+				.paging{
+					padding-top: 30px;
+					padding-right: 30PX;
+					font-weight: bold;
+				}
+
+			</style>
+			<div style="text-align: center" class="paging">
+				<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+					<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_cancle(page = ${page - 1})}" th:text="${page}"></a>
+					<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+				</th:block>
+			</div>
     <!-- 데이터가 존재하지 않을 시 출력
 <div class="no_data_area2">
 	내역이 없습니다.

@@ -6,6 +6,8 @@ import com.example.project.model.entity.Review;
 import com.example.project.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +38,7 @@ public class ReviewService {
         Review newReview = reviewRepository.save(review);
         return newReview;
 
+
         /*
          public Review create(Long userIdx, ReviewDTO reviewDTO){
         Review review = Review.builder()
@@ -49,6 +52,10 @@ public class ReviewService {
         Review newReview = reviewRepository.save(review);
         return newReview;
          */
+    }
+
+    public Page<Review> review_list(Long userIdx , Pageable pageable){
+        return reviewRepository.findAllByUserIdx(userIdx, pageable);
     }
 
     @Transactional

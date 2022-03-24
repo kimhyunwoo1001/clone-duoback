@@ -39,6 +39,7 @@ public class NoticeService {
     }
 
     public Page<Notice> boardlist_page(Pageable pageable){
+
         return noticeRepository.findAll(pageable);
     }
 

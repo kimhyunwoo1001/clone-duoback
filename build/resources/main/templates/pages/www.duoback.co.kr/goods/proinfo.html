@@ -2652,7 +2652,7 @@ function getCouponDownlayerclose(){
 						
 				    <!--<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text">상품리뷰</span> </span></a>-->
 
-						<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text" textIndex="86"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy92aWV3Lmh0bWw=" >상품리뷰</span> <span class="crema-product-reviews-count" data-product-code="386" data-hide-if-zero="0">0</span></span></a>
+						<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text" textIndex="86"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy92aWV3Lmh0bWw=" >상품리뷰</span> <span class="crema-product-reviews-count"  th:text="${#lists.size(review)}">0</span></span></a>
 
 
 
@@ -2940,8 +2940,8 @@ function getCouponDownlayerclose(){
 
 
 										<span class="widget_header_basic__reviews_count js-widget-header-basic-reviews-count">
-        (<span th:text="${#lists.size(review)}">)
-      </span>
+        (<span th:text="${#lists.size(review)}">
+      </span>)
 
 										<div class="widget_header_basic__description">
 											<span></span>
@@ -3033,7 +3033,7 @@ function getCouponDownlayerclose(){
 
 															<div class="review_list_v2__edit_container">
 
-																<div class="review_list_v2__date" th:text="${m.rvRegdate}">2022.3.18</div>
+																<div class="review_list_v2__date" th:text="${#temporals.format(m.rvRegdate, 'yyyy-MM-dd')}">2022.3.18</div>
 
 
 															</div>
@@ -3108,7 +3108,7 @@ function getCouponDownlayerclose(){
 												<div class="review_list_v2__review_rcontent">
 													<div class="review_list_v2__user_name_message">
 
-														<b th:text="${user.getData().getUserIdx()}"></b>님의 리뷰입니다.
+														<b th:text="${user.getData().getUserUserid()} "></b>님의 리뷰
 													</div>
 													<div class="review_list_v2__options_section">
 
@@ -3400,9 +3400,6 @@ function getCouponDownlayerclose(){
 	</div>
 </div>
 
-			<div class="fly_cart">
-				<div class="goods_buy_sections"></div>
-			</div>
 
 <script type="text/javascript">
 	function checkPrint(){
@@ -3707,6 +3704,10 @@ function getCouponDownlayerclose(){
 				}
 				</script>
 				<!-- End Script for IFDO -->
+
+		<div class="fly_cart">
+			<div class="goods_buy_sections"></div>
+		</div>
 			<div id="layout_footer" class="layout_footer">
 	<!--  공지사항  최근글 start -->
 	<div class="footer_a footer_notice">

@@ -8,6 +8,8 @@ import com.example.project.model.enumclass.CouponStatus;
 import com.example.project.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,10 @@ public class CouponService {
         return newCoupon;
     }
 
+    Page<Coupon> coupon_list(Pageable pageable){
+        return couponRepository.findAll(pageable);
+    }
+
     @Transactional
     public List<CouponDTO> getCouponList(Long userIDx){
         List<Coupon> couponList = couponRepository.findAllByUserIdx(userIDx);
@@ -59,6 +65,9 @@ public class CouponService {
 
         }
         return couponDTOList;
+    }
+    public Page<Coupon> coupon_list(Long userIdx , Pageable pageable){
+        return couponRepository.findAllByUserIdx(userIdx, pageable);
     }
 
     @Transactional

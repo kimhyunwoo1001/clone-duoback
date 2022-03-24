@@ -1758,7 +1758,7 @@ $(function(){
 				<ul class="arc_body coupon_unused" th:each="m : ${coupon}">
 					<li class="num" th:text="${m.cpIdx}">1</li>
 					<li class="date" th:text="${#temporals.format(m.cpRegdate, 'yyyy-MM-dd ')}"><span class="motle">발급일 </span>22-01-28</li>
-					<li class="coup_title"><b th:text="${m.cpName}">이달의 쿠폰</b></li>
+					<li class="coup_title" style="text-align: center"><b th:text="${m.cpName}" style="text-align: center"></b></li>
 					<li class="benefit" th:text="'판매가격의 '+${m.cpDiscount}+' 원'">
 					</li>
 					<li class="coup_exp" th:text="${#temporals.format(m.cpStartdate, 'yyyy-MM-dd ')} +' ~ '+${#temporals.format(m.cpEnddate, 'yyyy-MM-dd ')}">
@@ -1772,10 +1772,24 @@ $(function(){
 						<div class="status pointcolor" th:if="${m.getCpStatus.toString().equals('UNREGISTERED')}" th:text="소멸함" >결제확인 </div>
 					</li>
 				</ul>
+			<style>
+
+				.paging{
+					padding-top: 30px;
+					padding-right: 30PX;
+					font-weight: bold;
+				}
+
+			</style>
+			<div style="text-align: center" class="paging">
+				<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+					<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_coupon(page = ${page - 1})}" th:text="${page}"></a>
+					<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+				</th:block>
+			</div>
 
 		</div>
 		<!-- pc버전 -->
-		<div class="paging_navigation"><p><a class="on red">1</a><p></div>
 		<!-- 모바일 -->
 		<a href="#none" class="btn_nmore"><span>더보기</span></a>
 

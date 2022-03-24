@@ -1,16 +1,14 @@
 package com.example.project.service;
 
-import com.example.project.model.DTO.NoticeDTO;
 import com.example.project.model.DTO.OrderDTO;
 import com.example.project.model.entity.Goods;
-import com.example.project.model.entity.Notice;
 import com.example.project.model.entity.Order;
-import com.example.project.model.enumclass.CouponStatus;
 import com.example.project.model.enumclass.OrderStatus;
 import com.example.project.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -111,6 +109,17 @@ public class OrderService {
         return orderDTOList;
     }
 
+    public Page<Order> orderlist_page(Long userIdx , Pageable pageable){
+        return orderRepository.findAllByUserIdx(userIdx , pageable);
+    }
+
+    public Page<Order> cancle_page(Long userIdx , Pageable pageable ){
+        return orderRepository.findAllByUserIdxAndOrderStatus(userIdx ,OrderStatus.CANCELED ,pageable);
+    }
+    public Page<Order> return_page(Long userIdx, Pageable pageable){
+        return orderRepository.findAllByUserIdxAndOrderStatusAndOrderStatusAndOrderStatusAndOrderStatus(userIdx, OrderStatus.EXCHANGING, OrderStatus.RETURNING, OrderStatus.RETURNED, OrderStatus.EXCHANGED, pageable);
+    }
+
     @Transactional
     public List<OrderDTO> getOrderList(Long userIdx){
         List<Order> orderList = orderRepository.findAllByUserIdx(userIdx);
@@ -195,6 +204,8 @@ public class OrderService {
             select.setOrderStatus(OrderStatus.RETURNED);
         });
     }
+
+
 
     @Transactional
     public List<OrderDTO> getCancelList(){
@@ -557,4 +568,5 @@ public class OrderService {
             select.setOrderStatus(OrderStatus.CANCELED);
         });
     }
+
 }

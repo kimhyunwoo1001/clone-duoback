@@ -1744,34 +1744,63 @@ $(function(){
 				<div class="board_arc">
 					<ul class="arc_head">
 						<li class="num">번호</li>
-						<li class="sort">상품정보</li>
-						<li class="date">등록일</li>
-						<li class="info">리뷰내용</li>
+						<li class="info">상품명</li>
+						<li class="sort">상품</li>
 						<li class="status">리뷰제목</li>
 						<li class="star">별점</li>
+						<li class="date">등록일</li>
 						<li class="delete">삭제</li>
 					</ul>
+
 					<dl class="arc_body_wrap" th:each="m : ${review}">
 						<dt>
+						<a th:href="@{/www.duoback.co.kr/goods/proinfo/{goodsN}(goodsN =${m.getGoods().gdIdx})}+'#goods_contents_quick'">
 							<ul class="arc_body">
 								<li class="num" th:text="${mStat.count}"></li>
-								<li class="sort"> <span class="cat"  th:text="${m.goods.getGdName()}"></span><img th:src="${m.goods.getGdImg()}" style="height: 50px" width="50px"></li>
+								<li class="sort" th:text="${m.goods.getGdName()}" style="text-align: center"></li>
+								<style>
+
+									.info{
+										text-align: center;
+									}
+									.img123 {
+											width: 70px ;
+											text-align: center;
+												right: 0;
+									}
+
+									.sort{
+										text-align: center;
+										font-size: 11px;
+										font-weight: bold;
+									}
+								</style>
+								<li class="info" ><img th:src="${m.getGoods().gdImg}" class="img123"> </li>
+								<li class="status" th:text="${m.rvTitle}" style="font-weight: bold"></li>
+								<li class="star" th:text="${m.rvStar}" ></li>
 								<li class="date"th:text="${#temporals.format(m.rvRegdate , 'yyyy-MM-dd')}">2022-02-02</li>
-								<li class="info" th:text="${m.rvContent}" style="text-align: center"> </li>
-
-								<li class="status" th:text="${m.rvTitle}">
-
-								</li>
-								<li class="star" th:text="${m.rvStar}" >
-								</li>
 								<li class="del" >
 									<button type="button" text="삭제" class="updateaddress btn_resp mo_adj" th:onclick="delete2([[${m.rvIdx}]])">삭제</button>
 								</li>
 							</ul>
+						</a>
 						</dt>
 					</dl>
-					<div id="pagingDisplay" class="paging_navigation"><p><a class="on red">1</a></p></div>
-					<a href="#none" class="btn_nmore"><span>더보기</span></a>
+					<style>
+
+						.paging{
+							padding-top: 30px;
+							padding-right: 30PX;
+							font-weight: bold;
+						}
+
+					</style>
+					<div style="text-align: center" class="paging">
+						<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+							<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_review(page = ${page - 1})}" th:text="${page}"></a>
+							<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+						</th:block>
+					</div>
 				</div>
 
 
