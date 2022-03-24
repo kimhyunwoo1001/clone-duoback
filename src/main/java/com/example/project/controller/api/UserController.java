@@ -96,7 +96,7 @@ public class UserController extends CrudController<UserApiRequest, UserApiRespon
         dpointRepository.delete(Dpoint.builder().userIdx(id).build());
         registAddressRepository.delete(RegistAddress.builder().userIdx(id).build());
         cartRepository.delete(Cart.builder().userIdx(id).build());
-        log.info(id+"");
+        log.info(id+"삭제");
         return userApiLogicService.delete(id);
 
     }
