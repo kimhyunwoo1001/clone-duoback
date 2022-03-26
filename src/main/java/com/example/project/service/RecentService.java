@@ -2,12 +2,15 @@ package com.example.project.service;
 
 import com.example.project.model.DTO.RecentDTO;
 import com.example.project.model.entity.Goods;
+import com.example.project.model.entity.Order;
 import com.example.project.model.entity.Recent;
 import com.example.project.model.entity.User;
 import com.example.project.repository.RecentRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +56,10 @@ public class RecentService {
             recentDTOList.add(recentDTO);
         }
         return recentDTOList;
+    }
+
+    public Page<Recent> recents_page(Long userIdx , Pageable pageable){
+        return recentRepository.findAllByUserIdx(userIdx , pageable);
     }
 
     @Transactional

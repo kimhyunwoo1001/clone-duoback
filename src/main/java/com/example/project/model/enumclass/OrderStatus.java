@@ -13,7 +13,7 @@ public enum OrderStatus {
     CANCELED(4, "취소완료", "mypage_cancle"),
     RETURNING(5, "반품중", "mypage_return"),
     RETURNED(6, "반품완료", "mypage_return"),
-    EXCHANGING(7, "교환중", "mypage_retrun"),
+    EXCHANGING(7, "교환중", "mypage_return"),
     EXCHANGED(8, "교환완료", "mypage_return");
 
     private Integer id;

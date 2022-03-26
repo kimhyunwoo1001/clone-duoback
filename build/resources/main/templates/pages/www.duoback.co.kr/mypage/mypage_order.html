@@ -2103,7 +2103,7 @@
                             </a>
                             <form method="post">
                             <ul class="tbody" th:each="m : ${orderList}">
-                                <li class="sjb_date" th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}">2022-02-21</li>
+                                <li class="sjb_date" th:text="${#temporals.format(m.getOrderRegdate(), 'yyyy-MM-dd')}"></li>
                                 <li class="order_seq" th:text="${m.getOrderNum()}"><span></span><a
                                         href="order_view?no=2022022115211717618">2022022115211717618</a></li>
                                 <li class="item_info">
@@ -2212,9 +2212,20 @@
                         </div>
                         </form>
                         <!-- pc버전 -->
-                        <div class="paging_navigation">
-                            <a href="?page=1&amp;popup=&amp;iframe=&amp;sc_date=4&amp;sc_sdate=2022-01-23&amp;sc_edate=2022-02-21"
-                               class="on">1</a>
+                        <style>
+
+                            .paging{
+                                padding-top: 30px;
+                                padding-right: 30PX;
+                                font-weight: bold;
+                            }
+
+                        </style>
+                        <div style="text-align: center" class="paging">
+                            <th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+                                <a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_order(page = ${page - 1})}" th:text="${page}"></a>
+                                <strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+                            </th:block>
                         </div>
                         <!-- 모바일 -->
                         <!-- 데이터가 존재하지 않을 시 출력

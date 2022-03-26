@@ -1832,8 +1832,20 @@ $(function(){
             </li>
         </ul>
     </div>
-				<div class="paging_navigation">
-					<a href="?page=1&amp;popup=&amp;iframe=&amp;sc_date=4&amp;sc_sdate=2022-01-23&amp;sc_edate=2022-02-21" class="on">1</a>
+				<style>
+
+					.paging{
+						padding-top: 30px;
+						padding-right: 30PX;
+						font-weight: bold;
+					}
+
+				</style>
+				<div style="text-align: center" class="paging">
+					<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+						<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_cancle(page = ${page - 1})}" th:text="${page}"></a>
+						<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+					</th:block>
 				</div>
     <!-- pc버전 -->
     

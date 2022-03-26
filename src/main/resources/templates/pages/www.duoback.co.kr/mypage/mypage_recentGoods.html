@@ -1483,7 +1483,7 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 								<div class="recent_wrap wish_wrap">
 
 									<ul id="recentList" class="recent_list ab_wish_list" >
-										<li th:each="m : ${recent}">
+										<li th:each="m : ${recentList}">
 											<div class="chk_box"><label><input type="checkbox" name="goods_seq[]" value="205"></label></div>
 											<div class="img_area"><a th:href="@{/www.duoback.co.kr/goods/proinfo/{itemId}(itemId = ${m.goods.gdIdx})}"><img th:src="${m.goods.gdImg}"></a></div>
 											<div class="wish_name">
@@ -1512,7 +1512,20 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 									</div>
 								</div>
 
-								<div class="paging_navigation">
+								<style>
+
+									.paging{
+										padding-top: 30px;
+										padding-right: 30PX;
+										font-weight: bold;
+									}
+
+								</style>
+								<div style="text-align: center" class="paging">
+									<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+										<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_recentGoods(page = ${page - 1})}" th:text="${page}"></a>
+										<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+									</th:block>
 								</div>
 							</form>
 						</div>

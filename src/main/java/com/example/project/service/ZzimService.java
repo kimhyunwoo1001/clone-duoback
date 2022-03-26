@@ -3,9 +3,12 @@ package com.example.project.service;
 import com.example.project.model.DTO.ZzimDTO;
 import com.example.project.model.entity.Goods;
 import com.example.project.model.entity.Zzim;
+import com.example.project.repository.CouponRepository;
 import com.example.project.repository.ZzimRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +31,10 @@ public class ZzimService {
                 .build();
         Zzim newZzim = zzimRepository.save(zzim);
         return newZzim;
+    }
+
+    public Page<Zzim> zzim_list(Long userIdx , Pageable pageable){
+        return zzimRepository.findAllByUserIdx(userIdx , pageable);
     }
 
     @Transactional
