@@ -1709,7 +1709,7 @@ $(function(){
 	<div class="title_container title_mp">
 		<h2><span designElement="text" textIndex="1"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9teXBhZ2UvbXlpbmZvLmh0bWw=" >회원정보수정</span></h2>
 	</div>
-	<form name="registFrm" id="registFrm" target="actionFrame" >
+	<form name="registFrm1" id="registFrm" target="actionFrame" >
 	<input type="hidden" name="seq" value="523145"/>
 	<input type="hidden" name="rute" value="none"/>
 		<!-- ------- 회원가입 입력폼. 파일위치 : [스킨폴더]/member/register_form.html ------- -->
@@ -1987,11 +1987,50 @@ $(function(){
 
 		<div class="goods_rv_custom">
 			<div class="board_detail_btns2">
-				<button type="button" class="btn_resp size_c" onclick="document.registFrm.reset();">취소</button>
-				<button type="submit" id="btn-save" class="data_save_btn btn_resp size_c color2">정보수정</button>
+				<button type="button" class="btn_resp size_c" onclick="document.registFrm1.reset();">취소</button>
+				<button type="button" id="btn-save" class="data_save_btn btn_resp size_c color2" onclick="checkpw()">정보수정</button>
 			</div>
 		</div>
 	</form>
+<!--	<ul class="tr">-->
+<!--		<li class="th Pl5 Pr5">현재 비밀번호</li>-->
+<!--		<li class="td">-->
+<!--			<input type='password' name='old_password' value='' class='passwordField eng_only Wmax' />-->
+<!--		</li>-->
+<!--	</ul>-->
+<!--	<ul class="tr">-->
+<!--		<li class="th Pl5 Pr5">신규 비밀번호</li>-->
+<!--		<li class="td">-->
+<!--			<input type='password' name='new_password' value='' class='passwordField eng_only Wmax' />-->
+<!--		</li>-->
+<!--	</ul>-->
+<!--	<ul class="tr">-->
+<!--		<li class="th Pl5 Pr5">신규 비밀번호 <span class="Dib">확인</span></li>-->
+<!--		<li class="td">-->
+<!--			<input type='password' name='re_new_password' value='' class='passwordField eng_only Wmax' />-->
+<!--		</li>-->
+<!--	</ul>-->
+<!--	<script th:inline="javascript">-->
+<!--		function checkpw() {-->
+<!--			let registFrm1 = document.registFrm1;-->
+<!--			let pw = [[${session.user.getUserUserpw}]];-->
+
+<!--			let old_password = document.getElementsByName('old_password').values();-->
+<!--			let new_password = document.getElementsByName('new_password').values();-->
+<!--			let re_new_password = document.getElementsByName('re_new_password').values();-->
+<!--			if (pw != old_password){-->
+<!--				alert('기존 비밀번호가 일치하지 않습니다.');-->
+<!--				return false;-->
+<!--			}-->
+<!--			if (new_password != re_new_password) {-->
+<!--				alert('변경할 비밀번호가 일치하지않습니다.');-->
+<!--				return false;-->
+<!--			} else {-->
+<!--				alert('회원정보가 변경되었습니다.');-->
+<!--				registFrm1.submit();-->
+<!--			}-->
+<!--		}-->
+<!--	</script>-->
 	<!-- //본문내용 끝 -->
 </div>
 
@@ -2197,50 +2236,7 @@ var apple_authurl	= '';
 </script>
 
 
-<!-- bigin profile tracking start -->
-<script>
-	function getBiginUserUserEditProfile() {
-      try {
-        var biginUser = {};
-        var bgJoinForm = document.registFrm;
-    
-        biginUser.id = '123';
-        biginUser.email = bgJoinForm['email[0]'].value && bgJoinForm['email[1]'].value
-                ? bgJoinForm['email[0]'].value + '@' + bgJoinForm['email[1]'].value : '';
-        biginUser.name = bgJoinForm.user_name.value;
-        biginUser.emailAgree = bgJoinForm.mailing.checked;
-        biginUser.phoneAgree = bgJoinForm.sms.checked;
-        
-        var bgPhoneNumberList = [];
-        bgJoinForm['cellphone[]'].forEach(function(element) {
-          bgPhoneNumberList.push(element.value);
-        });
-        if(bgPhoneNumberList.length === 3) {
-          biginUser.phoneCell = bgPhoneNumberList.join('-');
-        }
-        
-        if(bgJoinForm.address_street.value && bgJoinForm.address_detail.value) {
-          biginUser.address = bgJoinForm.address_street.value + "" + bgJoinForm.address_detail.value
-        }
-        
-        biginUser.gender = bgJoinForm.sex.value;
-        
-        return biginUser;
-      } catch (e) {
-        return undefined;
-      }
-	}
 
-	window.addEventListener('load', function () {
-      $('button.data_save_btn[type="submit"]').on('click' ,function() {
-        var biginUser = getBiginUserUserEditProfile();
-        if (window.bigin && window.bigin.user && biginUser && biginUser.id && biginUser.email && biginUser.name) {
-          window.bigin.user('profile', biginUser);
-        }
-      });
-	});
-</script>
-<!-- bigin profile tracking end -->
 
 </div>
     </div>
@@ -2663,7 +2659,27 @@ function logoutfb_process(){
 	let index = {
 		init: function() {
 			$("#btn-save").on("click", () => { //this를 바인딩하기 위해 화샬표 함수 사용
-				this.save();
+				let registFrm1 = document.registFrm1;
+				let pw = [[${session.user.getUserUserpw}]];
+
+				let old_password = document.getElementsByName('old_password')[0].value;
+				let new_password = document.getElementsByName('new_password')[0].value;
+				let re_new_password = document.getElementsByName('re_new_password')[0].value;
+				if (pw != old_password){
+					alert('기존 비밀번호가 일치하지 않습니다.');
+					return false;
+				}
+				if (new_password != re_new_password) {
+					alert('변경할 비밀번호가 일치하지않습니다.');
+					return false;
+				} else {
+					alert('회원정보가 변경되었습니다.');
+					alert('다시 로그인 해주세요.');
+					registFrm1.submit();
+					this.save();
+
+				}
+
 			});
 		},
 		save: function() {
@@ -2691,8 +2707,8 @@ function logoutfb_process(){
 				contentType: "application/json; charset=utf-8", //MIME 타입
 				dataType: "json" //응답 데이터
 			}).done(function(res) {
-				alert("수정 성공");
-				location.href = "/www.duoback.co.kr/mypage_myinfo";
+
+				location.href = "/www.duoback.co.kr/logout";
 			}).fail(function(err) {
 				alert(JSON.stringify(err));
 			});
