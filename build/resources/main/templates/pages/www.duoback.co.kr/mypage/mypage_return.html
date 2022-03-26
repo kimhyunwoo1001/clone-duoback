@@ -1740,6 +1740,7 @@ $(function(){
 - 파일위치 : [스킨폴더]/mypage/return_catalog.html
 ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <style>
+	
 	.my_coupon .board_arc li.coup_status .used_date{display:block;margin-top:4px;}
 	@media all and (max-width: 767px) {
 		.mypage .subpage_lnb .title1 {display:none;}
@@ -1855,7 +1856,7 @@ $(function(){
 			</style>
 			<div style="text-align: center" class="paging">
 				<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
-					<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_cancle(page = ${page - 1})}" th:text="${page}"></a>
+					<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/mypage_return(page = ${page - 1})}" th:text="${page}"></a>
 					<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
 				</th:block>
 			</div>

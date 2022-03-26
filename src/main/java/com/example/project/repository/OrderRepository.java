@@ -1,12 +1,11 @@
 package com.example.project.repository;
 
-import com.example.project.model.entity.Cart;
+import com.example.project.model.DTO.OrderDTO;
 import com.example.project.model.entity.Order;
 import com.example.project.model.enumclass.OrderStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,6 +19,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     Optional<Order> findTopByUserIdxOrderByOrderRegdateDesc(Long userIdx);
     Page<Order> findAllByUserIdx(Long userIdx , Pageable pageable);
     List<Order> findAllByUserIdxAndOrderStatus(Long userIdx, OrderStatus orderStatus);
-    Page<Order> findAllByUserIdxAndOrderStatusAndOrderStatusAndOrderStatusAndOrderStatus(Long userIdx, OrderStatus returned, OrderStatus exchanged, OrderStatus exchanging, OrderStatus returning, Pageable pageable);
+    Page<Order> findAllByUserIdxAndOrderStatusOrOrderStatusOrOrderStatusOrOrderStatus( Long userIdx, OrderStatus orderStatus, OrderStatus orderStatus1, OrderStatus orderStatus2, OrderStatus orderStatus3, Pageable pageable);
+    Page<Order> findAllByUserIdxAndOrderStatusIn(Long userIdx , List<OrderDTO> orderStatuses , Pageable pageable);
+
 
 }

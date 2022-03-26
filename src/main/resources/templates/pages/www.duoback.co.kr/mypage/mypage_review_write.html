@@ -2170,52 +2170,6 @@
         </script>
         <!-- End Script for IFDO -->
         <!-- Start Script for channeltalk -->
-        <script type='text/javascript'>
-            (function() {
-                var w = window;
-                if (w.ChannelIO) {
-                    return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
-                }
-                var ch = function() {
-                    ch.c(arguments);
-                };
-                ch.q = [];
-                ch.c = function(args) {
-                    ch.q.push(args);
-                };
-                w.ChannelIO = ch;
-                function l() {
-                    if (w.ChannelIOInitialized) {
-                        return;
-                    }
-                    w.ChannelIOInitialized = true;
-                    var s = document.createElement('script');
-                    s.type = 'text/javascript';
-                    s.async = true;
-                    s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-                    s.charset = 'UTF-8';
-                    var x = document.getElementsByTagName('script')[0];
-                    x.parentNode.insertBefore(s, x);
-                }
-                if (document.readyState === 'complete') {
-                    l();
-                } else if (window.attachEvent) {
-                    window.attachEvent('onload', l);
-                } else {
-                    window.addEventListener('DOMContentLoaded', l, false);
-                    window.addEventListener('load', l, false);
-                }
-            })();
-            if (typeof ChannelIO != 'undefined') {
-                ChannelIO('boot', {
-                    'pluginKey':'2f5b5cd3-a8f9-44ca-a69b-a913e737bd4c',
-                    'memberId':  'ㅇㅇㅇ' ,
-                    'unsubscribed': true ,
-
-                    'profile': {"name":null,"email":null,"mobileNumber":null,"groupName":"일반","availableMileage":0,"totalDeposit":0,"cartCount":0,"cartPrice":0,"couponCount":0,"wishCount":0,"totalPurchaseAmount":0,"totalPurchaseCount":0,"memberType":"normal"}
-                });
-            }
-        </script>
         <!-- End Script for channeltalk --><div id="layout_footer" class="layout_footer">
         <!--  공지사항  최근글 start -->
         <div class="footer_a footer_notice">

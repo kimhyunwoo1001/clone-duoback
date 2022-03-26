@@ -1981,20 +1981,6 @@ $(function(){
 			<a id="btn_zoom_view" href="javascript:popup('zoom?no=386&popup=1',1017, document.body.clientHeight,'yes')">확대 보기</a>
 		</div>
 
-		<div class="pagination_wrap">
-			<div class="count">
-				<a href="javascript:void(0)" class="prev" title="이전"></a>
-				<div class="pagination_area">
-					<ul class="pagination">
-						<li><a href="javascript:void(0)"><img th:src="${goodsList.getData().gdImg}" width="188"/></a></li>
-						<li><a href="javascript:void(0)"><img src="https://www.duoback.co.kr/data/goods/1/2021/11/3150_tmp_9a6982773955974331c3a1e5559831fe1825view.jpg" width="188" onerror="this.src='/data/skin/responsive_ver1_default_gl_1/images/common/noimage_list.gif'" /></a></li>
-						<li><a href="javascript:void(0)"><img src="https://www.duoback.co.kr/data/goods/1/2021/11/3150_tmp_920faa9a11b09eab40ef49f51a747ea64028view.jpg" width="188" onerror="this.src='/data/skin/responsive_ver1_default_gl_1/images/common/noimage_list.gif'" /></a></li>
-						<li><a href="javascript:void(0)"><img src="https://www.duoback.co.kr/data/goods/1/2021/11/3150_tmp_673c027305b82d0b02b204306cd6fd795813view.jpg" width="188" onerror="this.src='/data/skin/responsive_ver1_default_gl_1/images/common/noimage_list.gif'" /></a></li>
-					</ul>
-				</div>
-				<a href="javascript:void(0)" class="next" title="다음"></a>
-			</div>
-		</div>
 		<script type="text/javascript">
 			//$("#goods_thumbs .pagination").hide().width('715').show();
 			var setGoodsThumbsPaginationScroll = function(){
@@ -2114,7 +2100,7 @@ $(function(){
 					<li class="deatil_price_area">
 						<div class="deatil_sale_rate">
 							<p class="inner">
-								<span class="num" th:utext="${goodsList.getData().gdSalepercent}"></span>%
+								<span class="num" th:text="${goodsList.getData().getGdSalepercent()}"></span>%
 							</p>
 							<a href="javascript:;" onClick="detail_contents_toggle(this,'goodsPrcBenefit')">?</a>
 						</div>
@@ -2652,7 +2638,7 @@ function getCouponDownlayerclose(){
 						
 				    <!--<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text">상품리뷰</span> </span></a>-->
 
-						<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text" textIndex="86"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy92aWV3Lmh0bWw=" >상품리뷰</span> <span class="crema-product-reviews-count"  th:text="${#lists.size(review)}">0</span></span></a>
+						<a href="#goods_contents_quick" id="goodsReviewLoad" onclick="open_information_tab(this,'goods_review');"><span><span designElement="text" textIndex="86"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy92aWV3Lmh0bWw=" >상품리뷰</span> <span class="crema-product-reviews-count"  th:text="${#lists.size(reviewsize)}">0</span></span></a>
 
 
 
@@ -2761,19 +2747,6 @@ function getCouponDownlayerclose(){
 			</div>
 			<!-- ~~~~~ 상품정보 ~~~~~ -->
 			<div class="ab_delivery">
-			<img th:src="@{/images/product/제품상세1.png}">
-			<img th:src="@{/images/product/제품상세2.jpg}">
-			<img th:src="@{/images/product/제품상세3.jpg}">
-			<img th:src="@{/images/product/제품상세4.jpg}">
-			<img th:src="@{/images/product/제품상세5.jpg}">
-			<img th:src="@{/images/product/제품상세6.jpg}">
-			<img th:src="@{/images/product/제품상세7.jpg}">
-			<img th:src="@{/images/product/제품상세8.jpg}">
-			<img th:src="@{/images/product/제품상세9.jpg}">
-			<img th:src="@{/images/product/제품상세10.jpg}">
-			<img th:src="@{/images/product/제품상세11.jpg}">
-			<img th:src="@{/images/product/제품상세12.jpg}">
-			<img th:src="@{/images/product/제품상세13.jpg}">
 			<img th:src="@{/images/product/제품상세14.jpg}">
 				<h3>상품 정보 제공 고시</h3>
 				<div class="ab_dbtb">
@@ -3203,7 +3176,24 @@ function getCouponDownlayerclose(){
 
 					</script></div>
 				<!--아이프레임 댓글창-->
+
+								<style>
+
+									.paging{
+										padding-top: 30px;
+										padding-right: 30PX;
+										font-weight: bold;
+									}
+
+								</style>
+								<div style="text-align: center" class="paging">
+									<th:block th:each="page : ${#numbers.sequence(startPage , endPage)}" class="paging1">
+										<strong th:if="${page == nowPage}" th:text="${page}" style="color: mediumseagreen"></strong>
+										<a th:if="${page != nowPage}" th:href="@{/www.duoback.co.kr/proinfo/{goodsN}(goodsN = ${goodsList.getData().getGdIdx()})#goods_contents_quick(page = ${page - 1})}" th:text="${page}"></a>
+									</th:block>
+								</div>
 			</div>
+
 		</div>
 
 		<!-- 상품문의 -->

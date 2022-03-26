@@ -108,6 +108,10 @@ public class ReviewService {
         return reviewDTOList;
     }
 
+    public Page<Review>  Review_list(Long gdIdx , Pageable pageable){
+        return reviewRepository.findAllByGoods_GdIdx(gdIdx, pageable);
+    }
+
     @Transactional
     public List<ReviewDTO> list(){
         List<Review> reviewList = reviewRepository.findAll();
