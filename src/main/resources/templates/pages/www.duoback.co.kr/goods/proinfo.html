@@ -2386,7 +2386,7 @@ function sbHolderClose(inst){
 				<span class="optionTitle hide">색상</span>
 				<select name="viewOptions[]" id="0" opttype="color">
 					<option value="">[필수]옵션을 선택해주세요</option>
-					<option th:value="${goodsList.getData().getGdOption()}" price="39000.00" consumer_price="54900.00" opt1="실버" opt2="" opt3="" opt4="" opt5="" infomation="" class="" seq="0">실버</option>
+					<option th:value="${goodsList.getData().getGdOption()}" price="39000.00" consumer_price="54900.00" th:text="${goodsList.getData().getGdOption()}">화이트</option>
 				</select>
 				<div class="viewOptionsspecialays hide color">
 					<span class="#fff"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #fff"  style="color:#fff;"  value="실버"  optvalue="실버" price="39000.00" opt1="실버" opt2="" opt3="" opt4="" opt5="" infomation=""  eqindex='0'><font style="background-color:#fff;">■</font></span></span>

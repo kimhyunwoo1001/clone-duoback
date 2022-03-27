@@ -1,4 +1,4 @@
-ㅋ<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
@@ -1717,7 +1717,6 @@
                     <div class="cart_menu ab_clear">
                         <ul class="cart_tab ab_clear">
                             <li class="active"><a href="#none">일반구매</a></li>
-                            <li><a href="#none">분할결제구매</a></li>
                         </ul>
                         <ul class="caft_step ab_clear">
                             <li class="active">장바구니</li>
@@ -1739,9 +1738,7 @@
 
                                         <!-- 전체 선택 -->
                                         <ul class="cart_contents_top clearbox">
-                                            <li class="aa">
-                                                <label class="checkbox_allselect"><input type="checkbox" class="btn_select_all" checked="checked"> <span class="txt">전체선택</span></label>
-                                            </li>
+
                                             <li class="bb hide">
                                                 <input type="button" class="btn_resp size_b btn_shipping_modify" value="배송변경">
                                             </li>
@@ -1750,7 +1747,6 @@
                                         <div class="cart_list">
                                             <ul class="shipping_group_list">
                                                 <li class="goods_delivery_info clearbox" id="sippingInfo19">
-                                                    <input type="checkbox" class="store_chk" value="19" checked="">
                                                     <ul class="detail">
                                                         <li class="silmul">
                                                             <span class="gray_01">본사</span>
@@ -1772,10 +1768,9 @@
                                                         <div class="cgd_top">
                                                             <label>
                                                                 <input type="hidden" name="ship_possible[72985]" value="Y">
-                                                                <input type="checkbox" name="cart_option_seq[]" value="72985" stat="Y" rel="3160" shipping_group_seq="19" checked="checked">
+                                                                <input type="checkbox" name="cchk"  th:value="${m.cartIdx}" stat="Y" rel="3160" shipping_group_seq="19" checked="checked">
                                                                 <span class="goods_name" th:text="'['+${m.getGoods().gdBrand} +']'+ ${m.getGoods().gdName}" ><span class="bPoint">[번개배송][디퓨저4종세트증정]</span> <span class="brand" >[DUOBACK]</span> 골드 D2500G-DAS(패브릭)</span>
                                                             </label>
-                                                            <button type="button" class="btn_thisitem_del" value="72985" title="상품 삭제">삭제 </button>
                                                         </div>
 
                                                         <div class="cgd_contents">
@@ -1792,7 +1787,7 @@
                                                                             <li><span class="opt_cate2" th:utext="${m.getGoods().gdOption}">색상</span> 블랙</li>
                                                                         </ul>
 
-                                                                        <div class="cart_quantity" th:text="${m.getGoods().gdPrice}+'원 )'"><span class="opt_cate opt_cate_qn" >수량</span> 1개 <span class="add_txt">(226,000원)</span></div>
+                                                                        <div class="cart_quantity" th:text="${#numbers.formatInteger(m.getGoods().gdSaleprice,1,'COMMA')}+'원'"><span class="opt_cate opt_cate_qn" >수량</span> 1개 <span class="add_txt">(226,000원)</span></div>
 
 
                                                                     </li>
@@ -1802,8 +1797,8 @@
                                                             <ul class="block block2" id="mobile_cart_sale_tr_72985">
                                                                 <li class="price_a">
                                                                     <span class="ptitle">상품금액</span>
-                                                                    <span class="strike" th:text="${m.getGoods().gdPrice}">313,900원</span>
-                                                                    <span th:text="${m.getGoods().gdSaleprice}"></span>
+                                                                    <span class="strike" th:text="${#numbers.formatInteger(m.getGoods().gdPrice,1,'COMMA')}">313,900원</span>
+                                                                    <span th:text="${#numbers.formatInteger(m.getGoods().gdSaleprice,1,'COMMA')}"></span>
                                                                 </li>
                                                                 <li class="price_b">
 											<span class="ptitle">
@@ -1848,12 +1843,11 @@
                                                                 </li>
                                                                 <li class="price_c">
                                                                     <span class="ptitle">할인적용금액</span>
-                                                                    <span class="total_p" id="option_suboption_price_sum_72985"><span class="num" th:text="${m.getGoods().gdPrice}+' 원'"></span></span>
+                                                                    <span class="total_p" id="option_suboption_price_sum_72985"><span class="num" th:text="${#numbers.formatInteger(m.getGoods().gdSaleprice,1,'COMMA')}+' 원'"></span></span>
                                                                 </li>
                                                             </ul>
 
                                                             <ul class="block block3">
-                                                                <li><button type="button" class="btn_option_modify btn_resp" id="72985">옵션/수량변경</button></li>
                                                                 <!--li><button type="button" class="btn_option_modify btn_resp" id="72985">옵션/수량변경</button></li-->
                                                                 <li><button type="button" class="btn_direct_buy btn_resp color2" value="72985"  th:onclick="|location.href='@{|/www.duoback.co.kr/orderdetail/${m.getGoods().gdIdx}|}'|">바로구매</button></li>
                                                             </ul>
@@ -1881,12 +1875,9 @@
 
                                     <!-- 버튼 그룹 -->
                                     <div class="selected_btn_groups">
-                                        <label class="checkbox_allselect"><input type="checkbox" class="btn_select_all" checked="checked"> <span class="txt" >전체선택</span></label>
-
                                         <div class="btns">
                                             <button type="button" class="btn_resp size_b color2 btn_selected_order">선택상품 주문하기</button>
-                                            <button type="button" class="btn_resp size_b color4 btn_select_wishlist">선택상품 찜</button>
-                                            <button type="button" class="btn_resp size_b gray_05 btn_select_del">선택상품 삭제</button>
+                                            <button type="button" class="btn_resp size_b gray_05 btn_select_del" onclick="boardDelete()">선택상품 삭제</button>
                                         </div>
                                     </div>
                                 </li>
@@ -1900,19 +1891,15 @@
                                     <div class="total_sum_price">
                                         <ul class="list list1">
                                             <li class="th">총 상품금액</li>
-                                            <li class="td"><span class="sum_price" id="totalGoodsPrice"><span class="num" th:text="${#aggregates.sum(cart.![goods.gdPrice])}"></span>원</span></li>
+                                            <li class="td"><span class="sum_price" id="totalGoodsPrice"><span class="num" th:text="${#aggregates.sum(cart.![goods.gdSaleprice])}"></span>원</span></li>
                                         </ul>
                                         <ul class="list list2">
                                             <li class="th">총 배송비</li>
                                             <li class="td"><span class="sum_price" id="shippingTotalPrice"><span id="total_shipping_price">0원</span></span></li>
                                         </ul>
-                                        <ul class="list list3">
-                                            <li class="th">총 할인</li>
-                                            <li class="td"><span class="sum_price" id="saleTotalPrice"><span id="mobile_total_sale" th:text="${#aggregates.sum(cart.![goods.gdSaleprice])}"></span>원</span></li>
-                                        </ul>
                                         <ul class="list list4 total">
                                             <li class="th">최종 결제금액</li>
-                                            <li class="td"><span class="sum_price settle_price" id="totalPrice"><span class="num" th:text="${#aggregates.sum(cart.![goods.gdPrice])}">226,000</span>원</span></li>
+                                            <li class="td"><span class="sum_price settle_price" id="totalPrice"><span class="num" th:text="${#aggregates.sum(cart.![goods.gdSaleprice])}">226,000</span>원</span></li>
                                         </ul>
                                     </div>
 
@@ -1921,7 +1908,7 @@
                                             <button type="button" class="btn_resp size_c btn_select_estimate">전체 견적서</button>
                                         </li>
                                         <li>
-                                            <input type="button" style="background: #00a79d; color: #fff;" class="btn_resp size_c color2 btn_selected_order" value="주문하기">
+                                            <input type="button" style="background: #00a79d; color: #fff;" class="btn_resp size_c color2 btn_selected_order" value="주문하기" th:onclick="|location.href='@{|/www.duoback.co.kr/orderdetail/325|}'|">
                                         </li>
                                     </ul>
                                     <div class="pdb10 center"></div>
@@ -2763,7 +2750,43 @@
         </div>
     </div>
 </div>
+<script th:inline="javascript">
+    //게시판 삭제하기
+    function boardDelete(){
 
+        var arr = [];
+
+        $("input:checkbox[name=cchk]:checked").each(function(){
+            arr.push($(this).val());
+        });
+
+        console.log(arr);
+
+        if(arr == ""){
+            alert("삭제할 항목을 선택해주세요.");
+            return false;
+        }
+
+        var confirmAlert = confirm('정말로 삭제하시겠습니까?');
+        if(confirmAlert){
+
+            $.ajax({
+                type : 'POST'
+                ,url : "/cart/deleteCart/delete"
+                ,dataType : 'json'
+                ,data : JSON.stringify(arr)
+                ,contentType: 'application/json'
+                ,success : function(result) {
+                    alert("장바구니 상품이 정상적으로 삭제되었습니다.");
+                    location.href="/www.duoback.co.kr/cart";
+                },
+                error: function(request, status, error) {
+
+                }
+            })
+        }
+    }
+</script>
 <!-- www.duoback.co.kr/order/cart , Sun, 06 Feb 2022 12:44:56 GMT -->
 </html>
 <!-- ================= #HTML_FOOTER :: END. 파일위치 : _modules/common/html_footer.html ================= -->

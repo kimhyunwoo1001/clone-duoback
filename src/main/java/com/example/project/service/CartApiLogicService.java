@@ -92,6 +92,13 @@ public class CartApiLogicService  {
     public void deleteAll(Long userIdx){
         cartRepository.deleteAllByUserIdx(userIdx);
     }
+
+    public void deleteBoard(List<String> arr){
+        for(int i =0; i< arr.size(); i++){
+            String id = arr.get(i);
+            cartRepository.deleteById((Long.valueOf(id)));
+        }
+    }
 }
 
 

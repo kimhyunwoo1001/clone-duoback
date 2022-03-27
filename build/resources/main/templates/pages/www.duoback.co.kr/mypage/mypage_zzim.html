@@ -1742,12 +1742,12 @@ $(function(){
 						<a th:onclick=""><div class="name" th:text="${m.goods.getGdName()}"></div></a>
 						<!-- <div class="option"><span>색상 : 라이트우드</span><span>다리색상 : 화이트</span></div> -->
 						<div class="price">
-							<div class="consumer_price"  th:text="${m.goods.getGdPrice()}"></div>
-							<div class="sale_price" th:text="${m.goods.getGdSaleprice ()}"></div>
+							<div class="consumer_price"  th:text="${#numbers.formatInteger(m.goods.getGdPrice(),1,'COMMA')}"></div>
+							<div class="sale_price" th:text="${#numbers.formatInteger(m.goods.getGdSaleprice(),1,'COMMA')}"></div>
 						</div>
 					</div>
-					<div class="consumer_price" th:text="${m.getGoods().getGdPrice()}+' 원'"><span class="prc_title">상품금액 : </span>236,200원</div>
-					<div class="sale_price" th:text="${m.goods.getGdSaleprice ()}+' 원'"><span class="prc_title">할인금액 : </span>168,000원</div>
+					<div class="consumer_price" th:text="${#numbers.formatInteger(m.goods.getGdPrice(),1,'COMMA')}+' 원'"><span class="prc_title">상품금액 : </span>236,200원</div>
+					<div class="sale_price"th:text="${#numbers.formatInteger(m.goods.getGdSaleprice(),1,'COMMA')}+' 원'"><span class="prc_title">할인금액 : </span>168,000원</div>
 					<div class="cart">
 			
 						<button type="button" name="cart" id="wishcart_1925" class="btn_resp wishcart">장바구니 추가</button>

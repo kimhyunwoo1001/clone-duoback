@@ -40,4 +40,10 @@ public class CartController {
     public void deleteAll(@PathVariable Long userIdx){
         cartApiLogicService.deleteAll(userIdx);
     }
+
+    @PostMapping("/deleteCart/delete")
+    public List<String> deleteSubmit(@RequestBody List<String> arr){
+        cartApiLogicService.deleteBoard(arr);
+        return arr;
+    }
 }

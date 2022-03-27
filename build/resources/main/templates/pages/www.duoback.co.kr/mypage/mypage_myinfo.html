@@ -1761,9 +1761,9 @@ $(function(){
 					<input type="tel"  id="cellphone2" name="cellphone[]" th:value="${#strings.substring(user.getData().getUserHp(),3,7)}" class="size_phone" style="width:70px;" maxlength="4"  /> -
 					<input type="tel"  id="cellphone3" name="cellphone[]" th:value="${#strings.substring(user.getData().getUserHp(),7,11)}" class="size_phone" style="width:70px;" maxlength="4"  />
 					<!-- <button type="button" class="btn_resp btn_find_zip" onclick=""><span designElement="text">변경</span></button> -->
-					<div class="agree_noti">
-						<label><input type="checkbox" name="sms" value="Y" /> <span designElement="text" textIndex="18"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s" >정보/이벤트/무상3년 A/S서비스에 대한 SMS/전화 수신에 동의합니다.</span></label>
-					</div>
+<!--					<div class="agree_noti">-->
+<!--						<label><input type="checkbox" name="sms" value="Y" /> <span designElement="text" textIndex="18"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s" >정보/이벤트/무상3년 A/S서비스에 대한 SMS/전화 수신에 동의합니다.</span></label>-->
+<!--					</div>-->
 					<p class="Pt10 desc" designElement="text" textIndex="19"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s"  style="display:none;">SMS 수신에 동의하시면 여러가지 할인혜택과 각종 이벤트 정보를 받아보실 수 있습니다.<br />회원가입관련, 주문배송관련 등의 SMS는 수신동의와 상관없이 구매 회원에게 발송됩니다.<br /></p>
 				</li>
 			</ul>
@@ -1788,9 +1788,9 @@ $(function(){
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="hotmail.com">hotmail.com</option>
 					</select>
-					<div class="agree_noti">
-						<label><input type="checkbox" name="mailing" value="Y" /> <span designElement="text" textIndex="21"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s" >정보/이벤트/무상3년 A/S서비스에 대한 메일 수신에 동의합니다.</span></label>
-					</div>
+<!--					<div class="agree_noti">-->
+<!--						<label><input type="checkbox" name="mailing" value="Y" /> <span designElement="text" textIndex="21"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s" >정보/이벤트/무상3년 A/S서비스에 대한 메일 수신에 동의합니다.</span></label>-->
+<!--					</div>-->
 					<p class="Pt10 desc" designElement="text" textIndex="22"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9tZW1iZXIvcmVnaXN0ZXJfZm9ybS5odG1s"  style="display:none;">이메일 수신에 동의하시면 여러가지 할인혜택과 각종 이벤트 정보를 받아보실 수 있습니다.<br />회원가입관련, 주문배송관련 등의 메일은 수신동의와 상관없이 모든 회원에게 발송됩니다.<br /></p>
 				</li>
 			</ul>
@@ -1932,52 +1932,6 @@ $(function(){
 	}
 </script>
 		<!-- ------- //회원가입 입력폼 ------- -->
-
-		<div class="resp_join_table pt0">
-			<ul>
-				<li class="th">SNS연동<div class="sb_th">계정을 연결할 수 <span>있습니다.</span></div></li>
-				<li class="td">
-					<ul class="member_sns_list">
-						<li class="kakao">
-							<div class="sns_icon_wrap">
-								<div class="sns_icons">
-									<!--<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_kakao_off.png" class="sns_icon  sns-login-button-mbconnect-direct hand " snstype="kakao" alt="카카오 아이디 사용하기"  title="카카오 아이디 사용하기"  />-->
-									<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_kakao.png" class="sns_icon  sns-login-button-mbconnect-direct hand " snstype="kakao" alt="카카오 아이디 사용하기"  title="카카오 아이디 사용하기"  />
-								</div>
-								<div class="sns_title">
-									카카오
-								</div>
-							</div>
-							<!--  -->
-						</li>
-						<li class="naver">
-							<div class="sns_icon_wrap">
-								<div class="sns_icons">
-									<!--<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_naver_off.png" class="sns_icon  sns-login-button-mbconnect-direct hand " snstype="naver" alt="네이버 아이디 사용하기"  title="네이버 아이디 사용하기"  />-->
-									<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_naver.png" class="sns_icon  sns-login-button-mbconnect-direct hand " snstype="naver" alt="네이버 아이디 사용하기"  title="네이버 아이디 사용하기"  />
-								</div>
-								<div class="sns_title">
-									네이버
-								</div>
-							</div>
-							<!--  -->
-						</li>
-						<li class="facebook">
-							<div class="sns_icon_wrap">
-								<div class="sns_icons">
-									<!--<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_facebook_off.png" class="sns_icon  fb-login-button-mbconnect-direct hand " snstype="facebook" alt="페이스북 아이디 사용하기"  title="페이스북 아이디 사용하기"  />-->
-									<img src="/data/skin/responsive_ver1_default_gl_1/images/design/sns_icon_facebook.png" class="sns_icon  fb-login-button-mbconnect-direct hand " snstype="facebook" alt="페이스북 아이디 사용하기"  title="페이스북 아이디 사용하기"  />
-								</div>
-								<div class="sns_title">
-									페이스북
-								</div>
-							</div>
-							<!--  -->
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 
 		<ul class="my_info_noti">
 			<li>입력하시는 정보 중 <span>*항목</span>은 필수정보이며, <span>*</span>가 없는 선택 입력 정보는 필수 입력사항이 아닙니다.</li>
