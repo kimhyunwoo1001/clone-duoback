@@ -156,10 +156,10 @@
     </script>
 
 
-    <script>
-        var REQURL = 'indexffe2.html?id=notice';
-        var WINDOWWIDTH = window.innerWidth;
-    </script>
+<!--    <script>-->
+<!--        var REQURL = 'indexffe2.html?id=notice';-->
+<!--        var WINDOWWIDTH = window.innerWidth;-->
+<!--    </script>-->
 
 
     <style type="text/css">
@@ -1900,7 +1900,7 @@
             <script type="text/javascript">
                 //<![CDATA[
                 var board_id = 'notice';
-                var boardlistsurl = 'indexffe2.html?id=notice';
+                // var boardlistsurl = 'indexffe2.html?id=notice';
                 var boardwriteurl = 'writeffe2.html?id=notice';
                 var boardviewurl = 'view5ec4.html?id=notice&amp;seq=';
                 var boardmodifyurl = 'write5ec4.html?id=notice&amp;seq=';
@@ -4039,7 +4039,7 @@ major-latin; mso-fareast-theme-font:major-latin;
 				<span class="hand boad_view_btn" viewlink="/www.duoback.co.kr/board/viewe3f8.html" viewtype="page"
                       pagetype="" board_seq="69952" board_id="notice">
 					<a th:onclick="|location.href='@{|/www.duoback.co.kr/viewe3f8/${m.getNtIdx()}|}'|"><div
-                            th:text="${m.ntTitle}" style="text-align: center"></div></a>
+                            th:text="${m.ntTitle}" th:onclick="buy([[${m.ntIdx}]])" style="text-align: center"></div></a>
 					 <img src="/admin/skin/default/images/board/icon/icon_hot.gif" title="hot">
 				</span>
                                     </li>
@@ -4135,37 +4135,37 @@ major-latin; mso-fareast-theme-font:major-latin;
             </div>
 
 
-            <script type="text/javascript">
-                function getAuthLogin() {
-                    var request_uri = "indexffe2.html?id=notice";
-                    if ("" && "") request_uri = "/goods/view?no=";
-                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?
-                    openDialogConfirm(getAlert('et362'), '400', '155', function () {
-                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);
-                    }, function () {
-                    });
-                }
+<!--            <script type="text/javascript">-->
+<!--                function getAuthLogin() {-->
+<!--                    var request_uri = "indexffe2.html?id=notice";-->
+<!--                    if ("" && "") request_uri = "/goods/view?no=";-->
+<!--                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?-->
+<!--                    openDialogConfirm(getAlert('et362'), '400', '155', function () {-->
+<!--                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);-->
+<!--                    }, function () {-->
+<!--                    });-->
+<!--                }-->
 
-                function getLogin() {
-                    var request_uri = "indexffe2.html?id=notice";
-                    if ("" && "") request_uri = "/goods/view?no=";
-                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?
-                    openDialogConfirm(getAlert('et362'), '400', '155', function () {
-                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);
-                    }, function () {
-                    });
-                }
+<!--                function getLogin() {-->
+<!--                    var request_uri = "indexffe2.html?id=notice";-->
+<!--                    if ("" && "") request_uri = "/goods/view?no=";-->
+<!--                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?-->
+<!--                    openDialogConfirm(getAlert('et362'), '400', '155', function () {-->
+<!--                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);-->
+<!--                    }, function () {-->
+<!--                    });-->
+<!--                }-->
 
-                function getMbLogin() {
-                    var request_uri = "indexffe2.html?id=notice";
-                    if ("" && "") request_uri = "/goods/view?no=";
-                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?
-                    openDialogConfirm(getAlert('et362'), '400', '155', function () {
-                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);
-                    }, function () {
-                    });
-                }
-            </script>
+<!--                function getMbLogin() {-->
+<!--                    var request_uri = "indexffe2.html?id=notice";-->
+<!--                    if ("" && "") request_uri = "/goods/view?no=";-->
+<!--                    //이용하시려면 로그인이 필요합니다!<br/>로그인하시겠습니까?-->
+<!--                    openDialogConfirm(getAlert('et362'), '400', '155', function () {-->
+<!--                        top.location.href = "/member/login?return_url=" + encodeURIComponent(request_uri);-->
+<!--                    }, function () {-->
+<!--                    });-->
+<!--                }-->
+<!--            </script>-->
             <!-- ++++++++++++++++++++++++++++++++++ 게시판 List 레이아웃 템플릿 :: END ++++++++++++++++++++++++++++++++++ -->
             <!-- ================= 파트 페이지들 :: END. ================= -->
         </div>
@@ -4507,6 +4507,27 @@ major-latin; mso-fareast-theme-font:major-latin;
     // STEP 4. 변수에 세팅된 각종 정보 + 전환정보를 (네이버의) 웹로그수집서버에 전송. 전송하는 method이므로 항상 STEP 1, 2, 3 보다
     //나중에 있어야 함. (변수 세팅 등이 되지 않은 상황에서 먼저 전송하면 웹로그 수집에 오류가 발생함.)
     wcs_do(_nasa);
+</script>
+
+<script th:inline="javascript">
+
+    //주문 등록
+    function buy(m){
+        //step2. 게시판 등록
+        let ntidx = m
+        $.ajax({
+            type : 'POST'
+            ,url : "/notice/hit/"+ntidx
+            ,dataType : 'json'
+            ,contentType: 'application/json'
+            ,success : function(result) {
+                console.log("hit 완료.");
+            },
+            error: function(request, status, error) {
+
+            }
+        })
+    }
 </script>
 </body>
 

@@ -72,4 +72,11 @@ public class RecentService {
         recentRepository.deleteAllByUserIdx(userIdx);
     }
 
+    @Transactional
+    public void deleteBoard(List<String> arr){
+        for(int i =0; i< arr.size(); i++){
+            String id = arr.get(i);
+            recentRepository.deleteById((Long.valueOf(id)));
+        }
+    }
 }

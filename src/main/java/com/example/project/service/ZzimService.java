@@ -68,4 +68,11 @@ public class ZzimService {
         zzimRepository.deleteAllByUserIdx(userIdx);
     }
 
+    @Transactional
+    public void deleteBoard(List<String> arr){
+        for(int i =0; i< arr.size(); i++){
+            String id = arr.get(i);
+            zzimRepository.deleteById((Long.valueOf(id)));
+        }
+    }
 }

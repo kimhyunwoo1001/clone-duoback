@@ -1478,13 +1478,12 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 									<li class="wish_name">상품정보</li>
 									<li class="consumer_price">판매가</li>
 									<li class="sale_price">할인가</li>
-									<li class="cart">장바구니</li>
 								</ul>
 								<div class="recent_wrap wish_wrap">
 
 									<ul id="recentList" class="recent_list ab_wish_list" >
 										<li th:each="m : ${recentList}">
-											<div class="chk_box"><label><input type="checkbox" name="goods_seq[]" value="205"></label></div>
+											<div class="chk_box"><label><input type="checkbox" name="cchk" th:value="${m.getRcIdx()}"></label></div>
 											<div class="img_area"><a th:href="@{/www.duoback.co.kr/goods/proinfo/{itemId}(itemId = ${m.goods.gdIdx})}"><img th:src="${m.goods.gdImg}"></a></div>
 											<div class="wish_name">
 												<div class="brand" th:text="${m.goods.gdBrand}">[본사]</div>
@@ -1497,9 +1496,7 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 											</div>
 											<div class="consumer_price"><span class="prc_title" th:text="${m.goods.gdPrice}+'원'" >상품금액 : </span>325,000원</div>
 											<div class="sale_price"><span class="prc_title" th:text="${m.goods.gdSaleprice}+'원'">할인금액 : </span>222,300원</div>
-											<div class="cart">
-												<button type="button" name="cart" id="goodscart_205" class="btn_resp wishcart">장바구니 추가</button>
-											</div>
+
 											<!--<button type="button" class="btn_resp size_a color5 btn_thisitem_del" value="205">삭제</button>-->
 										</li>
 									</ul>
@@ -1507,8 +1504,8 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 
 								<div class="btn_area recent_allselect_area">
 									<div>
-										<button type="button" class="btn_ch_del">전체 상품 삭제</button>
-										<button type="button" class="btn_thisitem_del">선택한 상품 삭제</button>
+<!--										<button type="button" class="btn_ch_del">전체 상품 삭제</button>-->
+										<button type="button" class="btn_thisitem_del" onclick="boardDelete()">선택한 상품 삭제</button>
 									</div>
 								</div>
 
@@ -2087,7 +2084,43 @@ window.Firstmall.Config = {"Environment":{"MobileMode":true,"SetMode":null,"Lang
 				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<script th:inline="javascript">
+	//게시판 삭제하기
+	function boardDelete(){
 
+		var arr = [];
+
+		$("input:checkbox[name=cchk]:checked").each(function(){
+			arr.push($(this).val());
+		});
+
+		console.log(arr);
+
+		if(arr == ""){
+			alert("삭제할 항목을 선택해주세요.");
+			return false;
+		}
+
+		var confirmAlert = confirm('정말로 삭제하시겠습니까?');
+		if(confirmAlert){
+
+			$.ajax({
+				type : 'POST'
+				,url : "/recent/deleteRecent/delete"
+				,dataType : 'json'
+				,data : JSON.stringify(arr)
+				,contentType: 'application/json'
+				,success : function(result) {
+					alert("최근 본 상품이 정상적으로 삭제되었습니다.");
+					location.href="/www.duoback.co.kr/mypage_recentGoods";
+				},
+				error: function(request, status, error) {
+
+				}
+			})
+		}
+	}
+</script>
 <!-- ================= #HTML_FOOTER :: END. 파일위치 : _modules/common/html_footer.html ================= --><div id="_NBCHATLAYOUT"><span><div id="_NBCBOX"><iframe id="_NB_IFRAMECHAT" allowfullscreen=""><head></head><body></body></iframe></div></span><div id="_NBCHATLABEL"><span id="_NBCHATTXT"></span></div><div id="_NBCHATICO"><span class="S1" id="_NBCHATIMG"><img class="_NBCHATOPENIMG active"><img src="//img.ifdo.co.kr/img/ic_chat_close_b.png" class="_NBCHATCLOSEIMG"></span><span id="_NBNCNT"></span></div><div id="_NB_NPUSH"></div><div id="_NB_EVENT"></div><div id="_NB_LPOP"></div><div id="_NB_NOTICE"></div><div id="_NB_TICKER"></div><div id="_NB_AUTOMSG_CONTAINER"><div id="_NB_AUTOMSG_MODAL"></div></div></div><script type="text/javascript" id="">window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date);gtag("config","UA-47864109-1");</script>
 
 <script type="text/javascript" id="">-1<google_tag_manager["GTM-MW6842V"].macro(7).indexOf("/goods/view")&&dataLayer.push({event:"detail",ecommerce:{detail:{actionField:{step:1},products:google_tag_manager["GTM-MW6842V"].macro(12)}}});-1<google_tag_manager["GTM-MW6842V"].macro(13).indexOf("/order/cart")&&dataLayer.push({event:"viewCart",ecommerce:{currencyCode:"KRW",add:{actionField:{step:2},products:google_tag_manager["GTM-MW6842V"].macro(18)}}});-1<google_tag_manager["GTM-MW6842V"].macro(19).indexOf("/order/settle")&&dataLayer.push({event:"checkout",ecommerce:{checkout:{actionField:{step:3,option:"direct"},products:google_tag_manager["GTM-MW6842V"].macro(24)}}});

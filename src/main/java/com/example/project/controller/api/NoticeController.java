@@ -49,4 +49,9 @@ public class NoticeController {
         model.addAttribute("noticeDTO",noticeDTO);
         return "board/detail.html";
     }
+
+    @PostMapping("/hit/{ntIdx}")
+    public void hit(@PathVariable Long ntIdx){
+        noticeService.hit(ntIdx);
+    }
 }

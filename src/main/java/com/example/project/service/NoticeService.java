@@ -40,7 +40,7 @@ public class NoticeService {
 
     public Page<Notice> boardlist_page(Pageable pageable){
 
-        return noticeRepository.findAll(pageable);
+        return noticeRepository.findAllByOrderByNtRegdateDesc(pageable);
     }
 
     // 리스트
@@ -124,5 +124,12 @@ public class NoticeService {
     }
 
 
+    @Transactional
+    public void hit(Long id){
+        Optional<Notice> notice = noticeRepository.findById(id);
 
+        notice.ifPresent(select -> {
+            select.setNtHit(notice.get().getNtHit()+1);
+        });
+    }
 }

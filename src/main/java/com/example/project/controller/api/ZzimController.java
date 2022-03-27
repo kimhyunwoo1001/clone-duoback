@@ -35,4 +35,10 @@ public class ZzimController {
     public void deleteAll(@PathVariable Long userIdx){
         zzimService.deleteAll(userIdx);
     }
+
+    @PostMapping("/deleteZzim/delete")
+    public List<String> deleteSubmit(@RequestBody List<String> arr){
+        zzimService.deleteBoard(arr);
+        return arr;
+    }
 }

@@ -36,5 +36,9 @@ public class RecentController {
         recentService.deleteAll(userIdx);
     }
 
-
+    @PostMapping("/deleteRecent/delete")
+    public List<String> deleteSubmit(@RequestBody List<String> arr){
+        recentService.deleteBoard(arr);
+        return arr;
+    }
 }

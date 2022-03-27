@@ -1730,12 +1730,11 @@ $(function(){
 			<li class="wish_name">상품정보</li>
 			<li class="consumer_price">판매가</li>
 			<li class="sale_price">할인가</li>
-			<li class="cart">장바구니</li>
 		</ul>
 		<div class="wish_wrap">
 			<ul id="wishList" class="wish_list ab_wish_list">
 								<li th:each="m : ${zzimList}">
-					<div class="chk_box"><label><input type="checkbox" name="wish_seq[]" value="1925"></label></div>
+					<div class="chk_box"><label><input type="checkbox" name="cchk" th:value="${m.getZzIdx()}"></label></div>
 					<div class="img_area"><a th:href="@{/www.duoback.co.kr/goods/proinfo/{itemId}(itemId=${m.goods.getGdIdx()})}"><img th:src="${m.goods.getGdImg()}"></a></div>
 					<div class="wish_name">
 						<div class="brand">[본사]</div>
@@ -1748,10 +1747,6 @@ $(function(){
 					</div>
 					<div class="consumer_price" th:text="${#numbers.formatInteger(m.goods.getGdPrice(),1,'COMMA')}+' 원'"><span class="prc_title">상품금액 : </span>236,200원</div>
 					<div class="sale_price"th:text="${#numbers.formatInteger(m.goods.getGdSaleprice(),1,'COMMA')}+' 원'"><span class="prc_title">할인금액 : </span>168,000원</div>
-					<div class="cart">
-			
-						<button type="button" name="cart" id="wishcart_1925" class="btn_resp wishcart">장바구니 추가</button>
-					</div>
 				</li>
 
 			</ul>
@@ -1774,8 +1769,7 @@ $(function(){
 		<div class="btn_area">
 			<!--button type="button" class="btn_ch_add">선택한 상품 장바구니 추가</button-->
 			<div>
-				<button type="button" class="btn_ch_del">전체 상품 삭제</button>
-				<button type="button" class="btn_select_del">선택한 상품 삭제</button>
+				<button type="button" class="btn_select_del" onclick="boardDelete()">선택한 상품 삭제</button>
 			</div>
 
 		</div>
@@ -2416,7 +2410,43 @@ function logoutfb_process(){
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW6842V"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script th:inline="javascript">
+	//게시판 삭제하기
+	function boardDelete(){
 
+		var arr = [];
+
+		$("input:checkbox[name=cchk]:checked").each(function(){
+			arr.push($(this).val());
+		});
+
+		console.log(arr);
+
+		if(arr == ""){
+			alert("삭제할 항목을 선택해주세요.");
+			return false;
+		}
+
+		var confirmAlert = confirm('정말로 삭제하시겠습니까?');
+		if(confirmAlert){
+
+			$.ajax({
+				type : 'POST'
+				,url : "/zzim/deleteZzim/delete"
+				,dataType : 'json'
+				,data : JSON.stringify(arr)
+				,contentType: 'application/json'
+				,success : function(result) {
+					alert("찜 상품이 정상적으로 삭제되었습니다.");
+					location.href="/www.duoback.co.kr/mypage_zzim";
+				},
+				error: function(request, status, error) {
+
+				}
+			})
+		}
+	}
+</script>
 
 
 
