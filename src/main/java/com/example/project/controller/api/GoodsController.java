@@ -105,8 +105,6 @@ public class GoodsController {
 //    }
 
 
-
-
     @GetMapping("/catalog9335")
     public String catalog9335() {
         return "pages/www.duoback.co.kr/goods/catalog9335";
