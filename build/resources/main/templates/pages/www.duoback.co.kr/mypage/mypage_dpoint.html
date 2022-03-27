@@ -1730,7 +1730,7 @@ $(function(){
 			<li class="date" th:text="${#temporals.format(m.dpRegdate , 'yyyy-MM-dd')}">22-01-20</li>
 			<li class="info" th:text="${m.dpContent}" style="text-align:center"></li>
 			<li class="plus" th:text="'+ '+${m.dpPp}+'원'" ></li>
-			<li class="expired"th:text="${m.dpEnddate}">
+			<li class="expired" th:text="${#temporals.format(m.dpEnddate , 'yyyy-MM-dd')}">
 -			</li>
 			<li class="minus">-</li>
 		</ul>

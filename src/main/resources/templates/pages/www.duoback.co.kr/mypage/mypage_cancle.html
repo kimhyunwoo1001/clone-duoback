@@ -1755,31 +1755,7 @@ $(function(){
         전체 <span class="pointnum">1</span>건
     </div>
     
-    <form name="orderSearchForm" id="orderSearchForm" method="get" action="refund_catalog">
-        <input type="hidden" name="step_type" value="">
-        <input type="hidden" name="sc_date" value="4">
-        <ul class="myorder_sort">
-            <li>
-                <div class="searchform">
-                    <input type="text" name="search_text" id="search_text" class="" placeholer="" title="환불번호, 상품명" placeholder="환불번호, 상품명" value="">
-                    <button type="submit" class="btn_resp size_b">검색</button>
-                </div>
-            </li>
-            <li class="list3">
-			<span id="directArea" class="direct_area" style="margin-left:0;">
-				<input type="text" name="sc_sdate" size="10" value="2022-01-20" class="sc-datepicker" readonly /> -
-				<input type="text" name="sc_edate" size="10" value="2022-02-20" class="sc-datepicker" readonly maxlength="10" />
 
-				<input type="button" class="btn_date" onclick="changeDateAction(-1)" value="오늘" style="margin-left:50px;" />
-				<input type="button" class="btn_date" onclick="changeDateAction(12)" value="3개월" />
-				<input type="button" class="btn_date" onclick="changeDateAction(24)" value="6개월" />
-				<input type="button" class="btn_date" onclick="changeDateAction(48)" value="1년" />
-				<input type="button" class="btn_date" onclick="changeDateAction(0)" value="전체" />
-				<button type="submit" class="btn_resp size_b" style="display:none;">검색</button>
-			</span>
-		</li>
-        </ul>
-    </form>
     <div class="my_table type02" id="RcList">
         <ul class="thead">
             <li class="buy_date">주문일자</li>
