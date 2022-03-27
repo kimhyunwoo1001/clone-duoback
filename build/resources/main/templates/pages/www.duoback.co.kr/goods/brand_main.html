@@ -555,7 +555,6 @@ background-color:#ffffff;}
 				<li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
 																					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
 						class="cart_cnt1">0</span></a></li>
-				<!------- 마이 페이지 가는 부분 로그인 없이 바로 가는걸로 페이지 수정 2/21 이종녕 -->
 				<li><a th:href="@{/www.duoback.co.kr/mypage_order}" designElement="text" textIndex="8"
 					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">마이페이지</a>
 				</li>
@@ -1464,62 +1463,6 @@ $(function(){
 </script>
 <!--메인배너 :: END -->
 <div class="brand_main_wrap">
-	<form id="brandFm" class="brand_search_area">
-		<fieldset>
-			<legend>Search Brand</legend>
-			<div class="resp_brand_search_form">
-				<span class="search_title" designElement="text" textIndex="2"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy9icmFuZF9tYWluLmh0bWw=" >Search Brand</span>
-				<input type="text" name="keyword" class="search_input" placeholder="브랜드 검색" />
-				<button type="submit" class="btn_resp">검색</button>
-			</div>
-			<div class="resp_brand_search_btns">
-				<ul>
-					<li><a href="javascript:void(0)" class="alphabet_btn all on" data-target="all"><span designElement="text" textIndex="3"  textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9nb29kcy9icmFuZF9tYWluLmh0bWw=" >전체</span></a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapYQ__">Aㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapYg__">Bㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapYw__">Cㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapZA__">Dㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapZQ__">Eㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapZg__">Fㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapZw__">Gㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapaA__">Hㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapaQ__">Iㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapag__">Jㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapaw__">Kㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapbA__">Lㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapbQ__">Mㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapbg__">Nㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapbw__">Oㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapcA__">Pㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapcQ__">Qㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapcg__">Rㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapcw__">Sㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapdA__">Tㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapdQ__">Uㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapdg__">Vㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapdw__">Wㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapeA__">Xㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapeQ__">Yㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrapeg__">Zㅏ</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44Sx">가</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44S0">나</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44S3">다</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44S5">라</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WB">마</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WC">바</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WF">사</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WH">아</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WI">자</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WK">차</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WL">카</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WM">타</a></li>
-					<li ><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WN">파</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap44WO">하</a></li>
-					<li class="hide"><a href="javascript:void(0)" class="alphabet_btn" data-target="wrap6riw7YOA">기타ㅏ</a></li>
-				</ul>
-			</div>
-		</fieldset>
-	</form>
 
 	<div class="resp_brand_main_list">
 			<ul class="brandwrap brand0012 wrap44S3">
