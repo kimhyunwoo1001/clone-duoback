@@ -119,14 +119,14 @@ public class UserLoginController  {
     //휴대폰 인증 서비스 메소드
     public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
 
-        String api_key = "AHQMIJPIVENTHAEKSX4QUWOCQLARCTHA"; //인증키
-        String api_secret = "NCS4OMC4FO9KSOGP"; //인증 PW
+        String api_key = "NCS4OMC4FO9KSOGP"; //인증키
+        String api_secret = "AHQMIJPIVENTHAEKSX4QUWOCQLARCTHA"; //인증 PW
         Message coolsms = new Message(api_key, api_secret);
 
         // 4 params(to, from, type, text) are mandatory. must be filled
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("to", phoneNumber);    // 수신전화번호
-        params.put("from", "01025679634");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+        params.put("from", "01064045886");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
         params.put("type", "SMS");
         params.put("text", "휴대폰인증 메시지 : 인증번호는" + "["+cerNum+"]" + "입니다.");
         params.put("app_version", "test app 1.2"); // application name and version

@@ -35,6 +35,9 @@ import java.util.List;
 public class GoodsController {
 
     @Autowired
+    private CartApiLogicService cartApiLogicService;
+
+    @Autowired
     private GoodsApiLogicService goodsApiLogicService;
 
     @Autowired
@@ -142,6 +145,7 @@ public class GoodsController {
         User user = (User)session.getAttribute("user");
         model.addAttribute("goodsList" , goodsApiLogicService.read(gdIdx));
         model.addAttribute("user" , userApiLogicService.read(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("reviewsize",reviewService.getReviewListGoods(gdIdx));
         model.addAttribute("nowPage" , nowPage);
         model.addAttribute("startPage" , startPage);
