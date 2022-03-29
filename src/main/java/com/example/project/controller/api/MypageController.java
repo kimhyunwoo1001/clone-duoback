@@ -228,7 +228,7 @@ public class MypageController {
     }
 
     @GetMapping("/mypage_review")
-    public String mypage_review(Model model , @PageableDefault(page = 0 , size = 5 , sort = "userIdx" , direction = Sort.Direction.DESC) Pageable pageable) {
+    public String mypage_review(Model model , @PageableDefault(page = 0 , size = 5 , sort = "userIdx" , direction = Sort.Direction.ASC) Pageable pageable) {
 
         if(session.getAttribute("userid")==null){
             return "pages/www.duoback.co.kr/member/login";
