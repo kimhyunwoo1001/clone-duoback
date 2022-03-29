@@ -555,7 +555,7 @@ background-color:#ffffff;}
 				<li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
 																					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
 						class="cart_cnt1">0</span></a></li>
-				<!------- 마이 페이지 가는 부분 로그인 없이 바로 가는걸로 페이지 수정 2/21 이종녕 -->
+
 				<li><a th:href="@{/www.duoback.co.kr/mypage_order}" designElement="text" textIndex="8"
 					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">마이페이지</a>
 				</li>
@@ -1457,7 +1457,6 @@ $(function(){
 			<div>셀프A/S <span>BEST 5</span></div><!-- mo노출 -->
 		</h4>
 		<div class="goods_list_best swiper-container" id="best-list">
-			<!-------- 이종녕 수정 부분 good_list_best 하단 부분 다 -->
 			<ul class="swiper-wrapper abClear">
     <li class="swiper-slide" th:each="m : ${goodsList}" th:if="${m.gdBrand == 'Dpoint'}">
         <div class="rankPro">
@@ -1504,8 +1503,6 @@ $(function(){
 
 
 </ul>
-
-<!---- 여기 까지 베스트 아래 부분 / 이종녕 -->
 		</div>
 		<script type="text/javascript">
 			$(function(){
@@ -1804,7 +1801,6 @@ function filterDisplay(){
 
 	<!-- ------- 상품 영역( data-displaytype : "lattice", "list" ), 파일위치 : [스킨폴더]/goods/search_list_template.html ------- -->
 	<div id="searchedItemDisplay" class="searched_item_display" data-displaytype="lattice">
-		<!--- 이종녕 상품수정 2-->
 		<ul class="ab_list_type">
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
 @@ goods_list_style1 @@
