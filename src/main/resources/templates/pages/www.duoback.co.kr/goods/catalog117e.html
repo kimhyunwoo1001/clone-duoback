@@ -554,7 +554,7 @@ background-color:#ffffff;}
 				<li><a th:href="@{/www.duoback.co.kr/mypage_zzim}">찜 리스트</a></li>
 				<li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
 																					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
-						class="cart_cnt1">0</span></a></li>
+						class="cart_cnt1" th:if="${session.user != null}" th:text="${#lists.size(cartList)}">0</span><span class="cart_cnt1" th:unless="${session.user != null}" >0</span></a></li>
 
 				<li><a th:href="@{/www.duoback.co.kr/mypage_order}" designElement="text" textIndex="8"
 					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">마이페이지</a>
@@ -1469,10 +1469,10 @@ $(function(){
 					</div>
 					<div class="proPrc">
 						<div class="sale">
-							<span class="strike" th:text="${#numbers.formatInteger(m.gdSaleprice, 1, 'COMMA')}+'원'"></span>
+							<span class="strike" th:text="${#numbers.formatInteger(m.gdPrice, 1, 'COMMA')}+'원'"></span>
 							<span class="per" th:text="${m.gdSalepercent}+'%'"></span>
 							<span class="salePrc">
-                            <strong th:text="${#numbers.formatInteger(m.gdPrice, 1, 'COMMA')}"></strong>원
+                            <strong th:text="${#numbers.formatInteger(m.gdSaleprice, 1, 'COMMA')}"></strong>원
 								<!-- <strong>184,000</strong><span>원</span> -->
 
 
@@ -1835,14 +1835,14 @@ function filterDisplay(){
 				<b class="num" th:text="${m.gdSalepercent}">36</b>%
 			</span>
 			<span class="consumer_price">
-				<span class="num" th:text="${#numbers.formatInteger(m.gdSaleprice, 1, 'COMMA')}">139,000</span>원
+				<span class="num" th:text="${#numbers.formatInteger(m.gdPrice, 1, 'COMMA')}">139,000</span>원
 			</span>
 			<div class="sale_wrap">
 				<span class="discount_rate box_late">
 					<b class="num" th:text="${m.gdSalepercent}">36</b>%
 				</span>
 				<span class="sale_price">
-					<b class="num" 소 th:text="${#numbers.formatInteger(m.gdPrice, 1, 'COMMA')}">90,000</b>원
+					<b class="num" 소 th:text="${#numbers.formatInteger(m.gdSaleprice, 1, 'COMMA')}">90,000</b>원
 				</span>
 			</div>
 		</li>

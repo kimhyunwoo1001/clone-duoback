@@ -955,10 +955,9 @@
 
                         </th:block>
                         <li><a th:href="@{/www.duoback.co.kr/mypage_zzim}">찜 리스트</a></li>
-                        <li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text"
-                                                                                               textIndex="7"
+                        <li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
                                                                                                textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
-                                class="cart_cnt1">0</span></a></li>
+                                class="cart_cnt1" th:if="${session.user != null}" th:text="${#lists.size(cartList)}">0</span><span class="cart_cnt1" th:unless="${session.user != null}" >0</span></a></li>
 
                         <li><a th:href="@{/www.duoback.co.kr/mypage_order}" designElement="text" textIndex="8"
                                textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">마이페이지</a>

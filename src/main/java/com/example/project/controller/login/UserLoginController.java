@@ -37,9 +37,12 @@ public class UserLoginController  {
 
     @Autowired
     UserRepository userRepository;
-    DpointRepository dpointRepository;
-    CouponRepository couponRepository;
 
+    @Autowired
+    DpointRepository dpointRepository;
+
+    @Autowired
+    CouponRepository couponRepository;
 
     @Autowired
     private HttpSession session;

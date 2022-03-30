@@ -36,6 +36,9 @@ public class MypageController {
     private  OrderService orderService;
 
     @Autowired
+    private CartApiLogicService cartApiLogicService;
+
+    @Autowired
     private UserApiLogicService userApiLogicService;
 
     @Autowired
@@ -71,6 +74,7 @@ public class MypageController {
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
         return "pages/www.duoback.co.kr/mypage/mypage_qna_write";
@@ -85,6 +89,7 @@ public class MypageController {
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("goods", goodsApiLogicService.read(gdIdx));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -108,6 +113,7 @@ public class MypageController {
 
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
 //        model.addAttribute("zzimlist" , zzimService.getZzimList(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -129,6 +135,7 @@ public class MypageController {
             model.addAttribute("startPage" , startPage);
             model.addAttribute("endPage" , endPage);
             model.addAttribute("orderList" , list);
+            model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
             model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
             model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
             model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
@@ -148,12 +155,14 @@ public class MypageController {
         int startPage = Math.max(nowPage - 4 ,1);
         int endPage = Math.min(nowPage + 5 , list.getTotalPages());
         model.addAttribute("nowPage" , nowPage);
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("startPage" , startPage);
         model.addAttribute("endPage" , endPage);
         model.addAttribute("cancelList" , list);
 
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
 //        model.addAttribute("cancelList",orderService.getCanceledList(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -181,6 +190,7 @@ public class MypageController {
 
         //        model.addAttribute("returnList" , orderService.getExchangeReturnList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -205,7 +215,8 @@ public class MypageController {
         model.addAttribute("startPage" , startPage);
         model.addAttribute("endPage" , endPage);
         model.addAttribute("coupon" , list);
-
+        model.addAttribute("coupon1", couponService.getCouponList(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
 //        model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
@@ -220,6 +231,7 @@ public class MypageController {
             return "pages/www.duoback.co.kr/member/login";
         }
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
@@ -243,7 +255,7 @@ public class MypageController {
         model.addAttribute("startPage" , startPage);
         model.addAttribute("endPage" , endPage);
         model.addAttribute("review" , list);
-
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
@@ -260,6 +272,7 @@ public class MypageController {
 
         User user = (User)session.getAttribute("user");
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -282,6 +295,7 @@ public class MypageController {
         model.addAttribute("startPage" , startPage);
         model.addAttribute("endPage" , endPage);
         model.addAttribute("recentList" , list);
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("recent" , recentService.getRecentList(user.getUserIdx()));
@@ -297,6 +311,7 @@ public class MypageController {
             return "pages/www.duoback.co.kr/member/login";
         }
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -312,6 +327,7 @@ public class MypageController {
         }
 
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("addressList",registAddressService.getAddressList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
@@ -327,6 +343,7 @@ public class MypageController {
             return "pages/www.duoback.co.kr/member/login";
         }
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("addressList",registAddressService.getAddressList(user.getUserIdx()));
         model.addAttribute("address",registAddressService.read(rgaIdx));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
@@ -354,6 +371,7 @@ public class MypageController {
             return "pages/www.duoback.co.kr/member/login";
         }
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));
         model.addAttribute("review",reviewService.getReviewList(user.getUserIdx()));
@@ -381,6 +399,7 @@ public class MypageController {
     public String update(@RequestBody RegistAddressDTO registAddressDTO, @PathVariable Long rgaIdx,Model model){
         registAddressService.update(registAddressDTO, rgaIdx);
         User user = (User)session.getAttribute("user");
+        model.addAttribute("cartList",cartApiLogicService.getCartList(user.getUserIdx()));
         model.addAttribute("user", userApiLogicService.read(user.getUserIdx()));
         model.addAttribute("dpoint", dpointService.getDpointList(user.getUserIdx()));
         model.addAttribute("coupon", couponService.getCouponList(user.getUserIdx()));

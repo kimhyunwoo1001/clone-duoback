@@ -801,9 +801,9 @@ background-color:#ffffff;}
 
 				</th:block>
 				<li><a th:href="@{/www.duoback.co.kr/mypage_zzim}">찜 리스트</a></li>
-				<li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
-																					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
-						class="cart_cnt1">0</span></a></li>
+			<li class="respCartArea"><a th:href="@{/www.duoback.co.kr/cart}"><span designElement="text" textIndex="7"
+                                                                                               textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">장바구니</span><span
+                                class="cart_cnt1" th:if="${session.user != null}" th:text="${#lists.size(cartList)}">0</span><span class="cart_cnt1" th:unless="${session.user != null}" >0</span></a></li>
 
 				<li><a th:href="@{/www.duoback.co.kr/mypage_order}" designElement="text" textIndex="8"
 					   textTemplatePath="cmVzcG9uc2l2ZV92ZXIxX2RlZmF1bHRfZ2xfMS9sYXlvdXRfaGVhZGVyL3N0YW5kYXJkLmh0bWw=">마이페이지</a>
@@ -1778,7 +1778,7 @@ $(function(){
 								</style>
 								<li class="info" ><img th:src="${m.getGoods().gdImg}" class="img123"> </li>
 								<li class="status" th:text="${m.rvTitle}" style="font-weight: bold"></li>
-								<li class="star" th:text="${m.rvStar}" ></li>
+								<li class="star" th:text="${m.getRvStar()}" ></li>
 								<li class="date"th:text="${#temporals.format(m.rvRegdate , 'yyyy-MM-dd')}">2022-02-02</li>
 								<li class="del" >
 									<button type="button" text="삭제" class="updateaddress btn_resp mo_adj" th:onclick="delete2([[${m.rvIdx}]])">삭제</button>

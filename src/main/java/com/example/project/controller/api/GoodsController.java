@@ -77,8 +77,15 @@ public class GoodsController {
 
     @GetMapping("/catalog117e")
     public String catalog117e(Model model) {
+
+        if(session.getAttribute("userid")==null){
+            model.addAttribute("goodsList" , goodsApiLogicService.getGoodsList());
+            return "pages/www.duoback.co.kr/goods/catalog117e";
+        }
+
         User user = (User)session.getAttribute("user");
         model.addAttribute("goodsList" , goodsApiLogicService.getGoodsList());
+        model.addAttribute("cartList" , cartApiLogicService.getCartList(user.getUserIdx()));
         return "pages/www.duoback.co.kr/goods/catalog117e";
     }
 
